@@ -1,0 +1,36 @@
+1.-	Se incluye la librería del PIC en el que trabajaremos en este caso es del 18f4550
+2.-	Se configuran los fusibles a usar y se establece la velocidad del cristal que será de 4MHz, se declara la resolución del ADC que será de 10 bits, se incluye la librería LCD420 PD II.C (Es una librería modificada para utilizar el puerto D) porque se usará un LCD de 4x20, además se usará la librería del Reloj en tiempo real RTC DS1307 ES.C (Es una librería modificada para que nos imprima en español).
+3.-	Se declaran como enteros las variables para usar en el reloj además de los valores iniciales ademas de 2 arrays, 1 array incluye los dias de la semana en tipo char. Y la otra array sirve para el numero de dias totales de cada mes. Finalmente se declara como char la variable del dia con letra.
+4.-	En el void main se inicializa la lcd, el puerto B,se setea el tiempo que se declaro previamente y se configura el ADC los puertos a utilizar y la velocidad del adc.
+5.-	En el bucle infinito obtiene la fecha, el tiempo y el día con letra, y damos el valor inicial a set de 0 después de obtener la fecha y dia con letra se imprime. Se evalúa si hay alguna tecla presionada, si no hay teclas presionadas sigue funcionando el calendario normalmente
+6.- Si si se presiono alguna tecla. Mediante un Switch case calcula la coordenada de la tecla presionada. Y dependiendo la tecla presionada hará una cosa diferente
+7.- Si se presiona la tecla set se pregunta si ya llegó a su valor maximo, de no ser así incrementará el contador de set. Cuando llegue al maximo guardará los valores obtenidos y se regresará a inicio. 
+
+8.-	Si se presiona la tecla UP mediante un switch case del set incrementará diferentes cosas.
+	8.1.-Si set vale 1 preguntará si AÑOS es igual al valor de 99, de ser así se pondrá a 0, si no vale 99 solo se incrementa y pasa a ver si el botón ya se soltó.
+	8.2.-Si set vale 2 preguntará si MES es igual al valor de 12, de ser así se pondrá a 1, si no vale 12 solo se incrementa y pasa a ver si el botón ya se soltó
+	8.3.-Si set vale 3 preguntará si DIA es igual al valor de la array maximo cuya posición es el MES, de ser así se pondrá a 1 e incrementará a mes, si no vale el maximo solo se incrementa y pasa a ver si el botón ya se soltó
+	8.4.-Si set vale 4 preguntará si DIA CON LETRA es igual al valor de 6, de ser así se pondrá a 0, si no vale 6 solo se incrementa y pasa a ver si el botón ya se soltó
+	8.5.-Si set vale 5 preguntará si SEGUNDO es igual al valor de 59, de ser así se pondrá a 0, si no vale 59 solo se incrementa y pasa a ver si el botón ya se soltó
+	8.6.-Si set vale 6 preguntará si MINUTO es igual al valor de 59, de ser así se pondrá a 0, si no vale 59 solo se incrementa y pasa a ver si el botón ya se soltó
+	8.7.-Si set vale 7 preguntará si HORA es igual al valor de 23, de ser así se pondrá a 0, si no vale 23 solo se incrementa y pasa a ver si el botón ya se soltó
+
+9.-	Si se presiona la tecla DOWN mediante un switch case del set decrementa diferentes cosas.
+	9.1.-Si set vale 1 preguntará si AÑOS es igual al valor de 0, de ser así se pondrá a 99, si no vale 0 solo se decrementa y pasa a ver si el botón ya se soltó.
+	9.2.-Si set vale 2 preguntará si MES es igual al valor de 1, de ser así se pondrá a 12, si no vale 1 solo se decrementa y pasa a ver si el botón ya se soltó
+	9.3.-Si set vale 3 preguntará si DIA es igual al valor de 1, de ser así preguntará si es el mes 1 para poner a dias a 31, de no ser así se decrementa mes y pone a dias al maximo de dias en la posición del mes del array. Si no es ninguna de estas dos solo se decrementa y pasa a ver si el botón ya se soltó
+	9.4.-Si set vale 4 preguntará si DIA CON LETRA es igual al valor de 0, de ser así se pondrá a 6, si no vale 0 solo se decrementa y pasa a ver si el botón ya se soltó
+	9.5.-Si set vale 5 preguntará si SEGUNDO es igual al valor de 0, de ser así se pondrá a 59, si no vale 0 solo se decrementa y pasa a ver si el botón ya se soltó
+	9.6.-Si set vale 6 preguntará si MINUTO es igual al valor de 0, de ser así se pondrá a 59, si no vale 0 solo se decrementa y pasa a ver si el botón ya se soltó
+	9.7.-Si set vale 7 preguntará si HORA es igual al valor de 0, de ser así se pondrá a 23, si no vale 0 solo se decrementa y pasa a ver si el botón ya se soltó
+10.-Finalmente imprime los un array con la posición del dia con letra, el dia, mes, año y en otra fila imprime las horas minutos y segundos.
+11.-Saliendo del ciclo de ver si se presionó una tecla se encuentra la parte del vólmetro (Sensor Analógico) lo que hará es obtener el valor del adc y guardarlo en la variable (VAR_ADC) para después multiplicarlo por 35, dividirlo por 1024 y restarle 2.0. Esto se hace para tener un rango de temperatura de (-2 a 33°)
+12.-Finalmente se Imprime en la fila 3 Los grados obtenidos mediante el pic y en la fila 4 se imprime el valor del ADC
+
+
+
+
+
+8.6.-Si set vale 6 preguntará si
+8.7.-Si set vale 7 preguntará si
+

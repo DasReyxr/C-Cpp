@@ -1,0 +1,43 @@
+//----------- MAIN LIBRARY ----------
+      #include <18F452.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=4MHz)
+//---------- EXT LIBRARIES -----------
+#include <lcd420.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+//--Var--
+int16 var_adc;
+float var_analog;
+//--Inicio--
+
+void main(){
+         //Set Outputs
+         setup_adc_ports(AN0);//
+         setup_adc(ADC_CLOCK_INTERNAL);//Set the speed of clock
+         lcd_init();//initialize the lcd
+         lcd_gotoxy(1,1);
+            printf(lcd_putc,"Orlando");
+          lcd_gotoxy(1,2);
+            printf(lcd_putc,"Contreras");
+         
+         //Infinite Loop
+         while(true){
+         set_adc_channel(0); //Enable Channel 0
+            delay_us(20);
+           
+         var_adc=read_adc();//save the value of adc on "var_adc"
+         var_analog=5.0*var_adc/1024.0;
+         
+         lcd_gotoxy(17,1);//row 1
+         printf(lcd_putc,"ADC= %4ld",var_adc);
+         lcd_gotoxy(1,4);//row 2
+         printf(lcd_putc,"Volt= %01.2fV",var_analog);
+         delay_ms(100);
+         
+         }//end while
+         
+}//end main
+  
+   

@@ -1,0 +1,61 @@
+//----------- MAIN LIBRARY ----------
+      #INCLUDE <18f4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOMCLR,NOLVP,NOCPD
+#use delay(clock=4000000)
+
+//---------- EXT LIBRARIES -----------
+
+//----------- SET OUTPUTS -----------
+//--Ports-
+#byte Port_D = 0X0F83 // Port_D es equivalente a la dirección de RAM 0F83
+#byte Tris_D = 0x0F95 // Tris_D es equivalente a la dirección de RAM 0F95
+//--Var--
+
+
+//--Inicio--
+void main(){
+   Tris_D = 0x00;//  Set TRISD as OUTPUT
+   Port_D = 0X00; // Leds OFF 
+   
+   while(true){            
+   Port_D = 0x3F;//3FH-> 0 
+      delay_ms(500);
+   Port_D = 0x06;//06H-> 1 
+      delay_ms(500);
+   Port_D = 0x5B;//5BH-> 2 
+      delay_ms(500);
+   Port_D = 0x4F;//4FH-> 3
+      delay_ms(500);
+   
+   Port_D = 0x66;//66H-> 4 
+      delay_ms(500);
+   Port_D = 0x6D;//6DH-> 5 
+      delay_ms(500);
+   Port_D = 0x7D;//07H-> 6
+      delay_ms(500);
+   Port_D = 0x07;//07H-> 7
+      delay_ms(500);
+
+   Port_D = 0x7F;//7FH-> 8 
+      delay_ms(500);
+   Port_D = 0x67;//67H-> 9
+      delay_ms(500);
+   Port_D = 0x77;//77H-> A 
+      delay_ms(500);
+   Port_D = 0x7C;//7CH-> B
+      delay_ms(500);
+
+   Port_D = 0x39;//39H-> C 
+      delay_ms(500);
+   Port_D = 0x5E;//5EH-> D
+      delay_ms(500);
+   Port_D = 0x79;//79H-> E 
+      delay_ms(500);
+   Port_D = 0x71;//71H-> F
+      delay_ms(500);
+   }
+}
+
+
+

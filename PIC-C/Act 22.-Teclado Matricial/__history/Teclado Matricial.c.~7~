@@ -1,0 +1,32 @@
+//----------- MAIN LIBRARY ----------
+      #INCLUDE <18f4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOMCLR,NOLVP,NOCPD
+#use delay(clock=4000000)
+
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+#byte Port_B = 0X0F81
+#byte Tris_B = 0x0F93
+//--Var--
+int8 unit,dec,cen,mil; //define as variable of 8 bits
+
+
+//--Inicio--
+void main(){
+   Tris_B = 0xF0;//  Set TRISD half as input and half as output
+   //Port_D = 0X00; // Leds OFF   
+      lcd_init();
+      lcd_gotoxy(1,1); //go to position 1,1 x,y
+      printf(lcd_putc,"Contador 0-9999"); //Print "Contador 0-9"   
+      while(true)
+    {
+      while(PORT_B=0xF0){}  
+    }//End While  
+
+}//End main 
+
+
+

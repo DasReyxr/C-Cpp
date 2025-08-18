@@ -1,0 +1,202 @@
+//----------- MAIN LIBRARY ----------
+      #include <18F452.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=4MHz)
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+
+#include <DS1307 ES.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+#byte Port_B  = 0X0F81 
+#byte Tris_B  = 0x0F93
+
+#byte Port_C  = 0x0F82
+#byte Tris_C  = 0x0F94
+
+//--Var--
+int8 NPC,ANPC;
+int8 set;
+//--Inicio--
+void main(){
+         //Set Outputs
+         
+         int8 dow=1,d=19,m=05,yr=04;
+         int8 h=23,min=59,s=59;
+         int8 count1;
+         char fecha[5];
+         
+         Tris_B=0x00;
+        
+         lcd_init();//initialize the lcd    
+          
+         ds1307_set_date_time(d,m,yr,dow,h,min,s);//we set the time
+        
+         while(true)
+     {
+     inicio:
+         //Calendario DS
+         
+         Tris_B=0x00;
+         Tris_C=0xF0;
+         ds1307_get_date(d,m,yr,dow);//get the values of day month year and day of week
+         ds1307_get_time(h,min,s); //get the values of hour minute and second
+         ds1307_get_day_of_week(fecha);//get the day of week in string
+         lcd_gotoxy(1,1);//row 1
+         printf(lcd_putc,"%s %02u/%02u/20%02u",fecha,d,m,yr);//we print the dow,day month and year
+         lcd_gotoxy(1,2);//row 2
+         printf(lcd_putc,"%02u:%02u:%02u",h,min,s);//we print the time
+         delay_ms(100);
+         //Teclado Matricial
+         
+         NPC=~Port_C;
+         ANPC=NPC & 0xF0;
+         while(ANPC != 0x00)
+         {
+     tm:
+            Port_C=0xFE; //XXXX 0001 -> 1111 1110 turn up the Row1         
+            switch(Port_C)
+               {  
+               case 0x7E: //Set
+               yr++;
+               while(set<7){
+                  set++;
+                  if(Port_C!=0x7E){}
+                  else{
+                  delay_us(20);}
+                  Port_C=0x00;
+                  goto tm;
+                  }
+                  
+               }//End switch 1st Row             
+             Port_C=0xFD; //XXXX 0010->1111 1101 
+             switch(Port_C)
+               {
+               case 0xED: //4
+                  
+                  break;
+               case 0xDD: //0010 0010 -> 1101 1101 
+                  lcd_gotoxy(8,1);
+                  printf(lcd_putc,"5");
+                  break;
+               case 0xBD: //0100 0010 -> 1011 1101 
+                  lcd_gotoxy(8,1);
+                  printf(lcd_putc,"6");
+                  break;
+               case 0x7D: //1000 0010  -> 0111 1101  
+                  switch(count1){
+                  case 0:
+                     dow++;
+                     break;
+                  case 1:
+                     if(d<29){
+                        if(d==9)
+                        {
+                        d=d+10;
+                        }
+                        else{d++;}
+                     }
+                     else {d=1;}
+                     break;     
+                  case 2:
+                    d++;
+                    break;
+                  case 3:
+                     if(m<=10)
+                     {
+                     m=1;
+                     }
+                     else {m=m+10;}
+                     break;
+                  case 4:
+                     m++;
+                     break;
+                  case 5:
+                     if(yr<=9000)
+                     {
+                        yr=0000;
+                     }
+                     else {yr=yr+1000;}
+                     break;
+                  case 6:
+                     if(yr<900)
+                     {
+                        yr=1000;
+                     }
+                     else {yr=yr+100;} 
+                     break;
+                  case 7:
+                     if(yr<90)
+                     {
+                        yr=100;
+                     }
+                     else {yr=yr+10;}
+                     break;
+                  case 8:
+                     if(yr<9){
+                     yr=10;
+                     }
+                     yr++;
+                  case 9:
+                     
+                  }
+                            
+                  lcd_gotoxy(8,1);
+                  printf(lcd_putc,"U");
+                  break;
+               }//End switch 2nd row
+             Port_C=0xFB; //XXXX 0100->1111 1011         
+             switch(Port_C)
+               {
+               case 0xEB: //0001 0100 -> 1110 1011 
+                  lcd_gotoxy(8,1);
+                  printf(lcd_putc,"7");
+                  break;
+               case 0xDB: //0010 0100 -> 1101 1011 
+                  lcd_gotoxy(8,1);
+                  printf(lcd_putc,"8");
+                  break;
+               case 0xBB: //0100 0100 -> 1011 1011 
+                  lcd_gotoxy(8,1);
+                  printf(lcd_putc,"9");
+                  break;
+               case 0x7B: //1000 0100  -> 0111 1011
+                  lcd_gotoxy(8,1);
+                  printf(lcd_putc,"C");
+                  break;
+               }//End Switch 3rd Row
+            Port_B=0xF7; //XXXX 1000->1111 0111         
+            switch(Port_B){
+               case 0xE7: //0001 1000 -> 1110 0111
+                  lcd_gotoxy(8,1);
+                  printf(lcd_putc,"*");
+                  break;
+               case 0xD7: //0010 1000 -> 1101 0111
+                  lcd_gotoxy(8,1);
+                  printf(lcd_putc,"0");
+                  break;
+               case 0xB7: //0100 1000 -> 1011 0111
+                  lcd_gotoxy(8,1);
+                  printf(lcd_putc,"#");
+                  break;
+               case 0x77: //1000 1000  -> 0111 0111
+                  lcd_gotoxy(8,1);
+                  printf(lcd_putc,"D");
+                  break;
+                  }//End Switch 4th Row
+         lcd_gotoxy(1,1);//row 1
+         printf(lcd_putc,"%s %02u/%02u/20%02u",fecha,d,m,yr);//we print the dow,day month and year
+         lcd_gotoxy(1,2);//row 2
+         printf(lcd_putc,"%02u:%02u:%02u",h,min,s);//we print the time
+         delay_ms(100);
+          }//End ANPC bracket  
+      
+        
+            
+
+     }//end while
+         
+}//end main
+  
+   

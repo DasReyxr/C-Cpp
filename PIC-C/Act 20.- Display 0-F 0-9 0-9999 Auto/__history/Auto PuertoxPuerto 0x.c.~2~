@@ -1,0 +1,44 @@
+//----------- MAIN LIBRARY ----------
+      #INCLUDE <18f4550.h> 
+//------- FUSES CONFIGURATION -------
+//#fuses XTPLL,MCLR,NOWDT,NOPROTECT,NOLVP,NODEBUG,USBDIV,PLL1,CPUDIV1,NOVREGEN
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOMCLR,NOLVP,NOCPD
+#use delay(clock=4000000)
+
+//---------- EXT LIBRARIES -----------
+
+//----------- SET OUTPUTS -----------
+//--Ports-
+#byte Port_D = 0X0F83 // Port_D es equivalente a la dirección de RAM 0F83
+#byte Tris_D = 0x0F95 // Tris_D es equivalente a la dirección de RAM 0F95
+//--Var--
+
+
+//--Inicio--
+void main(){
+   Tris_D = 0x00;//  Set TRISD as OUTPUT
+   Port_D = 0X00; // Leds OFF 
+   
+   while(true){            
+   Port_D = 0x81;//81H-> 1000 0001 
+   delay_ms(500);
+   
+   Port_D = 0x18;//18H-> 0001 1000 
+   delay_ms(200);
+   
+   Port_D = 0x42;//42H-> 0100 0010 
+   delay_ms(500);
+   
+   Port_D = 0x24;//24H-> 0010 0100 
+   delay_ms(500);
+   
+   Port_D = 0x18;//18H-> 0001 1000 
+   delay_ms(500);
+   Port_D = 0x24;//24H-> 0010 0100 
+   delay_ms(500);
+   Port_D = 0x42;//42H-> 0100 0010
+   }
+}
+
+
+
