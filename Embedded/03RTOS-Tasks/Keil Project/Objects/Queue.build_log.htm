@@ -1,0 +1,840 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.42.0.0
+Copyright (C) 2025 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: das das, das, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.42.0.0
+Toolchain Path:  C:\Users\dasre\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.23
+Assembler:       Armasm.exe V6.23
+Linker/Locator:  ArmLink.exe V6.23
+Library Manager: ArmAr.exe V6.23
+Hex Converter:   FromElf.exe V6.23
+CPU DLL:         SARMCM3.DLL V5.42.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.14.0
+Dialog DLL:      TCM.DLL V1.56.6.0
+ 
+<h2>Project:</h2>
+C:\Users\dasre\Dropbox\Obsidian\Fisica\tmp\C-Cpp\Embedded\00Jpcodes\FreeRTOS\02Queues\Queue.uvprojx
+Project File Date:  09/09/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.23', folder: 'C:\Users\dasre\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target_1'
+Note: source file 'C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c' - object file renamed from '.\Objects\queue.o' to '.\Objects\queue_1.o'.
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Source/os_systick.c(35): error: expected "FILENAME" or <FILENAME>
+   35 | #include CMSIS_device_header
+      |          ^
+1 error generated.
+compiling os_systick.c...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/clib_os.c(26): warning: In file included from...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include\FreeRTOS.h(58): warning: In file included from...
+./RTE/RTOS\FreeRTOSConfig.h(46): error: expected "FILENAME" or <FILENAME>
+   46 | #include CMSIS_device_header
+      |          ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/clib_os.c(33): error: unknown type name '__WEAK'
+   33 | __WEAK void _platform_post_stackheap_init (void) {
+      | ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/clib_os.c(162): error: unknown type name '__USED'
+  162 | __USED int  _mutex_initialize(mutex *m);
+      | ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/clib_os.c(163): error: unknown type name '__USED'
+  163 | __USED void _mutex_acquire   (mutex *m);
+      | ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/clib_os.c(164): error: unknown type name '__USED'
+  164 | __USED void _mutex_release   (mutex *m);
+      | ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/clib_os.c(165): error: unknown type name '__USED'
+  165 | __USED void _mutex_free      (mutex *m);
+      | ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/clib_os.c(169): error: call to undeclared function '__get_IPSR'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  169 |   if (IS_IRQ_MODE() != 0) {
+      |       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/clib_os.c(146): note: expanded from macro 'IS_IRQ_MODE'
+  146 | #define IS_IRQ_MODE()             (__get_IPSR() != 0U)
+      |                                    ^
+7 errors generated.
+compiling clib_os.c...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/freertos_evr.c(25): warning: In file included from...
+./RTE/RTOS\FreeRTOSConfig.h(46): error: expected "FILENAME" or <FILENAME>
+   46 | #include CMSIS_device_header
+      |          ^
+1 error generated.
+compiling freertos_evr.c...
+queue.c(9): warning: In file included from...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include\FreeRTOS.h(58): warning: In file included from...
+./RTE/RTOS\FreeRTOSConfig.h(46): error: expected "FILENAME" or <FILENAME>
+   46 | #include CMSIS_device_header
+      |          ^
+queue.c(53): warning: unused parameter 'pvParameters' [-Wunused-parameter]
+   53 | void vTaskLed(void *pvParameters){
+      |                     ^
+queue.c(60): warning: unused parameter 'pvParameters' [-Wunused-parameter]
+   60 | void vTaskButton(void *pvParameters){
+      |                        ^
+2 warnings and 1 error generated.
+compiling queue.c...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/cmsis_os2.c(29): warning: In file included from...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include\FreeRTOS.h(58): warning: In file included from...
+./RTE/RTOS\FreeRTOSConfig.h(46): error: expected "FILENAME" or <FILENAME>
+   46 | #include CMSIS_device_header
+      |          ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/cmsis_os2.c(36): warning: In file included from...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include\freertos_os2.h(33): error: expected "FILENAME" or <FILENAME>
+   33 | #include CMSIS_device_header
+      |          ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/cmsis_os2.c(507): error: use of undeclared identifier 'SystemCoreClock'
+  507 |   return (configCPU_CLOCK_HZ);
+      |           ^
+./RTE/RTOS\FreeRTOSConfig.h(330): note: expanded from macro 'configCPU_CLOCK_HZ'
+  330 | #define configCPU_CLOCK_HZ                        (SystemCoreClock)
+      |                                                    ^
+3 errors generated.
+compiling cmsis_os2.c...
+compiling system_stm32f4xx.c...
+assembling startup_stm32f446xx.s...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(38): warning: In file included from...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include\FreeRTOS.h(58): warning: In file included from...
+./RTE/RTOS\FreeRTOSConfig.h(46): error: expected "FILENAME" or <FILENAME>
+   46 | #include CMSIS_device_header
+      |          ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(93): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   93 |             configASSERT( pxEventGroupBuffer );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(101): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  101 |                 configASSERT( xSize == sizeof( EventGroup_t ) );
+      |                 ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(197): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  197 |         configASSERT( ( uxBitsToWaitFor & eventEVENT_BITS_CONTROL_BYTES ) == 0 );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(198): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  198 |         configASSERT( uxBitsToWaitFor != 0 );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(201): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  201 |             configASSERT( !( ( xTaskGetSchedulerState() == taskSCHEDULER_SUSPENDED ) && ( xTicksToWait != 0 ) ) );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(327): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  327 |         configASSERT( xEventGroup );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(328): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  328 |         configASSERT( ( uxBitsToWaitFor & eventEVENT_BITS_CONTROL_BYTES ) == 0 );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(329): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  329 |         configASSERT( uxBitsToWaitFor != 0 );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(332): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  332 |             configASSERT( !( ( xTaskGetSchedulerState() == taskSCHEDULER_SUSPENDED ) && ( xTicksToWait != 0 ) ) );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(482): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  482 |         configASSERT( xEventGroup );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(483): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  483 |         configASSERT( ( uxBitsToClear & eventEVENT_BITS_CONTROL_BYTES ) == 0 );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(562): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  562 |         configASSERT( xEventGroup );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(563): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  563 |         configASSERT( ( uxBitsToSet & eventEVENT_BITS_CONTROL_BYTES ) == 0 );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(657): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  657 |         configASSERT( pxEventBits );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(669): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  669 |                 configASSERT( pxTasksWaitingForBits->xListEnd.pxNext != ( const ListItem_t * ) &( pxTasksWaitingForBits->xListEnd ) );
+      |                 ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(709): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  709 |             configASSERT( pxEventBits );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c(710): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  710 |             configASSERT( ppxEventGroupBuffer );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+18 errors generated.
+compiling event_groups.c...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/list.c(37): warning: In file included from...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include\FreeRTOS.h(58): warning: In file included from...
+./RTE/RTOS\FreeRTOSConfig.h(46): error: expected "FILENAME" or <FILENAME>
+   46 | #include CMSIS_device_header
+      |          ^
+1 error generated.
+compiling list.c...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(34): warning: In file included from...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include\FreeRTOS.h(58): warning: In file included from...
+./RTE/RTOS\FreeRTOSConfig.h(46): error: expected "FILENAME" or <FILENAME>
+   46 | #include CMSIS_device_header
+      |          ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(244): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  244 |     configASSERT( uxCriticalNesting == ~0UL );
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(310): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  310 |     configASSERT( portCPUID != portCORTEX_M7_r0p1_ID );
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(311): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  311 |     configASSERT( portCPUID != portCORTEX_M7_r0p0_ID );
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(342): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  342 |         configASSERT( pxVectorTable[ portVECTOR_INDEX_SVC ] == vPortSVCHandler );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(343): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  343 |         configASSERT( pxVectorTable[ portVECTOR_INDEX_PENDSV ] == xPortPendSVHandler );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(378): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  378 |         configASSERT( ucMaxSysCallPriority );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(382): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  382 |         configASSERT( ( configMAX_SYSCALL_INTERRUPT_PRIORITY & ( ~ucMaxPriorityValue ) ) == 0U );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(412): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  412 |             configASSERT( ( configMAX_SYSCALL_INTERRUPT_PRIORITY & 0x1U ) == 0U );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(471): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  471 |     configASSERT( uxCriticalNesting == 1000UL );
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(487): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  487 |         configASSERT( ( portNVIC_INT_CTRL_REG & portVECTACTIVE_MASK ) == 0 );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(494): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  494 |     configASSERT( uxCriticalNesting );
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(828): error: use of undeclared identifier 'SystemCoreClock'
+  828 |     portNVIC_SYSTICK_LOAD_REG = ( configSYSTICK_CLOCK_HZ / configTICK_RATE_HZ ) - 1UL;
+      |                                   ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(111): note: expanded from macro 'configSYSTICK_CLOCK_HZ'
+  111 |     #define configSYSTICK_CLOCK_HZ             ( configCPU_CLOCK_HZ )
+      |                                                  ^
+./RTE/RTOS\FreeRTOSConfig.h(330): note: expanded from macro 'configCPU_CLOCK_HZ'
+  330 | #define configCPU_CLOCK_HZ                        (SystemCoreClock)
+      |                                                    ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(888): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  888 |             configASSERT( ucCurrentPriority >= ucMaxSysCallPriority );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c(904): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  904 |         configASSERT( ( portAIRCR_REG & portPRIORITY_GROUP_MASK ) <= ulMaxPRIGROUPValue );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+15 errors generated.
+compiling port.c...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(45): warning: In file included from...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include\FreeRTOS.h(58): warning: In file included from...
+./RTE/RTOS\FreeRTOSConfig.h(46): error: expected "FILENAME" or <FILENAME>
+   46 | #include CMSIS_device_header
+      |          ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(246): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  246 |                 heapVALIDATE_BLOCK_POINTER( pxBlock );
+      |                 ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(135): note: expanded from macro 'heapVALIDATE_BLOCK_POINTER'
+  135 |     configASSERT( ( ( uint8_t * ) ( pxBlock ) >= &( ucHeap[ 0 ] ) ) && \
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(252): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  252 |                     heapVALIDATE_BLOCK_POINTER( pxBlock );
+      |                     ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(135): note: expanded from macro 'heapVALIDATE_BLOCK_POINTER'
+  135 |     configASSERT( ( ( uint8_t * ) ( pxBlock ) >= &( ucHeap[ 0 ] ) ) && \
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(262): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  262 |                     heapVALIDATE_BLOCK_POINTER( pvReturn );
+      |                     ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(135): note: expanded from macro 'heapVALIDATE_BLOCK_POINTER'
+  135 |     configASSERT( ( ( uint8_t * ) ( pxBlock ) >= &( ucHeap[ 0 ] ) ) && \
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(270): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  270 |                     configASSERT( heapSUBTRACT_WILL_UNDERFLOW( pxBlock->xBlockSize, xWantedSize ) == 0 );
+      |                     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(279): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  279 |                         configASSERT( ( ( ( size_t ) pxNewBlockLink ) & portBYTE_ALIGNMENT_MASK ) == 0 );
+      |                         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(349): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  349 |     configASSERT( ( ( ( size_t ) pvReturn ) & ( size_t ) portBYTE_ALIGNMENT_MASK ) == 0 );
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(368): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  368 |         heapVALIDATE_BLOCK_POINTER( pxLink );
+      |         ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(135): note: expanded from macro 'heapVALIDATE_BLOCK_POINTER'
+  135 |     configASSERT( ( ( uint8_t * ) ( pxBlock ) >= &( ucHeap[ 0 ] ) ) && \
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(369): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  369 |         configASSERT( heapBLOCK_IS_ALLOCATED( pxLink ) != 0 );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(370): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  370 |         configASSERT( pxLink->pxNextFreeBlock == heapPROTECT_BLOCK_POINTER( NULL ) );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(518): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  518 |         heapVALIDATE_BLOCK_POINTER( pxIterator );
+      |         ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c(135): note: expanded from macro 'heapVALIDATE_BLOCK_POINTER'
+  135 |     configASSERT( ( ( uint8_t * ) ( pxBlock ) >= &( ucHeap[ 0 ] ) ) && \
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+11 errors generated.
+compiling heap_4.c...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(37): warning: In file included from...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include\FreeRTOS.h(58): warning: In file included from...
+./RTE/RTOS\FreeRTOSConfig.h(46): error: expected "FILENAME" or <FILENAME>
+   46 | #include CMSIS_device_header
+      |          ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(326): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  326 |         configASSERT( xReturn );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(387): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  387 |                 configASSERT( xSize == sizeof( Timer_t ) );
+      |                 ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(393): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  393 |             configASSERT( pxTimerBuffer );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(425): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  425 |         configASSERT( ( xTimerPeriodInTicks > 0 ) );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(470): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  470 |             configASSERT( xCommandID < tmrFIRST_FROM_ISR_COMMAND );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(519): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  519 |             configASSERT( xCommandID >= tmrFIRST_FROM_ISR_COMMAND );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(545): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  545 |         configASSERT( ( xTimerTaskHandle != NULL ) );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(559): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  559 |         configASSERT( xTimer );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(574): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  574 |         configASSERT( xTimer );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(599): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  599 |         configASSERT( xTimer );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(641): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  641 |         configASSERT( xTimer );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(659): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  659 |             configASSERT( ppxTimerBuffer != NULL );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(687): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  687 |         configASSERT( xTimer );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(953): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  953 |                     configASSERT( pxCallback );
+      |                     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(1038): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1038 |                             configASSERT( ( pxTimer->xTimerPeriodInTicks > 0 ) );
+      |                             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(1172): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1172 |         configASSERT( xTimer );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(1201): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1201 |         configASSERT( xTimer );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c(1222): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1222 |         configASSERT( xTimer );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+compiling timers.c...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(37): warning: In file included from...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include\FreeRTOS.h(58): warning: In file included from...
+./RTE/RTOS\FreeRTOSConfig.h(46): error: expected "FILENAME" or <FILENAME>
+   46 | #include CMSIS_device_header
+      |          ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(311): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  311 |     configASSERT( pxQueue );
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(364): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  364 |     configASSERT( xReturn != pdFAIL );
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(388): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  388 |         configASSERT( pxStaticQueue );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(406): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  406 |                 configASSERT( xSize == sizeof( Queue_t ) ); /* LCOV_EXCL_BR_LINE */
+      |                 ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(432): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  432 |             configASSERT( pxNewQueue );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(455): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  455 |         configASSERT( pxQueue );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(456): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  456 |         configASSERT( ppxStaticQueue );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(557): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  557 |             configASSERT( pxNewQueue );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(699): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  699 |         configASSERT( xSemaphore );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(735): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  735 |         configASSERT( xSemaphore );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(766): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  766 |         configASSERT( pxMutex );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(826): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  826 |         configASSERT( pxMutex );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(891): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  891 |             configASSERT( xHandle );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(930): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  930 |             configASSERT( xHandle );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(953): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  953 |     configASSERT( pxQueue );
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(954): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  954 |     configASSERT( !( ( pvItemToQueue == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(955): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  955 |     configASSERT( !( ( xCopyPosition == queueOVERWRITE ) && ( pxQueue->uxLength != 1 ) ) );
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c(958): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  958 |         configASSERT( !( ( xTaskGetSchedulerState() == taskSCHEDULER_SUSPENDED ) && ( xTicksToWait != 0 ) ) );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+compiling queue.c...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(39): warning: In file included from...
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include\FreeRTOS.h(58): warning: In file included from...
+./RTE/RTOS\FreeRTOSConfig.h(46): error: expected "FILENAME" or <FILENAME>
+   46 | #include CMSIS_device_header
+      |          ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(1287): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1287 |         configASSERT( puxStackBuffer != NULL );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(1288): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1288 |         configASSERT( pxTaskBuffer != NULL );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(1296): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1296 |             configASSERT( xSize == sizeof( TCB_t ) );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(1860): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1860 |         configASSERT( ( ( ( portPOINTER_SIZE_TYPE ) pxTopOfStack & ( portPOINTER_SIZE_TYPE ) portBYTE_ALIGNMENT_MASK ) == 0U ) );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(1914): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1914 |     configASSERT( uxPriority < configMAX_PRIORITIES );
+      |     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(2226): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2226 |             configASSERT( pxTCB != NULL );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(2347): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2347 |                     configASSERT( uxSchedulerSuspended == 0 );
+      |                     ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(2374): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2374 |         configASSERT( pxPreviousWakeTime );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(2375): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2375 |         configASSERT( ( xTimeIncrement > 0U ) );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(2383): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2383 |             configASSERT( uxSchedulerSuspended == 1U );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(2469): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2469 |                 configASSERT( uxSchedulerSuspended == 1U );
+      |                 ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(2519): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2519 |         configASSERT( pxTCB != NULL );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(2652): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2652 |             configASSERT( pxTCB != NULL );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(2702): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2702 |             configASSERT( pxTCB != NULL );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(2730): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2730 |             configASSERT( pxTCB != NULL );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(2780): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2780 |             configASSERT( pxTCB != NULL );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(2809): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2809 |         configASSERT( uxNewPriority < configMAX_PRIORITIES );
+      |         ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c(2826): error: call to undeclared function '__BKPT'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2826 |             configASSERT( pxTCB != NULL );
+      |             ^
+./RTE/RTOS\FreeRTOSConfig.h(325): note: expanded from macro 'configASSERT'
+  325 |                                                       __BKPT(0);      \
+      |                                                       ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+compiling tasks.c...
+".\Objects\Queue.axf" - 115 Error(s), 2 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.2.0.pack
+                ARM::CMSIS@6.2.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.1.1
+   * Component: SysTick Version: 1.0.5
+   * Component: OS Tick Version: 1.0.1
+   * Component: RTOS2 Version: 2.3.0
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS-FreeRTOS.11.2.0.pack
+                ARM::CMSIS-FreeRTOS@11.2.0
+                Bundle of FreeRTOS for Cortex-M and Cortex-A
+   * Component: FreeRTOS Variant: Cortex-M Version: 11.2.0
+   * Component: Config Variant: CMSIS RTOS2 Version: 11.2.0
+   * Component: Core Variant: Cortex-M Version: 11.2.0
+   * Component: Event Groups Version: 11.2.0
+   * Component: Heap Variant: Heap_4 Version: 11.2.0
+   * Component: Timers Version: 11.2.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F4xx_DFP.3.1.0.pack
+                Keil::STM32F4xx_DFP@3.1.0
+                STMicroelectronics STM32F4 Series Device Support
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F4xx_DFP.2.17.1.pack
+                Keil::STM32F4xx_DFP@2.17.1
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 2.6.3
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/RTOS
+  ./RTE/_Target_1
+  C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include
+  C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include
+  C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F
+  C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include
+  C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include
+  C:/Users/dasre/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@6.1.1
+
+   * Component: ARM::CMSIS:OS Tick:SysTick@1.0.5
+      Source file:   CMSIS/RTOS2/Source/os_systick.c
+
+   * Component: ARM::CMSIS:RTOS2:FreeRTOS&Cortex-M@11.2.0
+      Source file:   CMSIS/RTOS2/FreeRTOS/Source/clib_os.c
+      Source file:   CMSIS/RTOS2/FreeRTOS/Source/cmsis_os2.c
+      Include file:  CMSIS/RTOS2/FreeRTOS/Include/freertos_mpool.h
+
+   * Component: ARM::RTOS&FreeRTOS:Config&CMSIS RTOS2@11.2.0
+      Include file:  CMSIS/RTOS2/FreeRTOS/Config/FreeRTOSConfig.h
+
+   * Component: ARM::RTOS&FreeRTOS:Core&Cortex-M@11.2.0
+      Include file:  Source/include/queue.h
+      Include file:  Source/include/FreeRTOS.h
+      Include file:  Source/include/semphr.h
+      Include file:  Source/include/task.h
+      Source file:   Source/list.c
+      Source file:   Source/queue.c
+      Source file:   Source/tasks.c
+      Source file:   Source/portable/GCC/ARM_CM4F/port.c
+      Source file:   CMSIS/RTOS2/FreeRTOS/Source/freertos_evr.c
+
+   * Component: ARM::RTOS&FreeRTOS:Event Groups@11.2.0
+      Include file:  Source/include/event_groups.h
+      Source file:   Source/event_groups.c
+
+   * Component: ARM::RTOS&FreeRTOS:Heap&Heap_4@11.2.0
+      Source file:   Source/portable/MemMang/heap_4.c
+
+   * Component: ARM::RTOS&FreeRTOS:Timers@11.2.0
+      Include file:  Source/include/timers.h
+      Source file:   Source/timers.c
+
+   * Component: CMSIS:OS Tick(API)@1.0.1
+      Include file:  CMSIS/RTOS2/Include/os_tick.h
+
+   * Component: CMSIS:RTOS2(API)@2.3.0
+      Include file:  CMSIS/RTOS2/Include/cmsis_os2.h
+
+   * Component: Keil::Device:Startup@2.6.3
+      Source file:   MDK/Device/Source/ARM/STM32F446xx_OPT.s
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+      Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f446xx.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
+Target not created.
+Build Time Elapsed:  00:00:08
+</pre>
+</body>
+</html>

@@ -1,0 +1,57 @@
+//----------- MAIN LIBRARY ----------
+#include <18F452.h> 
+//-------- ADC CONFIGURATION --------
+#device adc=10
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=4MHz)
+//---------- EXT LIBRARIES -----------
+#include <lcd420.c>
+
+//----------- SET OUTPUTS -----------
+//--Ports-
+#byte Port_D = 0X0F83 
+#byte Tris_D = 0x0F95 
+//--Var--
+int16 var_adc;
+float var_analog;
+//--Inicio--
+
+void main(){
+         //Set Outputs
+         Tris_D=0x00;   
+         Port_D=0x00;
+         setup_adc_ports(AN0);//
+         setup_adc(ADC_CLOCK_INTERNAL);//Set the speed of clock
+         lcd_init();//initialize the lcd
+         
+         lcd_gotoxy(1,1);
+            printf(lcd_putc,"Orlando");
+          lcd_gotoxy(1,2); 
+            printf(lcd_putc,"Contreras");
+         lcd_gotoxy(17,1);
+         printf(lcd_putc,"Reyes");
+        
+         //Infinite Loop
+         while(true){
+         set_adc_channel(0); //Enable Channel 0
+            delay_us(20);
+           
+         var_adc=read_adc();//save the value of adc on "var_adc"
+         var_analog=5.0*var_adc/1024.0;
+         if(var_analog>2.0){
+            Port_D=0xFF;
+           lcd_gotoxy(17,2);
+           printf(lcd_putc,"LED ON");
+         }
+         else{
+           Port_D=0x00;
+           lcd_gotoxy(17,2);
+           printf(lcd_putc,"LED OFF");
+         }
+         
+         }//end while
+         
+}//end main
+  
+   

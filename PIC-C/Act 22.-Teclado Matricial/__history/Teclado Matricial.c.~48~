@@ -1,0 +1,40 @@
+//----------- MAIN LIBRARY ----------
+      #INCLUDE <18f4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOMCLR,NOLVP,NOCPD
+#use delay(clock=4000000)
+//---------- EXT LIBRARIES -----------
+#include <lib kbd.c>
+#include <lcd.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+#byte Tris_B = 0x0F93 
+//--Var--
+
+
+
+//--Inicio--
+void main(){
+     Tris_B = 0x00;//  Set TRISD half as input and half as output
+      lcd_init();
+      kbd_init();
+      port_b_pullups(true);
+      char ola;
+      lcd_gotoxy(2,1);
+      printf(lcd_putc,"ola");
+        
+      while(true)
+    {
+      ola=kbd_getc();
+      while(ola!=0)
+      {
+      lcd_gotoxy(1,1);
+      printf(lcd_putc,"/f");
+      printf(lcd_putc,"%1c",ola);
+      }
+    }//End While  
+
+}//End main 
+
+
+

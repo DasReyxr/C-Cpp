@@ -1,0 +1,149 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.42.0.0
+Copyright (C) 2025 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: das das, das, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.42.0.0
+Toolchain Path:  C:\Users\dasre\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.23
+Assembler:       Armasm.exe V6.23
+Linker/Locator:  ArmLink.exe V6.23
+Library Manager: ArmAr.exe V6.23
+Hex Converter:   FromElf.exe V6.23
+CPU DLL:         SARMCM3.DLL V5.42.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.14.0
+Dialog DLL:      TCM.DLL V1.56.6.0
+ 
+<h2>Project:</h2>
+C:\Users\dasre\Dropbox\Obsidian\Fisica\tmp\C-Cpp\Embedded\00Jpcodes\FreeRTOS\01TestTasks\testTask.uvprojx
+Project File Date:  09/02/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.23', folder: 'C:\Users\dasre\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target_1'
+compiling os_systick.c...
+compiling system_stm32f4xx.c...
+TestTask.c(43): warning: unused parameter 'pvParameters' [-Wunused-parameter]
+   43 | void vTaskLed(void *pvParameters){
+      |                     ^
+TestTask.c(50): warning: unused parameter 'pvParameters' [-Wunused-parameter]
+   50 | void vTaskButton(void *pvParameters){
+      |                        ^
+2 warnings generated.
+compiling TestTask.c...
+compiling freertos_evr.c...
+compiling clib_os.c...
+compiling event_groups.c...
+compiling cmsis_os2.c...
+compiling port.c...
+compiling list.c...
+compiling heap_4.c...
+compiling queue.c...
+compiling timers.c...
+compiling tasks.c...
+linking...
+Program Size: Code=14300 RO-data=524 RW-data=8 ZI-data=12992  
+".\Objects\testTask.axf" - 0 Error(s), 2 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.2.0.pack
+                ARM::CMSIS@6.2.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.1.1
+   * Component: SysTick Version: 1.0.5
+   * Component: OS Tick Version: 1.0.1
+   * Component: RTOS2 Version: 2.3.0
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS-FreeRTOS.11.2.0.pack
+                ARM::CMSIS-FreeRTOS@11.2.0
+                Bundle of FreeRTOS for Cortex-M and Cortex-A
+   * Component: FreeRTOS Variant: Cortex-M Version: 11.2.0
+   * Component: Config Variant: CMSIS RTOS2 Version: 11.2.0
+   * Component: Core Variant: Cortex-M Version: 11.2.0
+   * Component: Event Groups Version: 11.2.0
+   * Component: Heap Variant: Heap_4 Version: 11.2.0
+   * Component: Timers Version: 11.2.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F4xx_DFP.3.1.0.pack
+                Keil::STM32F4xx_DFP@3.1.0
+                STMicroelectronics STM32F4 Series Device Support
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F4xx_DFP.2.17.1.pack
+                Keil::STM32F4xx_DFP@2.17.1
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 2.6.3
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/RTOS
+  ./RTE/_Target_1
+  C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include
+  C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include
+  C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F
+  C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include
+  C:/Users/dasre/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include
+  C:/Users/dasre/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@6.1.1
+
+   * Component: ARM::CMSIS:OS Tick:SysTick@1.0.5
+      Source file:   CMSIS/RTOS2/Source/os_systick.c
+
+   * Component: ARM::CMSIS:RTOS2:FreeRTOS&Cortex-M@11.2.0
+      Source file:   CMSIS/RTOS2/FreeRTOS/Source/cmsis_os2.c
+      Include file:  CMSIS/RTOS2/FreeRTOS/Include/freertos_mpool.h
+      Source file:   CMSIS/RTOS2/FreeRTOS/Source/clib_os.c
+
+   * Component: ARM::RTOS&FreeRTOS:Config&CMSIS RTOS2@11.2.0
+      Include file:  CMSIS/RTOS2/FreeRTOS/Config/FreeRTOSConfig.h
+
+   * Component: ARM::RTOS&FreeRTOS:Core&Cortex-M@11.2.0
+      Source file:   Source/tasks.c
+      Source file:   Source/list.c
+      Include file:  Source/include/queue.h
+      Include file:  Source/include/semphr.h
+      Include file:  Source/include/task.h
+      Source file:   Source/queue.c
+      Include file:  Source/include/FreeRTOS.h
+      Source file:   Source/portable/GCC/ARM_CM4F/port.c
+      Source file:   CMSIS/RTOS2/FreeRTOS/Source/freertos_evr.c
+
+   * Component: ARM::RTOS&FreeRTOS:Event Groups@11.2.0
+      Include file:  Source/include/event_groups.h
+      Source file:   Source/event_groups.c
+
+   * Component: ARM::RTOS&FreeRTOS:Heap&Heap_4@11.2.0
+      Source file:   Source/portable/MemMang/heap_4.c
+
+   * Component: ARM::RTOS&FreeRTOS:Timers@11.2.0
+      Include file:  Source/include/timers.h
+      Source file:   Source/timers.c
+
+   * Component: CMSIS:OS Tick(API)@1.0.1
+      Include file:  CMSIS/RTOS2/Include/os_tick.h
+
+   * Component: CMSIS:RTOS2(API)@2.3.0
+      Include file:  CMSIS/RTOS2/Include/cmsis_os2.h
+
+   * Component: Keil::Device:Startup@2.6.3
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+      Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
+      Source file:   MDK/Device/Source/ARM/STM32F446xx_OPT.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f446xx.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
+Build Time Elapsed:  00:00:03
+</pre>
+</body>
+</html>

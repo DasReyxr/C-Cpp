@@ -1,0 +1,5 @@
+Compiling C:\Users\Orlando\Desktop\4to Semeste mpf\Modulo\4.- Microcontroladores Correa\3 Parcial picC-\Act 21.-LCD 0-9 0-9999 & Mensajes\Hello World LCD on 14-may.-21 at 20:34
+>>> Warning 202 "C:\Users\Orlando\Desktop\4to Semeste mpf\Modulo\4.- Microcontroladores Correa\3 Parcial picC-\Act 21.-LCD 0-9 0-9999 & Mensajes\Hello World LCD.c" Line 12(12,20): Variable never used:   Unidades
+      Memory usage:   ROM=2%      RAM=0% - 1%
+      0 Errors,  1 Warnings.
+Build Successful.

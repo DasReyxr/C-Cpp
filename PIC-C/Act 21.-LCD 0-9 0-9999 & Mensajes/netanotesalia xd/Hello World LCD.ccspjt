@@ -1,0 +1,62 @@
+[PROJECT]
+Target=Hello World LCD.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.091
+Compiler=PCH
+[Target Data]
+FileList=Hello World LCD.c
+[Hello World LCD.c]
+Type=4
+[mru-list]
+1=Hello World LCD.c
+
+[defines]
+buildcount=24
+
+[Opened Files]
+1=Hello World LCD.c
+t1=1
+Count=1
+2=..\..\..\..\..\..\Downloads\Contador de 0-9 LCD.c
+t2=1
+
+[ProjectLog]
+Days=2
+D1=13-05-2021
+D1_L=4
+D1_L1=[86083]Stopped Editing.
+TotalEdit=50
+TotalDebug=0
+D1_E=15
+D1_D=0
+D1_L2=[86084]Project Closed.
+D1_L3=[86231]Project Opened.
+D1_L4=[86247]Started Editing.
+D2=14-05-2021
+D2_L=18
+D2_L1=[464]Stopped Editing.
+D2_E=35
+D2_D=0
+D2_L2=[1192]Project Closed.
+D2_L3=[35099]Project Opened.
+D2_L4=[43257]Project Closed.
+D2_L5=[66245]Project Opened.
+D2_L6=[67955]Project Closed.
+D2_L7=[68340]Project Opened.
+D2_L8=[68359]Started Editing.
+D2_L9=[68770]Stopped Editing.
+D2_L10=[68770]Project Closed.
+D2_L11=[70207]Project Opened.
+D2_L12=[70213]Started Editing.
+D2_L13=[71625]Stopped Editing.
+D2_L14=[73044]Started Editing.
+D2_L15=[73250]Stopped Editing.
+D2_L16=[73250]Project Closed.
+D2_L17=[73489]Project Opened.
+D2_L18=[73497]Started Editing.
+
+[fileformats]
+forcecoff=0
+[Units]
+Count=1
+1=Hello World LCD (main)

@@ -1,0 +1,81 @@
+/*-------- Orlando Contreras -------
+------------- Reyes Das -------------
+
+
+Escribe un programa que, al recibir como datos 24 números reales que representan las temperaturas registradas en el exterior en un periodo de 24 horas, encuentre, con la ayuda de funciones, la temperatura promedio del día, así como la temperatura máxima y la mínima con el horario en el cual se registraron.
+
+Nota: Tendrás que implementar la siguientes funciones: tempProm, tempMax y tempMin.
+
+------------ 18/10/2023 ------------*/
+//----------- MAIN LIBRARY ----------
+#include <stdio.h> //Standart Data Input-Output
+//--- Global Var ---
+
+
+
+void TEMPPROM(float *);
+void TEMPMINMAX(float *,int);
+
+void MAXIMA_CAL(float *);
+
+int main()
+{
+    int Temps[24]={23.57, 33.12, 28.46, 24.81, 22.35, 37.17, 27.62, 21.49, 38.38, 20.71, 26.93, 32.16, 39.64, 30.42, 34.05, 21.68, 29.37, 20.25, 35.97, 31.48, 20.91, 36.28, 22.06, 39.01};    
+    int Temps_mod[24];
+    printf("Hoy es un dia soleado dame 24 temperaturas jeje Auf Das \n");
+    // for(int temp=0;temp<25;temp++){
+    //     scanf("%f",%Temps_mod[temp]);
+    // }
+    
+    TEMPPROM(Temps);
+    
+    // printf("\nPromedio de cada parcial \nP1 %.2f P2 %.2f P3 %.2f P4 %.2f",Parcial_Prom[0],Parcial_Prom[1],Parcial_Prom[2],Parcial_Prom[3]);
+    // MAXIMA_CAL(Parcial_Prom);
+    return 0;
+}
+
+
+void TEMPPROM(float *etemp){
+    float sum = 0;
+    float Promedio;
+    for(int ti=0;ti<24;ti++){
+        sum+=etemp[ti];
+    }
+    Promedio=sum/27.0;
+    printf("Promedio de temperatura del dia de hoy  %.2f\n",Promedio);
+}
+
+
+
+void PROMEDIO_PAR(struct ALUMNO *UNI,int numAlumnos,float *PartialProm){
+  for(int no_parcial=0;no_parcial<4;no_parcial++){
+    for(int al=0;al<numAlumnos;al++){
+        
+            PartialProm[no_parcial]+=UNI[al].P[no_parcial];
+        }
+    PartialProm[no_parcial]/=numAlumnos;
+    }
+}
+
+
+void MAXIMA_CAL(float *PartialProm){
+    int cpp=0,saveme,saveme2;
+    while(cpp<4){
+    saveme =PartialProm[cpp]; 
+    saveme2 = cpp-1;
+        while (saveme2>=0 && PartialProm[saveme2] > saveme)
+        {
+            PartialProm[saveme2+1] = PartialProm[saveme2];
+            saveme2--;         
+            
+        }
+    PartialProm[saveme2+1] = saveme;
+    cpp++;
+    }
+    printf("\n\n");
+  for(cpp=0;cpp<4;cpp++){
+        if(PartialProm[3]/PartialProm[cpp]==1){
+            printf("\nEl maisimo examen es %.2f",PartialProm[3]);
+        }
+    }
+}

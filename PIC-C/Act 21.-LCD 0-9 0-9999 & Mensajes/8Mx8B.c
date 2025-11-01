@@ -1,0 +1,86 @@
+//----------- MAIN LIBRARY ----------
+      #include <18F4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=4MHz)
+
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+//--Ports-
+#byte Port_B = 0X0F81 
+#byte Tris_B = 0x0F93 
+//--Var--
+//--Inicio--
+
+void main(){
+         //Set Outputs
+         Tris_B = 0xFF;//  Set TRISB as OUTPUT
+         Port_B = 0X00; // Leds OFF 
+         lcd_init();
+         printf(lcd_putc,"Nombres");
+         
+         while(true){
+         
+         while(Bit_test(Port_B,0)==1){
+            printf(lcd_putc,"\f");
+            printf(lcd_putc,"Paco");
+            while(bit_test(Port_B,0)==1){
+            }
+            delay_ms(1);
+         }
+         while(Bit_test(Port_B,1)==1){
+            printf(lcd_putc,"\f");
+            printf(lcd_putc,"Howard Valenzuela");
+            while(bit_test(Port_B,1)==1){
+            }
+            delay_ms(1);
+         }
+         while(Bit_test(Port_B,2)==1){
+            printf(lcd_putc,"\f");
+            printf(lcd_putc,"Yael Goycochea"); 
+            while(bit_test(Port_B,2)==1){
+            }
+            delay_ms(1);
+         }
+         while(Bit_test(Port_B,3)==1){
+            printf(lcd_putc,"\f");
+            printf(lcd_putc,"Francisco Javier");
+            while(bit_test(Port_B,3)==1){
+            }
+            delay_ms(1);
+         }
+         while(Bit_test(Port_B,4)==1){
+            printf(lcd_putc,"\f");
+            printf(lcd_putc,"Taney Quezada");
+            while(bit_test(Port_B,4)==1){
+            }
+            delay_ms(1);
+         }
+         while(Bit_test(Port_B,5)==1){
+            printf(lcd_putc,"\f");
+            printf(lcd_putc,"Jennyfer Garcia");
+            while(bit_test(Port_B,5)==1){
+            }
+            delay_ms(1);
+          }
+         while(Bit_test(Port_B,6)==1){
+            printf(lcd_putc,"\f");
+            printf(lcd_putc,"Luis Chavez");
+            while(bit_test(Port_B,6)==1){
+            }
+            delay_ms(1);
+          }
+         while(Bit_test(Port_B,7)==1){
+            printf(lcd_putc,"\f");
+            printf(lcd_putc,"Raul Ivan");
+            while(bit_test(Port_B,7)==1){
+            }
+            delay_ms(1);
+          }
+         }//end while
+         
+}//end main
+  
+   

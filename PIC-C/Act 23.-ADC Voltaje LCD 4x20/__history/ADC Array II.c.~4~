@@ -1,0 +1,52 @@
+//----------- MAIN LIBRARY ----------
+#include <18F452.h> 
+//-------- ADC CONFIGURATION --------
+#device adc=10
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=4MHz)
+//---------- EXT LIBRARIES -----------
+#include <lcd420.c>
+
+//----------- SET OUTPUTS -----------
+//--Ports-
+//--Var--
+int16 array[7];
+//--Inicio--
+
+void main(){
+         //Set Outputs
+         setup_adc_ports(ALL_ANALOG);//
+         setup_adc(ADC_CLOCK_INTERNAL);//Set the speed of clock
+         lcd_init();//initialize the lcd
+         
+         //Infinite Loop
+         while(true){ 
+         
+         for(adc=0;adc<8;adc++){
+            set_adc_channel(adc);
+            delay_us(20);
+            array[adc]=read_adc();   
+         }      
+         
+         lcd_gotoxy(1,1);
+            printf(lcd_putc,"ADC=%4ld",adc[0]);
+         lcd_gotoxy(10,1);
+            printf(lcd_putc,"ADC=%4ld",adc[1]);            
+         lcd_gotoxy(2,1);
+            printf(lcd_putc,"ADC=%4ld",adc[2]);
+         lcd_gotoxy(2,10);
+            printf(lcd_putc,"ADC=%4ld",adc[3]);
+         lcd_gotoxy(17,1);
+            printf(lcd_putc,"ADC=%4ld",adc[4]);
+         lcd_gotoxy(27,1);
+            printf(lcd_putc,"ADC=%4ld",adc[5]);
+         lcd_gotoxy(17,2);
+            printf(lcd_putc,"ADC=%4ld",adc[6]);
+         lcd_gotoxy(27,2);
+            printf(lcd_putc,"ADC=%4ld",adc[7]);                                 
+         }//end while
+         
+}//end main
+  
+   

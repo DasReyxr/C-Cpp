@@ -1,0 +1,115 @@
+//----------- MAIN LIBRARY ----------
+      #include <18F4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=4MHz)
+
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+//--Ports-
+#byte Port_B = 0X0F81 
+#byte Tris_B = 0x0F93 
+//--Var--
+int8 contador; //define unit as a variable of 8 bits
+//--Inicio--
+
+void main(){
+         //Set Outputs
+         Tris_B = 0xFF;//  Set TRISB as OUTPUT
+         Port_B = 0X00; // Leds OFF 
+         lcd_init();
+         contador=0;
+         printf(lcd_putc,"Nombres");
+         
+         while(true){
+         while(bit_test(Port_B,0)==1){
+            contador++;
+            switch(contador)
+            {
+            case 1:
+               printf(lcd_putc,"\f");
+               printf(lcd_putc,"Orlando");
+               while(bit_test(Port_B,0)==1){
+               }
+               delay_ms(1);
+               break;
+            case 2:
+               printf(lcd_putc,"\f");
+               printf(lcd_putc,"Alison");
+               while(bit_test(Port_B,0)==1){
+               }
+               delay_ms(1);
+               break;
+            case 3:
+               printf(lcd_putc,"\f");
+               printf(lcd_putc,"Francisco");
+               while(bit_test(Port_B,0)==1){
+               }
+               delay_ms(1);
+               break;
+             case 4:
+               printf(lcd_putc,"\f");
+               printf(lcd_putc,"Fernando");
+               while(bit_test(Port_B,0)==1){
+               }
+               delay_ms(1);
+               break;    
+            case 5:
+               printf(lcd_putc,"\f");
+               printf(lcd_putc,"Alex");
+               while(bit_test(Port_B,0)==1){
+               }
+               delay_ms(1);
+               break;
+            case 6:
+               printf(lcd_putc,"\f");
+               printf(lcd_putc,"Osiris");
+               while(bit_test(Port_B,0)==1){
+               }
+               delay_ms(1);
+               break;
+            case 7:
+               printf(lcd_putc,"\f");
+               printf(lcd_putc,"Daniela");
+               while(bit_test(Port_B,0)==1){
+               }
+               delay_ms(1);
+               break;
+             case 8:
+               printf(lcd_putc,"\f");
+               printf(lcd_putc,"Paquito");
+               while(bit_test(Port_B,0)==1){
+               }
+               delay_ms(1);
+               break;    
+            case 9:
+               printf(lcd_putc,"\f");
+               printf(lcd_putc,"Isa");
+               while(bit_test(Port_B,0)==1){
+               }
+               delay_ms(1);
+               break;
+             case 10:
+               printf(lcd_putc,"\f");
+               printf(lcd_putc,"Isai");
+               while(bit_test(Port_B,0)==1){
+               }
+               delay_ms(1);
+               break; 
+              default:
+                  printf(lcd_putc,"\f");
+                  printf(lcd_putc,"Limite Excedido");
+                  while(bit_test(Port_B,0)==1){
+                  }
+                  delay_ms(1);
+            }
+         }
+         
+
+         }//end while
+         
+}//end main
+  
+   

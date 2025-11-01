@@ -1,0 +1,43 @@
+//----------- MAIN LIBRARY ----------
+      #include <18F4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=4MHz)
+
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+//--Var--
+int8 unit;//define as variable of 8 bits
+int8 dec; //define as variable of 8 bits
+int8 cen; //define as variable of 8 bits
+int8 mil; //define as variable of 8 bits
+//--Inicio--
+
+void main(){
+      lcd_init();
+         while(true){
+         while(mil<=9){
+         while(cen<=9){
+         while(dec<=9){
+         while(unit<=9){
+         lcd_gotoxy(1,1); //go to position 1,1 x,y
+         printf(lcd_putc,"Contador 0-9999"); //Print "Contador 0-9"
+         lcd_gotoxy(1,2);  //go to position 1,2 xy
+         printf(lcd_putc,"Unidades %1u%1u%1u%1u", unit,dec,cen,mil); //1->1 digit (0-9) u->unsigned
+         delay_ms(300);
+         unit++;
+         }//end unit condition
+         unit=0;
+         }//end dec condition
+         dec=0;
+         }//end cen condition
+         cen=0;
+         }//end mil condition
+         mil=0;
+         }//end while
+         
+   }//end main
+  
+   

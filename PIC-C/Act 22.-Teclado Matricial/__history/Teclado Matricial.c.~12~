@@ -1,0 +1,58 @@
+//----------- MAIN LIBRARY ----------
+      #INCLUDE <18f4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOMCLR,NOLVP,NOCPD
+#use delay(clock=4000000)
+
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+#byte Port_B = 0X0F81
+#byte Tris_B = 0x0F93
+//--Var--
+int8 tecla;
+
+
+//--Inicio--
+void main(){
+   Tris_B = 0x0F;//  Set TRISD half as input and half as output
+   Port_B = 0X00; //
+      lcd_init();
+     
+      
+        
+      while(true)
+    {
+      tecla=0;
+       while(tecla=0)
+      {
+         bit_set(Port_B,0); //Enciende columna 1
+            if(bit_test(Port_B,4) ==1){
+            printf(lcd_putc,"\f");
+            printf(lcd_putc,"1.-Orlando");
+            //Imprime mensaje 1
+            tecla=1;
+            }
+         bit_set(Port_B,1); //Enciende columna 1
+            if(bit_test(Port_B,5) ==1){
+            printf(lcd_putc,"\f");
+            printf(lcd_putc,"2.-Orlando");
+            //Imprime mensaje 1
+            }
+         bit_set(Port_B,2); //Enciende columna 1
+            if(bit_test(Port_B,6) ==1){
+            //Imprime mensaje 1
+            }  
+          bit_set(Port_B,3); //Enciende columna 1
+            if(bit_test(Port_B,7) ==1){
+            //Imprime mensaje 1
+            }           
+      }
+      
+    }//End While  
+
+}//End main 
+
+
+

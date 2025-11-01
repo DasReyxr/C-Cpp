@@ -1,0 +1,56 @@
+//----------- MAIN LIBRARY ----------
+      #INCLUDE <18f4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOMCLR,NOLVP,NOCPD
+#use delay(clock=4000000)
+
+//---------- EXT LIBRARIE -----------
+#include <lcd.c>
+
+//----------- SET OUTPUTS -----------
+//--Ports-
+#byte Port_B = 0X0F81 // Port_B es equivalente a la dirección de RAM 0F81
+#byte Tris_B = 0x0F93 // Tris_B es equivalente a la dirección de RAM 0F93
+//--Var--
+int8 res_m,res_c,res_d,ct2; //Residuos
+int8 uni,dec,cen,mil; //define as variable of 8 bits
+int16 ct;
+
+//--Inicio--
+void main(){
+   Tris_B = 0x00;//  Set TRISB as OUTPUT
+   Port_B = 0X00; // Leds OFF   
+      lcd_init();
+      lcd_gotoxy(1,1); //go to position 1,1 x,y
+      printf(lcd_putc,"Contador 0-9999"); //Print "Contador 0-9"   
+      while(true){
+      for(ct=0;ct<=9999;ct++){
+      //Display
+         mil=ct/1000; //1234/1000->1
+         res_m= ct%1000; //0234
+         cen=res_m/100 ; //0234/100->2
+         res_c= ct%100;  //0034
+         dec= res_c/10 ;    //0034/10->3
+         res_d=res_c%10;   //0034->0004
+         uni=res_d/1 ; //0004/1->4
+         for(ct2=0;ct2<10;ct2++){
+            Port_B=mil | 0x10;
+            delay_ms(1);
+            Port_B=cen | 0x20;
+            delay_ms(1);
+            Port_B=dec | 0x40;
+            delay_ms(1);
+            Port_B=uni | 0x80;
+            delay_ms(1);
+         }
+      //LCD
+          printf(lcd_putc,"\n");
+          printf(lcd_putc,"Conteo %04Lu", ct); //1->1 digit (0-9) Lu->Long unsigned
+          delay_ms(20);    
+      }//for 9999   
+    }//End While  
+
+}//End main 
+
+
+

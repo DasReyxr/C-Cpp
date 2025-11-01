@@ -1,0 +1,263 @@
+//----------- MAIN LIBRARY ----------
+      #include <18F452.h> 
+//-------- ADC CONFIGURATION --------
+#device adc=10
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=4MHz)
+//---------- EXT LIBRARIES -----------
+#include <lcd420 PD II.c>
+#include <DS1307 ES.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+#byte Port_B  = 0X0F81 
+#byte Tris_B  = 0x0F93
+#byte Port_C  = 0x0F82
+#byte Tris_C  = 0x0F94
+
+//--Var--
+int8 NPC,ANPC;
+int8 set;
+int max[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+int8 dow=1,d=19,m=05,yr=04;
+int8 h=23,min=59,s=59;
+int8 count1;
+char fecha[5];
+char arraydow[7][11]={"Dom \0","Lun \0","Mar \0","Mier\0","Juev\0","Vier\0","Sab \0"};
+
+int16 var_adc;
+float var_analog;
+//--Inicio--
+void main(){
+         //Set Outputs    
+         Tris_B=0x00;
+         lcd_init();//initialize the lcd
+         setup_adc_ports(AN0);//
+         setup_adc(ADC_CLOCK_INTERNAL);//Set the speed of clock
+         ds1307_set_date_time(d,m,yr,dow,h,min,s);//we set the time
+        
+         while(true){
+     inicio:
+         //Calendario DS
+         set=0;
+         Tris_B=0x00;
+         Tris_C=0xF0;
+         ds1307_get_date(d,m,yr,dow);//get the values of day month year and day of week
+         ds1307_get_time(h,min,s); //get the values of hour minute and second
+         ds1307_get_day_of_week(fecha);//get the day of week in string
+         lcd_gotoxy(1,1);//row 1
+         printf(lcd_putc,"%s %02u/%02u/20%02u",fecha,d,m,yr);//we print the dow,day month and year
+         lcd_gotoxy(1,2);//row 2
+         printf(lcd_putc,"%02u:%02u:%02u",h,min,s);//we print the time
+         delay_ms(100);
+         //Teclado Matricial
+         
+         NPC=~Port_C;
+         ANPC=NPC & 0xF0;
+         while(ANPC != 0x00)
+         {
+     tm:
+            Port_C=0xFE; //XXXX 0001 -> 1111 1110 turn up the Row1         
+            switch(Port_C)
+            {  
+               case 0x7E: //Set 
+               if(set<7)
+                  {
+                  set++;
+                  //BTFSC   
+                  while(bit_test(Port_C,7)==0){}
+                  //delay_us(20);
+                  break;
+                  }//If Set                
+               else
+               {
+                  ds1307_set_date_time(d,m,yr,dow,h,min,s);//we set the time
+                  goto inicio;
+               }
+             }//End switch 1st Row
+
+             Port_C=0xFD; //XXXX 0010->1111 1101 
+             switch(Port_C)
+            {
+               case 0x7D: //Up 
+                  switch(set)
+                     {
+                  case 1:
+                     if(yr==99)
+                     {
+                        yr=0;
+                     }
+                     else yr++;
+                     //BTFSC   
+                     while(bit_test(Port_C,7)==0){}
+                     //delay_us(20);
+                     break;
+                  case 2:
+                     if(m==12){
+                        m=0;
+                     }
+                     else m++;
+                    //BTFSC   
+                     while(bit_test(Port_C,7)==0){}
+                     //delay_us(20);
+                     break;
+                  case 3:
+                     if(d==max[m]){
+                        d=1;
+                        m++;
+                     }
+                     else {
+                           d++;
+                           
+                           }
+                     //BTFSC   
+                     while(bit_test(Port_C,7)==0){}
+                     //delay_us(20);                     
+                     break;
+                  case 4:
+                     if(dow==6){
+                           dow=0;
+                     }
+                     else dow++;
+                     while(bit_test(Port_C,7)==0){}
+                     //delay_us(20);                     
+                     break;                     
+                  case 5:
+                     if(s==59){
+                        s=0;
+                     }
+                     else s++;
+                     //BTFSC   
+                     while(bit_test(Port_C,7)==0){}
+                     //delay_us(20);                     
+                     break;
+                  case 6:
+                     if(min==59){
+                        min=0;
+                     }
+                     else min++;
+                     //BTFSC   
+                     while(bit_test(Port_C,7)==0){}
+                     //delay_us(20);                     
+                     break;
+                  case 7:
+                     if(h==23){
+                        h=0;
+                     }
+                     else h++;
+                     //BTFSC   
+                     while(bit_test(Port_C,7)==0){}
+                     //delay_us(20);                     
+                     break;
+                  }//End Switch Set
+               }//End switch UP
+             Port_C=0xFB; //XXXX 0100->1111 1011         
+             switch(Port_C)
+               {             
+               case 0x7B: //Down
+                  switch(set)
+                     {
+                  case 1:
+                     if(yr==0)
+                     {
+                        yr=99;
+                     }
+                     else yr--;
+                     //BTFSC   
+                     while(bit_test(Port_C,7)==0){}
+                     //delay_us(20);
+                     break;
+                  case 2:
+                     if(m==1){
+                        m=12;
+                     }
+                     else m--;
+                    //BTFSC   
+                     while(bit_test(Port_C,7)==0){}
+                     //delay_us(20);
+                     break;
+                  case 3:
+                     if(d==1){
+                        if(m==1){
+                           d=31;
+                        }
+                        else {
+                           m--;
+                           d=max[m];
+                        }
+                     }
+                     else d--;
+                     //BTFSC   
+                     while(bit_test(Port_C,7)==0){}
+                     //delay_us(20);                     
+                     break;
+                  case 4:
+                      if(dow==0){
+                           dow=6;
+                     }
+                     else dow--;
+                     while(bit_test(Port_C,7)==0){}
+                     //delay_us(20);                     
+                     break;
+
+                  case 5:
+                     if(s==0){
+                        s=59;
+                     }
+                     else s--;
+                     //BTFSC   
+                     while(bit_test(Port_C,7)==0){}
+                     //delay_us(20);                     
+                     break;
+                  case 6:
+                     if(min==0){
+                        min=59;
+                     }
+                     else min--;
+                     //BTFSC   
+                     while(bit_test(Port_C,7)==0){}
+                     //delay_us(20);                     
+                     break;
+                  case 7:
+                     if(h==0){
+                        h=23;
+                     }
+                     else h--;
+                     //BTFSC   
+                     while(bit_test(Port_C,7)==0){}
+                     ds1307_set_date_time(d,m,yr,dow,h,min,s);//we set the time
+                     //delay_us(20);
+                     break;
+                  }//End Switch Set
+
+          
+               }//End Switch 3rd Row
+         lcd_gotoxy(1,1);//row 1
+         printf(lcd_putc,"%s %02u/%02u/20%02u",arraydow[dow],d,m,yr);//we print the dow,day month and year
+         lcd_gotoxy(1,2);//row 2
+         printf(lcd_putc,"%02u:%02u:%02u",h,min,s);//we print the time
+         delay_ms(100);
+         
+         
+          }//End ANPC bracket  
+      //Voltmeter
+         set_adc_channel(0); //Enable Channel 0
+         delay_us(20);
+           
+         var_adc=read_adc();//save the value of adc on "var_adc"
+         var_analog=100.0*var_adc/1024.0;
+         
+         lcd_gotoxy(1,3);//row 3
+         printf(lcd_putc,"Temp= %01.2f°",var_analog);
+         lcd_gotoxy(1,4);//row 4
+         printf(lcd_putc,"ADC=%4ld",var_adc);
+
+         delay_ms(100);
+        
+           
+     }//end while
+         
+}//end main
+  
+   
+

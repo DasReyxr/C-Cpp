@@ -1,0 +1,35 @@
+//----------- MAIN LIBRARY ----------
+      #INCLUDE <18f4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOMCLR,NOLVP,NOCPD
+#use delay(clock=4000000)
+
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+#byte Port_B = 0X0F81
+#byte Tris_B = 0x0F93
+//--Var--
+int8 unit,dec,cen,mil; //define as variable of 8 bits
+
+
+//--Inicio--
+void main(){
+   Tris_B = 0x0F;//  Set TRISD half as input and half as output
+   
+   Port_B = 0X00; //   
+      lcd_init();
+        
+      while(true)
+    {
+      while()//while one 
+      {
+      
+      }
+    }//End While  
+
+}//End main 
+
+
+

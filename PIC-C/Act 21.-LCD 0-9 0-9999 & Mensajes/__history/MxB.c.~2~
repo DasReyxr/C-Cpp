@@ -1,0 +1,49 @@
+//----------- MAIN LIBRARY ----------
+      #include <18F4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=4MHz)
+
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+//--Ports-
+#byte Port_B = 0X0F81 
+#byte Tris_B = 0x0F93 
+//--Var--
+int8 unit; //define unit as a variable of 8 bits
+//--Inicio--
+
+void main(){
+         //Set Outputs
+         Tris_B = 0xFF;//  Set TRISB as OUTPUT
+         Port_B = 0X00; // Leds OFF 
+         lcd_init();
+         contador=0;
+         printf(lcd_putc,"Nombres");
+         
+         while(true){
+         while(bit_test(Port_B,0)==1){
+            contador++;
+            while(bit_test(Port_B,0)==1){
+            }
+            delay_ms(1);
+            switch(contador)
+            {
+            case 1:
+               printf(lcd_putc,"\f");
+               printf(lcd_putc,"Nombres");
+            case 2:
+               printf(lcd_putc,"\f");
+               printf(lcd_putc,"Orlando");
+               
+            }
+         }
+         
+
+         }//end while
+         
+}//end main
+  
+   

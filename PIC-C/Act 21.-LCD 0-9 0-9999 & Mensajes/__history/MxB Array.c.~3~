@@ -1,0 +1,62 @@
+//----------- MAIN LIBRARY ----------
+      #include <18F4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=4MHz)
+
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+//--Ports-
+#byte Port_B = 0X0F81 
+#byte Tris_B = 0x0F93 
+//--Var--
+int8 contador; //define unit as a variable of 8 bits
+char nombres[10][15]={"Caifanes \0",
+                     "Panteon \0",
+                     "Zoe \0",
+                     "Moderato \0",
+                     "Mago de Oz \0",
+                     "Leon \0",
+                     "Irapuato \0",
+                     "Belanova \0",
+                     "Daniel Sosa\0",
+                     "Ed Maverick\0",
+                     "Kevin Kaarl\0"};
+//--Inicio--
+
+void main(){
+         //Set Outputs
+         Tris_B = 0xFF;//  Set TRISB as OUTPUT
+         Port_B = 0X00; // Leds OFF 
+         lcd_init();
+         contador=0;
+         printf(lcd_putc,"Nombres");
+         
+         while(true){
+         while(bit_test(Port_B,0)==1){
+            if(contador<=8){
+                contador++;
+               printf(lcd_putc,"\f");
+               printf(lcd_putc,nombres[contador]);
+               while(bit_test(Port_B,0)==1){
+               }
+               delay_ms(1);
+            }
+            else
+            {
+                printf(lcd_putc,"\f");
+                printf(lcd_putc,"Limite Excedido");
+                contador=0;
+                while(bit_test(Port_B,0)==1){
+                }
+            }
+         }
+         
+
+         }//end while
+         
+}//end main
+  
+   

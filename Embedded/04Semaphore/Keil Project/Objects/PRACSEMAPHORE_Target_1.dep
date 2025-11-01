@@ -1,0 +1,221 @@
+Dependencies for Project 'PRACSEMAPHORE', Target 'Target_1': (DO NOT MODIFY !)
+CompilerVersion: 6230000::V6.23::ARMCLANG
+F (.\MAIN.c)(0x68DDA812)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F446xx -D_RTE_-o ./objects/main.o -MMD)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm4.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\FreeRTOS.h)(0x68B5EB67)
+I (RTE\RTOS\FreeRTOSConfig.h)(0x68B5EB66)
+I (RTE\_Target_1\RTE_Components.h)(0x68D58E83)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\CMSIS\RTOS2\FreeRTOS\Include\freertos_evr.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\projdefs.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\portable.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\deprecated_definitions.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\portable\GCC\ARM_CM4F\portmacro.h)(0x68B5EB69)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\mpu_wrappers.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\task.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\list.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\queue.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\semphr.h)(0x68B5EB67)
+F (C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/clib_os.c)(0x68B5EB67)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F446xx -D_RTE_-o ./objects/clib_os.o -MMD)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\FreeRTOS.h)(0x68B5EB67)
+I (RTE\RTOS\FreeRTOSConfig.h)(0x68B5EB66)
+I (RTE\_Target_1\RTE_Components.h)(0x68D58E83)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm4.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\CMSIS\RTOS2\FreeRTOS\Include\freertos_evr.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\projdefs.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\portable.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\deprecated_definitions.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\portable\GCC\ARM_CM4F\portmacro.h)(0x68B5EB69)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\mpu_wrappers.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\task.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\list.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\semphr.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\queue.h)(0x68B5EB67)
+F (C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/cmsis_os2.c)(0x68B5EB67)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F446xx -D_RTE_-o ./objects/cmsis_os2.o -MMD)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\RTOS2\Include\cmsis_os2.h)(0x68ACC0DE)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_compiler.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_armclang.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\RTOS2\Include\os_tick.h)(0x68ACC0DE)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\FreeRTOS.h)(0x68B5EB67)
+I (RTE\RTOS\FreeRTOSConfig.h)(0x68B5EB66)
+I (RTE\_Target_1\RTE_Components.h)(0x68D58E83)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm4.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\CMSIS\RTOS2\FreeRTOS\Include\freertos_evr.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\projdefs.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\portable.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\deprecated_definitions.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\portable\GCC\ARM_CM4F\portmacro.h)(0x68B5EB69)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\mpu_wrappers.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\task.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\list.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\event_groups.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\timers.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\semphr.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\queue.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\CMSIS\RTOS2\FreeRTOS\Include\freertos_mpool.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\CMSIS\RTOS2\FreeRTOS\Include\freertos_os2.h)(0x68B5EB67)
+F (C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Source/os_systick.c)(0x68ACC0DE)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F446xx -D_RTE_-o ./objects/os_systick.o -MMD)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\RTOS2\Include\os_tick.h)(0x68ACC0DE)
+I (RTE\_Target_1\RTE_Components.h)(0x68D58E83)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm4.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x68ACC0AA)
+F (RTE/Device/STM32F446ZETx/startup_stm32f446xx.s)(0x68ACC0AA)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 542" -Wa,armasm,--pd,"STM32F446xx SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1"-o ./objects/startup_stm32f446xx.o)
+F (RTE/Device/STM32F446ZETx/system_stm32f4xx.c)(0x68ACC0AA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F446xx -D_RTE_-o ./objects/system_stm32f4xx.o -MMD)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm4.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x68ACC0AA)
+F (C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Source/freertos_evr.c)(0x68B5EB67)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F446xx -D_RTE_-o ./objects/freertos_evr.o -MMD)
+I (RTE\RTOS\FreeRTOSConfig.h)(0x68B5EB66)
+I (RTE\_Target_1\RTE_Components.h)(0x68D58E83)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm4.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\CMSIS\RTOS2\FreeRTOS\Include\freertos_evr.h)(0x68B5EB67)
+F (C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/croutine.c)(0x68B5EB67)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F446xx -D_RTE_-o ./objects/croutine.o -MMD)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\FreeRTOS.h)(0x68B5EB67)
+I (RTE\RTOS\FreeRTOSConfig.h)(0x68B5EB66)
+I (RTE\_Target_1\RTE_Components.h)(0x68D58E83)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm4.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\CMSIS\RTOS2\FreeRTOS\Include\freertos_evr.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\projdefs.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\portable.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\deprecated_definitions.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\portable\GCC\ARM_CM4F\portmacro.h)(0x68B5EB69)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\mpu_wrappers.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\task.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\list.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\croutine.h)(0x68B5EB67)
+F (C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/event_groups.c)(0x68B5EB67)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F446xx -D_RTE_-o ./objects/event_groups.o -MMD)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\FreeRTOS.h)(0x68B5EB67)
+I (RTE\RTOS\FreeRTOSConfig.h)(0x68B5EB66)
+I (RTE\_Target_1\RTE_Components.h)(0x68D58E83)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm4.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\CMSIS\RTOS2\FreeRTOS\Include\freertos_evr.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\projdefs.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\portable.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\deprecated_definitions.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\portable\GCC\ARM_CM4F\portmacro.h)(0x68B5EB69)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\mpu_wrappers.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\task.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\list.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\timers.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\event_groups.h)(0x68B5EB67)
+F (C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/list.c)(0x68B5EB67)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F446xx -D_RTE_-o ./objects/list.o -MMD)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\FreeRTOS.h)(0x68B5EB67)
+I (RTE\RTOS\FreeRTOSConfig.h)(0x68B5EB66)
+I (RTE\_Target_1\RTE_Components.h)(0x68D58E83)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm4.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\CMSIS\RTOS2\FreeRTOS\Include\freertos_evr.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\projdefs.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\portable.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\deprecated_definitions.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\portable\GCC\ARM_CM4F\portmacro.h)(0x68B5EB69)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\mpu_wrappers.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\list.h)(0x68B5EB67)
+F (C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F/port.c)(0x68B5EB68)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F446xx -D_RTE_-o ./objects/port.o -MMD)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\FreeRTOS.h)(0x68B5EB67)
+I (RTE\RTOS\FreeRTOSConfig.h)(0x68B5EB66)
+I (RTE\_Target_1\RTE_Components.h)(0x68D58E83)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm4.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\CMSIS\RTOS2\FreeRTOS\Include\freertos_evr.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\projdefs.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\portable.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\deprecated_definitions.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\portable\GCC\ARM_CM4F\portmacro.h)(0x68B5EB69)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\mpu_wrappers.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\task.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\list.h)(0x68B5EB67)
+F (C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/MemMang/heap_4.c)(0x68B5EB6A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F446xx -D_RTE_-o ./objects/heap_4.o -MMD)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\FreeRTOS.h)(0x68B5EB67)
+I (RTE\RTOS\FreeRTOSConfig.h)(0x68B5EB66)
+I (RTE\_Target_1\RTE_Components.h)(0x68D58E83)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm4.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\CMSIS\RTOS2\FreeRTOS\Include\freertos_evr.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\projdefs.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\portable.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\deprecated_definitions.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\portable\GCC\ARM_CM4F\portmacro.h)(0x68B5EB69)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\mpu_wrappers.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\task.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\list.h)(0x68B5EB67)
+F (C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/queue.c)(0x68B5EB6C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F446xx -D_RTE_-o ./objects/queue.o -MMD)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\FreeRTOS.h)(0x68B5EB67)
+I (RTE\RTOS\FreeRTOSConfig.h)(0x68B5EB66)
+I (RTE\_Target_1\RTE_Components.h)(0x68D58E83)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm4.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\CMSIS\RTOS2\FreeRTOS\Include\freertos_evr.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\projdefs.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\portable.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\deprecated_definitions.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\portable\GCC\ARM_CM4F\portmacro.h)(0x68B5EB69)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\mpu_wrappers.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\task.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\list.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\queue.h)(0x68B5EB67)
+F (C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/tasks.c)(0x68B5EB6C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F446xx -D_RTE_-o ./objects/tasks.o -MMD)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\FreeRTOS.h)(0x68B5EB67)
+I (RTE\RTOS\FreeRTOSConfig.h)(0x68B5EB66)
+I (RTE\_Target_1\RTE_Components.h)(0x68D58E83)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm4.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\CMSIS\RTOS2\FreeRTOS\Include\freertos_evr.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\projdefs.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\portable.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\deprecated_definitions.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\portable\GCC\ARM_CM4F\portmacro.h)(0x68B5EB69)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\mpu_wrappers.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\task.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\list.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\timers.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\stack_macros.h)(0x68B5EB67)
+F (C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/timers.c)(0x68B5EB6C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include-IC:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F446xx -D_RTE_-o ./objects/timers.o -MMD)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\FreeRTOS.h)(0x68B5EB67)
+I (RTE\RTOS\FreeRTOSConfig.h)(0x68B5EB66)
+I (RTE\_Target_1\RTE_Components.h)(0x68D58E83)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm4.h)(0x68ACC0CF)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x68ACC0AA)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\CMSIS\RTOS2\FreeRTOS\Include\freertos_evr.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\projdefs.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\portable.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\deprecated_definitions.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\portable\GCC\ARM_CM4F\portmacro.h)(0x68B5EB69)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\mpu_wrappers.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\task.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\list.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\queue.h)(0x68B5EB67)
+I (C:\Users\wolpe\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\11.2.0\Source\include\timers.h)(0x68B5EB67)
+F (RTE/RTOS/FreeRTOSConfig.h)(0x68B5EB66)()

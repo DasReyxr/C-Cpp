@@ -1,0 +1,53 @@
+/*
+ * A3 CS
+ * A4 DC
+ * A5 SCK
+ * A6 RES
+ * A7 MOSI
+ */
+#include "conf.h"
+#include "stm32f4xx_hal.h"
+#include "tecmat4x4.h"
+
+/* USER CODE BEGIN Includes */
+#include <string.h>
+#include "st7735.h"
+#include "fonts.h"
+#include "testimg.h"
+
+/* Private function prototypes -----------------------------------------------*/
+
+void init() {
+    ST7735_Init();
+    ST7735_FillScreen(ST7735_BLACK);
+    ST7735_WriteString(0, 0, "INGRESA EL TAMANO DEL SISTEMA:", Font_7x10, ST7735_WHITE, ST7735_BLACK);
+}
+
+int main(void)
+{
+    HAL_Init();
+    SystemClock_Config();
+    MX_GPIO_Init();
+    MX_SPI1_Init();
+    confRCC();
+    confGPIO();
+    init();
+    
+    char lastKey[2] = "ñ"; // Store last key to avoid repetition
+    char currentKey[2] = "ñ";
+    
+    while (1)
+    {
+        char *keypress = gotKey();
+        
+        // Only update if key changed and is not "ñ"
+        if (strcmp(keypress, "ñ") != 0 && strcmp(keypress, lastKey) != 0) {
+            strcpy(lastKey, keypress);
+            ST7735_WriteString(0, 26, keypress, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+        } else if (strcmp(keypress, "ñ") != 0) {
+            strcpy(lastKey, keypress); // Keep tracking the same key
+        }
+        
+        HAL_Delay(50); // Small delay to prevent flooding
+    }
+}
