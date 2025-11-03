@@ -65,24 +65,24 @@ extern SPI_HandleTypeDef ST7735_SPI_PORT;
 */
 
 // WaveShare ST7735S-based 1.8" display, default orientation
-
+/*
 #define ST7735_IS_160X128 1
 #define ST7735_WIDTH  128
 #define ST7735_HEIGHT 160
 #define ST7735_XSTART 2
 #define ST7735_YSTART 1
 #define ST7735_ROTATION (ST7735_MADCTL_MX | ST7735_MADCTL_MY | ST7735_MADCTL_RGB)
-
+*/
 
 // WaveShare ST7735S-based 1.8" display, rotate right
-/*
+
 #define ST7735_IS_160X128 1
 #define ST7735_WIDTH  160
 #define ST7735_HEIGHT 128
 #define ST7735_XSTART 1
 #define ST7735_YSTART 2
 #define ST7735_ROTATION (ST7735_MADCTL_MY | ST7735_MADCTL_MV | ST7735_MADCTL_RGB)
-*/
+
 
 // WaveShare ST7735S-based 1.8" display, rotate left
 /*
