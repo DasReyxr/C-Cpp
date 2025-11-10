@@ -85,9 +85,10 @@
               </children>
             </children>
             <children xsi:type="basic:PartSashContainer" xmi:id="_7M4UEbhIEfCbEcG3Bauu2g" containerData="7500" selectedElement="_7M4UErhIEfCbEcG3Bauu2g">
-              <children xsi:type="basic:PartSashContainer" xmi:id="_7M4UErhIEfCbEcG3Bauu2g" containerData="7500" selectedElement="_7M4UE7hIEfCbEcG3Bauu2g" horizontal="true">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_7M4UErhIEfCbEcG3Bauu2g" containerData="7500" selectedElement="_7M4UFLhIEfCbEcG3Bauu2g" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_7M4UE7hIEfCbEcG3Bauu2g" elementId="org.eclipse.ui.editorss" containerData="7500" ref="_7M48ELhIEfCbEcG3Bauu2g"/>
                 <children xsi:type="basic:PartStack" xmi:id="_7M4UFLhIEfCbEcG3Bauu2g" elementId="topRight" containerData="2500" selectedElement="_7M4UFbhIEfCbEcG3Bauu2g">
+                  <tags>active</tags>
                   <children xsi:type="advanced:Placeholder" xmi:id="_7M4UFbhIEfCbEcG3Bauu2g" elementId="org.eclipse.ui.views.ContentOutline" ref="_7M5ilLhIEfCbEcG3Bauu2g" closeable="true">
                     <tags>View</tags>
                     <tags>categoryTag:General</tags>
@@ -220,10 +221,9 @@
       <tags>categoryTag:Help</tags>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_7M48ELhIEfCbEcG3Bauu2g" elementId="org.eclipse.ui.editorss" selectedElement="_7M48EbhIEfCbEcG3Bauu2g">
-      <children xsi:type="basic:PartStack" xmi:id="_7M48EbhIEfCbEcG3Bauu2g" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_T5K8wLhLEfCyFuvTe7kelg">
+      <children xsi:type="basic:PartStack" xmi:id="_7M48EbhIEfCbEcG3Bauu2g" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_7M48GrhIEfCbEcG3Bauu2g">
         <tags>EditorStack</tags>
         <tags>org.eclipse.e4.primaryDataStack</tags>
-        <tags>active</tags>
         <children xsi:type="basic:Part" xmi:id="_7M48ErhIEfCbEcG3Bauu2g" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="main.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;main.h&quot; partName=&quot;main.h&quot; title=&quot;main.h&quot; tooltip=&quot;COMPLEXCALBLACKPILL/Core/Inc/main.h&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/COMPLEXCALBLACKPILL/Core/Inc/main.h&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;664&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
@@ -237,7 +237,7 @@
           <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_7M48GrhIEfCbEcG3Bauu2g" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="st7735.c" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;st7735.c&quot; partName=&quot;st7735.c&quot; title=&quot;st7735.c&quot; tooltip=&quot;COMPLEXCALBLACKPILL/Core/Src/st7735.c&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/COMPLEXCALBLACKPILL/Core/Src/st7735.c&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;st7735.c&quot; partName=&quot;st7735.c&quot; title=&quot;st7735.c&quot; tooltip=&quot;COMPLEXCALBLACKPILL/Core/Src/st7735.c&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/COMPLEXCALBLACKPILL/Core/Src/st7735.c&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;8&quot; selectionOffset=&quot;92&quot; selectionTopPixel=&quot;390&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>removeOnHide</tags>
           <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
@@ -255,12 +255,10 @@
           <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_T5K8wLhLEfCyFuvTe7kelg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="TFTST7735.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;TFTST7735.h&quot; partName=&quot;TFTST7735.h&quot; title=&quot;TFTST7735.h&quot; tooltip=&quot;E3TFTST7735/Core/Inc/TFTST7735.h&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/E3TFTST7735/Core/Inc/TFTST7735.h&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;164&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;TFTST7735.h&quot; partName=&quot;TFTST7735.h&quot; title=&quot;TFTST7735.h&quot; tooltip=&quot;E3TFTST7735/Core/Inc/TFTST7735.h&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/E3TFTST7735/Core/Inc/TFTST7735.h&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;342&quot; selectionTopPixel=&quot;240&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>removeOnHide</tags>
           <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
-          <tags>active</tags>
-          <tags>activeOnClose</tags>
         </children>
       </children>
     </sharedElements>
@@ -342,6 +340,8 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
+      <tags>active</tags>
+      <tags>activeOnClose</tags>
       <menus xmi:id="_7M5ilbhIEfCbEcG3Bauu2g" elementId="org.eclipse.ui.views.ContentOutline">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -415,7 +415,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_7M5i17hIEfCbEcG3Bauu2g" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_vlousLhJEfCyFuvTe7kelg" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_7M91KrhIEfCbEcG3Bauu2g"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_wITXoL2_EfC3Vf02HzE7Ig" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_7M91KrhIEfCbEcG3Bauu2g"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_7M5i57hIEfCbEcG3Bauu2g" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -423,8 +423,8 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_7M5i6bhIEfCbEcG3Bauu2g" elementId="org.eclipse.ui.workbench.edit">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_vlrK8rhJEfCyFuvTe7kelg" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.png" tooltip="Undo" command="_7M91GLhIEfCbEcG3Bauu2g"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_vltnMLhJEfCyFuvTe7kelg" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.png" tooltip="Redo" enabled="false" command="_7M-bJ7hIEfCbEcG3Bauu2g"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_wIT-sL2_EfC3Vf02HzE7Ig" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.png" tooltip="Undo" enabled="false" command="_7M91GLhIEfCbEcG3Bauu2g"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_wIVz4L2_EfC3Vf02HzE7Ig" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.png" tooltip="Redo" enabled="false" command="_7M-bJ7hIEfCbEcG3Bauu2g"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_7M5i8bhIEfCbEcG3Bauu2g" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -448,7 +448,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_7M6JZbhIEfCbEcG3Bauu2g" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_vlwqgLhJEfCyFuvTe7kelg" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_7M90zrhIEfCbEcG3Bauu2g"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_wIWa8r2_EfC3Vf02HzE7Ig" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_7M90zrhIEfCbEcG3Bauu2g"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_7M6Jc7hIEfCbEcG3Bauu2g" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
