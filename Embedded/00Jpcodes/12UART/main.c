@@ -19,9 +19,7 @@ const uint8_t string[CON] = "Hola";
 // ----------- Main -----------
 
 int main(void){
-	confRCC();
-	confGPIO();
-	confUSART();	
+	config();	
 
 	uint8_t auxChar;
 	while(1){

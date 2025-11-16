@@ -1,0 +1,4 @@
+../Core/Src/conf.c:3:6:confRCC	4	static
+../Core/Src/conf.c:8:6:confGPIO	4	static
+../Core/Src/conf.c:18:6:confSPI	4	static
+../Core/Src/conf.c:28:6:config	8	static

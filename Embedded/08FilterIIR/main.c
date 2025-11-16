@@ -1,12 +1,13 @@
 /*
 --------- Auf Das  ---------
-------- Filter IIR  -------
+------- Filter FIR  -------
 -------- 30/10/2025 --------
 
 */
 // ------- Main Library -------
 #include "conf.h"
 #include <stm32f446xx.h>
+#include <math.h>
 
 // --------- Function ---------
 void confRCC(void);
@@ -39,45 +40,75 @@ const double h[21] = {
     0
 };
 uint8_t i=0;
-uint16_t smplVEC[21];
-uint16_t out[21];
-uint16_t out1[21];
-
+#define samples 200
+#define out_len (samples*2 - 1)  
+uint16_t smplVEC[samples]={0};
+uint16_t out[out_len]={0};
+uint8_t state=0;
+uint8_t j=0;
 int main(void){
-    // Test: impulso
-    for(int j = 0; j < 21; j++)
-        smplVEC[j] = 0;
-    smplVEC[0] = 1;
-
+    config();
 
     while(1);
 }
 
+/*
+
+conv(smplVEC, h);            
+0 Data Capture and Convolve
+1 Data Output
+*/
+
 
 void TIM2_IRQHandler(void){
-	if (TIM2->SR & (1<<0))
+    if (TIM2->SR & (1<<0))
 	{
-		if(i<21){
-			smplVEC[i]=ADC1->DR;
-			i++;		
-		}
-		else{
-			conv(smplVEC,h);
-            i=0;
-		}
-		TIM2->SR &= ~(1<<0); // limpia UIF
-	}
+        if (i < samples) {
+            while(!(ADC1->SR & ADC_SR_EOC));
+            smplVEC[i] = ADC1->DR;
+         
+        } else {
+            conv(smplVEC, h);
+             i = 0;
+        }
+           i++;
+
+        TIM2->SR &= ~(1<<0); // limpia UIF
+        }
+
 }
 
-void conv(uint16_t *x, const double *h){
-    for(uint8_t n = 0; n < 21; n++){
-        out[n] = 0;  // limpia acumulador
 
-        for(uint8_t k = 0; k < 21; k++){
-            if(n >= k){
-                out[n] += (uint16_t)(x[n - k] * h[k]);
+
+
+void conv(uint16_t *x,const double *h)
+{
+    const uint8_t Lx = samples;   
+    const uint8_t Lh = 21;        
+    const uint8_t Ly = Lx;        
+    for (uint8_t n = 0; n < Ly; n++) {
+
+        double acc = 0.0;
+
+        for (uint8_t k = 0; k < Lx; k++) {
+
+            int hk = n - k;
+
+            if (hk >= 0 && hk < Lh) {
+                acc += (double)x[k] * h[hk];
             }
         }
+
+        if (acc < 0.0)  acc = 0.0;
+        if (acc > 4095.0) acc = 4095.0;
+        
+        DAC->DHR12R1 = (uint16_t)lrint(acc);
+        DAC->SWTRIGR |= (1<<0);
+
     }
- 
 }
+
+/*
+
+
+*/

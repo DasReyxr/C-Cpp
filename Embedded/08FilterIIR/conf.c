@@ -30,31 +30,36 @@ void confGPIO(void){
 void confTIMER(void)
 {
     //------- TIM2 -------
-    TIM2->PSC = 9;
-    TIM2->ARR  =12;// 1.6M*(1/140K) FREC DE MUESTREO DE 140KHZ
-    TIM2->CCER  |=(1<<0);//ACTIVAMOS CANAL1
+    /* TIM2 is on APB1 (84 MHz clock) */
+    TIM2->PSC = 0;  /* no prescaler */
+    /* For 80 kHz sampling: ARR = (84 MHz / 80 kHz) - 1 = 1049 */
+    TIM2->ARR  = 160;
+    TIM2->CCER |=(1<<0);//ACTIVAMOS CANAL1
     TIM2->CR1|=(1<<0);//activamos cuenta
 	TIM2->DIER |= TIM_DIER_UIE; //interrupcion por desbordamiento
     
+    /////TIM6 DAC TRIGGER
+    //TIM6->PSC = 9;
+    //TIM6->ARR  =20;// 1.6M*(1/82K) FREC DE MUESTREO DE 82KHZ
+    //TIM6->CR1|=(1<<0);//activamos cue
+    //TIM6->CR2|=(1<<4);//TRGO UPDATE EVENT
 }
 
 
 
 void confADC(void){
-	/*EMPEZAMOS LA CONFIGURACIÓN DEL ADC1 CON LA CONVERSIÓN EN EL CANAL 13*/
-	//ADC1->SQR3|=(13<<0);
+	/*EMPEZAMOS LA CONFIGURACIÓN DEL ADC1 CON LA CONVERSIÓN EN EL CANAL 13*/    
 	ADC1->CR2|=(3<<0);//ACTIVAMOS CONTINUOS CONV Y ADCON
     ADC1->CR2|=(1<<30);//INICIAMOS LA CONVERSIÓN
 	ADC1->CR1|=(1<<8);//SACANMODE
-	ADC1->SMPR2|=(2<<0); //ESTAMOS CONFIGURANDO 28 CICLOS DE MUESTREO
-    
-}
-
+	ADC1->SMPR2|=(7<<0); //ESTAMOS CONFIGURANDO 28 CICLOS DE MUESTREO
+}  
 
 void confDAC(void){
-	DAC->CR|=(1<<0);//HABILITO EL CHAN1 DEL DAC
+    DAC->CR|=(1<<0);//HABILITO EL CHAN1 DEL DAC
 	DAC->CR|=(7<<3);//HANILITO DISPARO POR SOFTWARE
 	DAC->CR|=(1<<2);//HANILITO DAC POR EVENTO DE DISPARO
+    
 }
 
 void confNVIC(void){
@@ -65,9 +70,11 @@ void confNVIC(void){
 
 void config(void){
     confRCC();
-    confADC();
     confGPIO();
     confTIMER();
+    
+    confADC();
     confNVIC();
+    confDAC();
 }
 
