@@ -4,10 +4,15 @@
  *  Created on: Nov 2, 2025
  *      Author: dasre
  */
-
-
+ 
 #ifndef INC_TFTST7735_H_
 #define INC_TFTST7735_H_
+#include <stm32f446xx.h>
+      
+#include <stdint.h>
+#include "fonts.h"  // Assuming FontDef lives here
+
+
 
 #define ST7735_NOP     0x00
 #define ST7735_SWRESET 0x01
@@ -56,44 +61,124 @@
 #define ST7735_GMCTRP1 0xE0
 #define ST7735_GMCTRN1 0xE1
 
+#define ST7735_MADCTL_MY  0x80
+#define ST7735_MADCTL_MX  0x40
+#define ST7735_MADCTL_MV  0x20
+#define ST7735_MADCTL_ML  0x10
+#define ST7735_MADCTL_RGB 0x00
+#define ST7735_MADCTL_BGR 0x08
+#define ST7735_MADCTL_MH  0x04
+
+#define ST7735_ROTATION (ST7735_MADCTL_MX | ST7735_MADCTL_MY | ST7735_MADCTL_RGB)
 
 
 
-#include <stdint.h>
-#include "fonts.h"  // Assuming FontDef lives here
+// ------- INITIALIZATION -----------
+/* D/CX = 0 => Data
+    D/CX = 1 => Command*/
+#define DCX_DATA 0
+#define DCX_CMD  1
+// ----- PINS -----
+#define PIN_CS   3
+#define PIN_DC   4
+#define PIN_RST  6
+// ---- Delays ----
+
+
+
+#define sizeofinit 88
+uint8_t init_cmd {            // Init for 7735R, part 1 (red or green tab)
+    15,                       // 15 commands in list:
+    ST7735_SWRESET,     //  1: Software reset, 0 args, w/delay
+    ST7735_SLPOUT ,  //  2: Out of sleep mode, 0 args, w/delay
+    ST7735_FRMCTR1,  //  3: Frame rate ctrl - normal mode, 3 args:
+      0x01, 0x2C, 0x2D,       //     Rate = fosc/(1x2+40) * (LINE+2C+2D)
+    ST7735_FRMCTR2,  //  4: Frame rate control - idle mode, 3 args:
+      0x01, 0x2C, 0x2D,       //     Rate = fosc/(1x2+40) * (LINE+2C+2D)
+    ST7735_FRMCTR3,  //  5: Frame rate ctrl - partial mode, 6 args:
+      0x01, 0x2C, 0x2D,       //     Dot inversion mode
+      0x01, 0x2C, 0x2D,       //     Line inversion mode
+    ST7735_INVCTR ,  //  6: Display inversion ctrl, 1 arg, no delay:
+      0x07,                   //     No inversion
+    ST7735_PWCTR1 ,  //  7: Power control, 3 args, no delay:
+      0xA2,
+      0x02,                   //     -4.6V
+      0x84,                   //     AUTO mode
+    ST7735_PWCTR2 ,  //  8: Power control, 1 arg, no delay:
+      0xC5,                   //     VGH25 = 2.4C VGSEL = -10 VGH = 3 * AVDD
+    ST7735_PWCTR3 ,  //  9: Power control, 2 args, no delay:
+      0x0A,                   //     Opamp current small
+      0x00,                   //     Boost frequency
+    ST7735_PWCTR4 ,  // 10: Power control, 2 args, no delay:
+      0x8A,                   //     BCLK/2, Opamp current small & Medium low
+      0x2A,  
+    ST7735_PWCTR5 ,  // 11: Power control, 2 args, no delay:
+      0x8A, 0xEE,
+    ST7735_VMCTR1 ,  // 12: Power control, 1 arg, no delay:
+      0x0E,
+    ST7735_INVOFF ,  // 13: Don't invert display, no args, no delay
+    ST7735_MADCTL ,  // 14: Memory access control (directions), 1 arg:
+      ST7735_ROTATION,        //     row addr/col addr, bottom to top refresh
+    ST7735_COLMOD ,  // 15: set color mode, 1 arg, no delay:
+      0x05 ,                 //     16-bit color
+
+
+  ST7735_CASET  ,  //  1: Column addr set, 4 args, no delay:
+      0x00, 0x00,             //     XSTART = 0
+      0x00, 0x7F,             //     XEND = 127
+    ST7735_RASET  ,  //  2: Row addr set, 4 args, no delay:
+      0x00, 0x00,             //     XSTART = 0
+      0x00, 0x7F,            //     XEND = 127
+
+// Init for 7735R, part 3 (red or green tab)
+    //  4 commands in list:
+    ST7735_GMCTRP1, //  1: Gamma Adjustments (pos. polarity), 16 args, no delay:
+      0x02, 0x1c, 0x07, 0x12,
+      0x37, 0x32, 0x29, 0x2d,
+      0x29, 0x25, 0x2B, 0x39,
+      0x00, 0x01, 0x03, 0x10,
+    ST7735_GMCTRN1, //  2: Gamma Adjustments (neg. polarity), 16 args, no delay:
+      0x03, 0x1d, 0x07, 0x06,
+      0x2E, 0x2C, 0x29, 0x2D,
+      0x2E, 0x2E, 0x37, 0x3F,
+      0x00, 0x00, 0x02, 0x10,
+    ST7735_NORON  , //  3: Normal display on, no args, w/delay
+    ST7735_DISPON , //  4: Main screen turn on, no args w/delay
+    };
 
 class TFT_ST7735 {
 public:
-    TFT_ST7735(
-        void (*spiWriteFn)(const uint8_t* data, uint16_t size),
-        void (*dcSetFn)(bool level),
-        void (*csSetFn)(bool level),
-        void (*rstSetFn)(bool level),
-        void (*delayMsFn)(uint32_t ms)
-    );
+    TFT_ST7735();
 
-    void Mode_Config(void);
-    void DrawPixel(uint16_t x, uint16_t y, uint16_t color);
+    void INIT(void);
+    void DrawPixel(uint16_t, uint16_t, uint16_t);
 
-    void WriteChar(uint16_t x, uint16_t y, char ch, FontDef font,
-                   uint16_t color, uint16_t bgcolor);
+    void WriteChar(uint16_t, uint16_t, char, FontDef,
+                   uint16_t, uint16_t);
 
-    void WriteString(uint16_t x, uint16_t y, const char* str, FontDef font,
-                     uint16_t color, uint16_t bgcolor);
+    void WriteString(uint16_t, uint16_t, const char*, FontDef,
+                     uint16_t, uint16_t);
 
-    void WriteData(const uint8_t* data, uint16_t size);
+    void WriteData(uint8_t* data, uint16_t size);
 
     virtual ~TFT_ST7735();
 
 private:
-    void (*_spiWrite)(const uint8_t*, uint16_t);
-    void (*_dcSet)(bool);
-    void (*_csSet)(bool);
-    void (*_rstSet)(bool);
-    void (*_delayMs)(uint32_t);
+    // ----- Hardware Functions -----
+    void modeSel(uint8_t);
+    void csSet(uint8_t);
+    void rstSet(uint8_t);
+    void delay_ms(volatile uint32_t);   
+    // ----- Communication Functions -----
+    void spiWrite(uint8_t*, uint16_t);
+    void WriteCommand(uint8_t*, uint16_t);
+    // ----- Overloaded Functions -----
+    void spiWrite(uint8_t);
+    void WriteCommand(uint8_t);
 
-    void WriteCommand(uint8_t cmd);
     void SetAddressWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1);
 };
+
+
 
 #endif
