@@ -60,8 +60,8 @@ all: main-build
 main-build: COMPLEXCALBLACKPILL.elf secondary-outputs
 
 # Tool invocations
-COMPLEXCALBLACKPILL.elf COMPLEXCALBLACKPILL.map: $(OBJS) $(USER_OBJS) /home/kevin/STM32CubeIDE/workspace2/COMPLEXCALBLACKPILL/STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "COMPLEXCALBLACKPILL.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/kevin/STM32CubeIDE/workspace2/COMPLEXCALBLACKPILL/STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="COMPLEXCALBLACKPILL.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+COMPLEXCALBLACKPILL.elf COMPLEXCALBLACKPILL.map: $(OBJS) $(USER_OBJS) C:\Users\dasre\Documents\Knowledge-db\ghFiles\c-cpp\Embedded\PY3ComplexCal\BlackPill\ STM32F411CE\COMPLEXCALBLACKPILL\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "COMPLEXCALBLACKPILL.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\dasre\Documents\Knowledge-db\ghFiles\c-cpp\Embedded\PY3ComplexCal\BlackPill STM32F411CE\COMPLEXCALBLACKPILL\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="COMPLEXCALBLACKPILL.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
