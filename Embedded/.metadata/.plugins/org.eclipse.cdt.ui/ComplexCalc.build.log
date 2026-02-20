@@ -1,0 +1,10 @@
+19:55:48 **** Incremental Build of configuration Debug for project ComplexCalc ****
+make -j8 all 
+arm-none-eabi-size  ComplexCalc.elf 
+   text	   data	    bss	    dec	    hex	filename
+   6112	     12	   1660	   7784	   1e68	ComplexCalc.elf
+Finished building: default.size.stdout
+ 
+
+19:55:50 Build Finished. 0 errors, 0 warnings. (took 1s.430ms)
+

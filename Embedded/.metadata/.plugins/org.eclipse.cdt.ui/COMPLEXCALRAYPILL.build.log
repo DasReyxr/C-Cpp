@@ -1,0 +1,32 @@
+19:31:46 **** Incremental Build of configuration Debug for project COMPLEXCALRAYPILL ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:94:16: warning: multi-character character constant [-Wmultichar]
+   94 | if(*keypress!= 'ñ'){
+      |                ^~~
+../Core/Src/main.c: In function 'readPad':
+../Core/Src/main.c:120:19: warning: multi-character character constant [-Wmultichar]
+  120 |   if(*keypress == 'ñ')
+      |                   ^~~
+../Core/Src/main.c:132:31: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  132 |         buffer[index_var++] = (char)keypress;
+      |                               ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:30:23: warning: 'TestImage' defined but not used [-Wunused-const-variable=]
+   30 | static const uint16_t TestImage [] ={
+      |                       ^~~~~~~~~
+arm-none-eabi-gcc -o "COMPLEXCALRAYPILL.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\dasre\Documents\Knowledge-db\ghFiles\pycodes\ComplexCalc\Py-ComplexCalc\OtherCalcs\HW Version\RayPill STM32F446ZE\COMPLEXCALRAYPILL\STM32F446ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="COMPLEXCALRAYPILL.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: COMPLEXCALRAYPILL.elf
+ 
+arm-none-eabi-size  COMPLEXCALRAYPILL.elf 
+arm-none-eabi-objdump -h -S COMPLEXCALRAYPILL.elf  > "COMPLEXCALRAYPILL.list"
+   text	   data	    bss	    dec	    hex	filename
+  12596	    184	   1992	  14772	   39b4	COMPLEXCALRAYPILL.elf
+Finished building: default.size.stdout
+ 
+Finished building: COMPLEXCALRAYPILL.list
+ 
+
+19:31:50 Build Finished. 0 errors, 4 warnings. (took 3s.836ms)
+

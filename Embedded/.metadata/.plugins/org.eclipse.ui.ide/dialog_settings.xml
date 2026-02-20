@@ -9,6 +9,11 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\dasre\Documents\Knowledge-db\ghFiles\STM32F-CAR\0MainProject\RFCar"/>
+			<item value="C:\Users\dasre\Documents\Knowledge-db\ghFiles\STM32F-CAR\Test\Cube\BlackPill\1RFTX_BlackPill"/>
+			<item value="C:\Users\dasre\Documents\Knowledge-db\ghFiles\pycodes\ComplexCalc\Py-ComplexCalc\OtherCalcs\HW Version\RayPill STM32F446ZE\COMPLEXCALRAYPILL"/>
+			<item value="C:\Users\dasre\Documents\Knowledge-db\ghFiles\pycodes\ComplexCalc\Py-ComplexCalc\OtherCalcs\HW Version\BlackPill STM32F411CE\02COMPLEXCAL"/>
+			<item value="C:\Users\dasre\Documents\Knowledge-db\ghFiles\pycodes\ComplexCalc\Py-ComplexCalc\OtherCalcs\HW Version\BlackPill STM32F411CE\04ComplexCalcwKeyboard"/>
 			<item value="C:\Users\dasre\Downloads\PRACTICA10SENSOR-LCDI2C"/>
 		</list>
 		<section name="SmartImportWizard.dialogBounds">
@@ -16,7 +21,15 @@
 			<item key="DIALOG_Y_ORIGIN" value="105"/>
 			<item key="DIALOG_WIDTH" value="885"/>
 			<item key="DIALOG_HEIGHT" value="629"/>
-			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI"/>
+			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 		</section>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="663"/>
+		<item key="DIALOG_Y_ORIGIN" value="296"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
 	</section>
 </section>
