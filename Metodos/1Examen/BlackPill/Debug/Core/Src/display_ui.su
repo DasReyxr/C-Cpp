@@ -1,0 +1,7 @@
+../Core/Src/display_ui.c:60:6:toggleTheme	12	static
+../Core/Src/display_ui.c:66:6:initTheme	12	static
+../Core/Src/display_ui.c:76:6:readchar	4	static
+../Core/Src/display_ui.c:82:7:UART_READf	72	static
+../Core/Src/display_ui.c:109:5:UART_READ	64	static
+../Core/Src/display_ui.c:126:6:inputOptions	40	static
+../Core/Src/display_ui.c:139:10:inputRLC	80	static
