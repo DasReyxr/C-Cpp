@@ -1,3 +1,4 @@
+"./Core/Src/GaussJordan.o"
 "./Core/Src/NewtonRapson.o"
 "./Core/Src/display_ui.o"
 "./Core/Src/fonts.o"

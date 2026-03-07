@@ -60,7 +60,7 @@ RESULT NewtonRapson(LIMITS limits, RLCFunct IN, float initval){
         x_next = x_prev - fx / dfx; // Fórmula de Newton-Raphson
         if (it > 0) {
             if (x_prev != 0.0f)
-                ea = fabsf((x_next - x_prev) / x_prev) * 100.0f;
+                ea = fabsf((x_next - x_prev) / x_next) * 100.0f;
             else
                 ea = fabsf(x_next - x_prev) * 100.0f;
         }
@@ -68,7 +68,7 @@ RESULT NewtonRapson(LIMITS limits, RLCFunct IN, float initval){
      //   printf("%d\t| %0.4f\t| %0.4f\t| %0.4f\t| %0.2f\n", it + 1, x_next, fx, dfx, ea);
 
         if (fabsf(fx) <= limits.tol) { // Si f(x) está cercano a 0, se considera que se ha encontrado una raíz
-            return (RESULT){x_next, ea, it + 1, 1};
+        	return (RESULT){x_next, ea, it + 1, 1};
         }
 
         x_prev = x_next;

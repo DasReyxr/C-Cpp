@@ -38,7 +38,7 @@ extern "C" {
 /* USER CODE BEGIN ET */
 typedef struct{
   int option;
-  int num_presicion;
+  float num_presicion;
 } INIT;
 typedef struct {
     float C;
@@ -60,6 +60,14 @@ typedef struct {
     int max_it;
     float tol;
 } LIMITS;
+
+
+typedef struct { 
+    int size;
+    float **matrix; 
+    float *vector;
+} GaussJordanResult;
+
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
