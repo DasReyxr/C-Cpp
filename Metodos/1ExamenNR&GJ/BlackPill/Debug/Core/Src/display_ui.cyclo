@@ -1,0 +1,11 @@
+../Core/Src/display_ui.c:47:6:toggleTheme	2
+../Core/Src/display_ui.c:53:6:initTheme	1
+../Core/Src/display_ui.c:62:6:readchar	2
+../Core/Src/display_ui.c:68:7:UART_READf	18
+../Core/Src/display_ui.c:151:9:isEnterPressed	3
+../Core/Src/display_ui.c:158:5:UART_READ	10
+../Core/Src/display_ui.c:208:6:inputOptions	1
+../Core/Src/display_ui.c:225:10:inputRLC	1
+../Core/Src/display_ui.c:243:7:getIntervalMiddle	1
+../Core/Src/display_ui.c:255:8:inputRVal	1
+../Core/Src/display_ui.c:280:6:displayResult	4

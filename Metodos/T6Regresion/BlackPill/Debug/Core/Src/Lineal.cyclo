@@ -1,0 +1,4 @@
+../Core/Src/Lineal.c:22:7:get_a0	2
+../Core/Src/Lineal.c:35:7:get_a1	2
+../Core/Src/Lineal.c:51:6:Lineal	1
+../Core/Src/Lineal.c:59:6:Polinomial	2

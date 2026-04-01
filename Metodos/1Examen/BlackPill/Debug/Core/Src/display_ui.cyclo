@@ -1,9 +1,0 @@
-../Core/Src/display_ui.c:47:6:toggleTheme	2
-../Core/Src/display_ui.c:53:6:initTheme	1
-../Core/Src/display_ui.c:62:6:readchar	2
-../Core/Src/display_ui.c:68:7:UART_READf	18
-../Core/Src/display_ui.c:151:5:UART_READ	10
-../Core/Src/display_ui.c:201:6:inputOptions	1
-../Core/Src/display_ui.c:218:10:inputRLC	1
-../Core/Src/display_ui.c:236:8:inputRVal	1
-../Core/Src/display_ui.c:259:6:displayResult	2

@@ -1,5 +1,0 @@
-../Core/Src/GaussJordan.c:24:19:input	5
-../Core/Src/GaussJordan.c:56:6:printMatrix	3
-../Core/Src/GaussJordan.c:70:6:Resistivo	4
-../Core/Src/GaussJordan.c:106:6:displayGaussJordanSolution	5
-../Core/Src/GaussJordan.c:134:8:GaussJordan	7
