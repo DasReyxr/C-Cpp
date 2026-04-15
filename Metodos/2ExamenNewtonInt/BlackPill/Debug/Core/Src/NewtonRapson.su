@@ -1,0 +1,5 @@
+../Core/Src/NewtonRapson.c:25:7:H	48	static
+../Core/Src/NewtonRapson.c:38:8:linspace	32	static
+../Core/Src/NewtonRapson.c:49:8:diferencias_divididas	40	static
+../Core/Src/NewtonRapson.c:67:7:evalPol	40	static
+../Core/Src/NewtonRapson.c:75:14:Newton	72	static
