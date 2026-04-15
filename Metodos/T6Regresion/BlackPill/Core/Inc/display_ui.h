@@ -29,7 +29,7 @@ void drawLevel2(uint8_t success);
 
 // Función auxiliar para actualización parcial
 void updateBufferDisplay(const char* buffer);
-
+void initTheme(void);
 char readchar(void);
 float UART_READf(int x, int y);
 int UART_READ(int x, int y);
