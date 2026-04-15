@@ -1,0 +1,19 @@
+-d C:\Users\dasre\Documents\Knowledge-db\ghFiles\c-cpp\Metodos\3ExamenTrapecio\fpgaproject\HDL Part\impl\gwsynthesis\HDL Part.vg
+-p GW1NZ-1-QFN48-6
+-pn GW1NZ-LV1QN48C6/I5
+-cst C:\Users\dasre\Documents\Knowledge-db\ghFiles\c-cpp\Metodos\3ExamenTrapecio\fpgaproject\HDL Part\src\HDL Part.cst
+-cfg C:\Users\dasre\Documents\Knowledge-db\ghFiles\c-cpp\Metodos\3ExamenTrapecio\fpgaproject\HDL Part\impl\pnr\device.cfg
+-gao_crc 1011011100000000
+-bit
+-tr
+-ph
+-timing
+-cst_error
+-convert_sdp32_36_to_sdp16_18
+-place_option 0
+-route_option 0
+-clock_route_order 0
+-correct_hold 1
+-route_maxfan 10
+-global_freq 50.000
+-rtl_gao

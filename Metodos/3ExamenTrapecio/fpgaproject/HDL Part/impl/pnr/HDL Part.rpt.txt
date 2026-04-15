@@ -1,0 +1,164 @@
+//Copyright (C)2014-2025 Gowin Semiconductor Corporation.
+//All rights reserved.
+
+
+1. PnR Messages
+
+  <Report Title>: PnR Report
+  <Design File>: C:\Users\dasre\Documents\Knowledge-db\ghFiles\c-cpp\Metodos\3ExamenTrapecio\fpgaproject\HDL Part\impl\gwsynthesis\HDL Part.vg
+  <Physical Constraints File>: C:\Users\dasre\Documents\Knowledge-db\ghFiles\c-cpp\Metodos\3ExamenTrapecio\fpgaproject\HDL Part\src\HDL Part.cst
+  <Timing Constraints File>: ---
+  <Tool Version>: V1.9.11.03 Education
+  <Part Number>: GW1NZ-LV1QN48C6/I5
+  <Device>: GW1NZ-1
+  <Created Time>:Tue Apr 14 16:44:03 2026
+
+
+2. PnR Details
+
+  Running placement:
+    Placement Phase 0: CPU time = 0h 0m 0.071s, Elapsed time = 0h 0m 0.07s
+    Placement Phase 1: CPU time = 0h 0m 0.025s, Elapsed time = 0h 0m 0.025s
+    Placement Phase 2: CPU time = 0h 0m 0.153s, Elapsed time = 0h 0m 0.153s
+    Placement Phase 3: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
+    Total Placement: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s
+ Running routing:
+    Routing Phase 0: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
+    Routing Phase 1: CPU time = 0h 0m 0.025s, Elapsed time = 0h 0m 0.025s
+    Routing Phase 2: CPU time = 0h 0m 0.299s, Elapsed time = 0h 0m 0.298s
+    Routing Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
+    Total Routing: CPU time = 0h 0m 0.324s, Elapsed time = 0h 0m 0.323s
+ Generate output files:
+    CPU time = 0h 0m 0.57s, Elapsed time = 0h 0m 0.571s
+
+ Total Time and Memory Usage: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s, Peak memory usage = 332MB
+
+
+3. Resource Usage Summary
+
+  --------------------------------------------------------------------------------
+  Resources                   | Usage                               | Utilization
+  --------------------------------------------------------------------------------
+  Logic                       | 436/1152                            |  38%
+    --LUT,ALU,ROM16           | 436(419 LUT, 17 ALU, 0 ROM16)       | -
+    --SSRAM(RAM16)            | 0                                   | -
+  Register                    | 297/957                             |  32%
+    --Logic Register as Latch | 0/864                               |  0%
+    --Logic Register as FF    | 296/864                             |  35%
+    --I/O Register as Latch   | 0/93                                |  0%
+    --I/O Register as FF      | 1/93                                |  2%
+  CLS                         | 325/576                             |  57%
+  I/O Port                    | 8/41                                |  20%
+  I/O Buf                     | 8                                   | -
+    --Input Buf               | 4                                   | -
+    --Output Buf              | 4                                   | -
+    --Inout Buf               | 0                                   | -
+  BSRAM                       | 1/4                                 | 25%
+    --SDPB                    | 1
+  ================================================================================
+
+
+
+4. I/O Bank Usage Summary
+
+  --------------------------------------
+  I/O Bank  | Usage       | Utilization 
+  --------------------------------------
+  bank 0   | 6/18        | 34%         
+  bank 1   | 2/23        | 9%          
+  ======================================
+
+
+5. Clock Resource Usage Summary
+
+  ------------------------------------------
+  Clock Resource| Usage         | Utilization 
+  ------------------------------------------
+  PRIMARY       | 2/8           | 25%
+  LW            | 1/8           | 13%
+  GCLK_PIN      | 1/3           | 34%
+  ==========================================
+
+
+6. Global Clock Signals
+
+  -------------------------------------------
+  Signal         | Global Clock   | Location
+  -------------------------------------------
+  clk_d          | PRIMARY        |  LEFT RIGHT
+  gw_gao_inst_0/control0[0]| PRIMARY        |  LEFT RIGHT
+  gw_gao_inst_0/gao_jtag_reset| LW             |  -
+  ===========================================
+
+
+7. Pinout by Port Name
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Port Name   | Diff Pair | Loc./Bank     | Constraint | Dir.  | Site     | CFG             | IO Type    | Drive | Pull Mode | PCI Clamp | Hysteresis | Open Drain | BankVccio 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+clk         | -         | 47/0          | Y          | in    | IOT10[A] | GCLKT_0         | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | 1.8       
+tms_pad_i   | -         | 4/0           | N          | in    | IOT7[A]  | TMS/SPMI_SDATA  | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | 1.8       
+tck_pad_i   | -         | 3/0           | N          | in    | IOT7[B]  | TCK/SPMI_EN/VCCEN | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | 1.8       
+tdi_pad_i   | -         | 5/0           | N          | in    | IOT8[A]  | TDI/SPMI_SCLK   | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | 1.8       
+trigger     | -         | 11/1          | Y          | out   | IOR3[A]  | -               | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | 1.8       
+count_half  | -         | 16/1          | N          | out   | IOR6[F]  | -               | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | 1.8       
+count_max   | -         | 8/0           | N          | out   | IOT10[B] | GCLKC_0         | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | 1.8       
+tdo_pad_o   | -         | 7/0           | N          | out   | IOT8[B]  | TDO             | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | 1.8       
+====================================================================================================================================================================
+
+
+
+
+8. All Package Pins
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+Loc./Bank| Signal      | Dir.  | Site     | CFG             | IO Type  | Drive | Pull Mode | PCI Clamp | Hysteresis | Open Drain | Bank Vccio
+-----------------------------------------------------------------------------------------------------------------------------------------
+4/0      | tms_pad_i   | in    | IOT7[A]  | TMS/SPMI_SDATA  | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+3/0      | tck_pad_i   | in    | IOT7[B]  | TCK/SPMI_EN/VCCEN | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+5/0      | tdi_pad_i   | in    | IOT8[A]  | TDI/SPMI_SCLK   | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+7/0      | tdo_pad_o   | out   | IOT8[B]  | TDO             | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | 1.8  
+6/0      | -           | in    | IOT9[A]  | SCLK/SPMI_CLK   | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+48/0     | -           | in    | IOT9[B]  | RECONFIG_N      | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+47/0     | clk         | in    | IOT10[A] | GCLKT_0         | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+8/0      | count_max   | out   | IOT10[B] | GCLKC_0         | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | 1.8  
+46/0     | -           | in    | IOT12[A] | DONE            | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+45/0     | -           | in    | IOT12[B] | READY           | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+44/0     | -           | in    | IOT13[A] | JTAGSEL_N       | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+43/0     | -           | in    | IOT14[A] | MODE0           | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+42/0     | -           | in    | IOT14[B] | MODE1           | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+41/0     | -           | in    | IOT15[B] | -               | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+40/0     | -           | in    | IOT16[A] | -               | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+39/0     | -           | in    | IOT16[B] | -               | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+38/0     | -           | in    | IOT17[A] | -               | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+35/0     | -           | in    | IOT17[B] | -               | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+-----------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
+9/1      | -           | in    | IOR2[A]  | -               | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+10/1     | -           | in    | IOR2[B]  | -               | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+11/1     | trigger     | out   | IOR3[A]  | -               | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | 1.8  
+34/1     | -           | in    | IOR3[B]  | -               | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+33/1     | -           | in    | IOR5[A]  | GCLKT_2/RPLL_T_in | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+32/1     | -           | in    | IOR5[B]  | GCLKC_2/RPLL_C_in | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+31/1     | -           | in    | IOR6[A]  | MI/D7           | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+14/1     | -           | in    | IOR6[B]  | MO/D6           | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+30/1     | -           | in    | IOR6[C]  | MCS_N/D5        | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+15/1     | -           | in    | IOR6[D]  | MCLK/D4         | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+29/1     | -           | in    | IOR6[E]  | FASTRD_N/D3     | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+16/1     | count_half  | out   | IOR6[F]  | -               | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | 1.8  
+17/1     | -           | in    | IOR6[G]  | -               | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+18/1     | -           | in    | IOR6[H]  | -               | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+28/1     | -           | in    | IOR6[I]  | DIN/CLKHOLD_N   | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+19/1     | -           | in    | IOR6[J]  | DOUT/WE_N       | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+27/1     | -           | in    | IOR7[A]  | GCLKT_3/SSPI_CS_N/D0 | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+21/1     | -           | in    | IOR7[B]  | GCLKC_3         | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+24/1     | -           | in    | IOR8[A]  | SO/D1           | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+23/1     | -           | in    | IOR8[B]  | -               | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+22/1     | -           | in    | IOR9[A]  | SI/D2           | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+20/1     | -           | in    | IOR10[A] | -               | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+13/1     | -           | in    | IOR10[B] | -               | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | 1.8  
+-----------------------------------------------------------------------------------------------------------------------------------------
+=========================================================================================================================================
+
+
