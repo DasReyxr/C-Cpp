@@ -117,6 +117,7 @@ Result Integral(params p, int option, float (*func)(float)){
             
             x[step] = xi;
             fx[step] = func(xi);
+            printf("%.4f\t%.6f\n", x[step], fx[step]);
         }
         Integral = (h / 3) * (f_inf + 4 * sum_odd + 2 * sum_even + f_sup);
     }
