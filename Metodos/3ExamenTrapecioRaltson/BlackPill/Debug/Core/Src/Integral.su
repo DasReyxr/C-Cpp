@@ -1,2 +1,2 @@
-../Core/Src/Integral.c:28:7:f	16	static
-../Core/Src/Integral.c:33:8:Integral	144	dynamic
+../Core/Src/Integral.c:26:7:f	16	static
+../Core/Src/Integral.c:31:8:Integral	104	static

@@ -54,6 +54,11 @@ void updateBufferDisplay(const char* buffer);
 char readchar(void);
 float UART_READf(int x, int y);
 int UART_READ(int x, int y);
+void UART_PRINTF(const char* format);
+void UART_PRINT_STR(const char* str);
+void UART_PRINT_FLOAT(float value, int precision);
+
+
 INIT inputOptions(void);
 void displayResult(RESULT res, int x, int y);
 void isEnterPressed(void);
@@ -61,9 +66,8 @@ void isEnterPressed(void);
 
 
 // --- Funciones específicas para cada ejercicio ---
-params inputIntegral(void);
+functArgs inputIntegral(void);
 
-float* plot(uint16_t n, float wn, float t_end_target);
 void printResult(NEWTONRESULT res, float x);
 
 #endif // DISPLAY_UI_H

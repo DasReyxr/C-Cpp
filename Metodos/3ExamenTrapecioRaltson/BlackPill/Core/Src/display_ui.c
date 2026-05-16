@@ -60,6 +60,40 @@ void initTheme(void) {
 }
 // Variables externas
 extern UART_HandleTypeDef huart1;
+static int g_uart_mirror_enabled = 1;
+
+static void UART_PrintRaw(const char* str) {
+    if (!str) {
+        return;
+    }
+    HAL_UART_Transmit(&huart1, (uint8_t*)str, (uint16_t)strlen(str), 100);
+}
+
+void UART_PRINT_STR(const char* str) {
+    UART_PrintRaw(str);
+}
+
+void UART_PRINT_FLOAT(float value, int precision) {
+    char buffer[32];
+    if (precision < 0) {
+        precision = 0;
+    } else if (precision > 9) {
+        precision = 9;
+    }
+    snprintf(buffer, sizeof(buffer), "%.*f", precision, value);
+    UART_PrintRaw(buffer);
+}
+
+void UART_PRINTF(const char* format) {
+    UART_PrintRaw(format);
+}
+
+static void UI_WriteString(uint16_t x, uint16_t y, const char* str, FontDef font, uint16_t color, uint16_t bgcolor) {
+    ST7735_WriteString(x, y, str, font, color, bgcolor);
+    if (g_uart_mirror_enabled) {
+        UART_PRINT_STR(str);
+    }
+}
 
 char readchar(void) {
     // Esperar a que haya datos disponibles en el buffer UART
@@ -77,6 +111,7 @@ float UART_READf(int x, int y) {
     
     // Clear the input area on screen
     ST7735_FillRectangle(x, y, 80, 10, currentTheme.bg);
+    g_uart_mirror_enabled = 0;
     
     while (digits < (int)sizeof(displayStr) - 1) {
         ch = readchar();
@@ -100,7 +135,7 @@ float UART_READf(int x, int y) {
                 displayStr[digits] = '\0';
                 // Clear the display area and redraw
                 ST7735_FillRectangle(x, y, 80, 10, currentTheme.bg);
-                ST7735_WriteString(x, y, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
+                UI_WriteString(x, y, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
                 
                 // Recalculate buffer
                 buffer = 0;
@@ -129,7 +164,7 @@ float UART_READf(int x, int y) {
             displayStr[digits] = '.';
             digits++;
             displayStr[digits] = '\0';
-            ST7735_WriteString(x, y, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
+            UI_WriteString(x, y, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
             continue;
         }
         
@@ -145,9 +180,10 @@ float UART_READf(int x, int y) {
             digits++;
             displayStr[digits] = '\0';
             // Display immediately
-            ST7735_WriteString(x, y, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
+            UI_WriteString(x, y, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
         }
     }
+    g_uart_mirror_enabled = 1;
     return buffer;
 }
 
@@ -165,6 +201,7 @@ int UART_READ(int x, int y) {
     
     // Clear the input area on screen
     ST7735_FillRectangle(x, y, 80, 10, currentTheme.bg);
+    g_uart_mirror_enabled = 0;
     
     while (digits < (int)sizeof(displayStr) - 1) {
         ch = readchar();
@@ -183,7 +220,7 @@ int UART_READ(int x, int y) {
                 displayStr[digits] = '\0';
                 // Clear the display area and redraw
                 ST7735_FillRectangle(x, y, 80, 10, currentTheme.bg);
-                ST7735_WriteString(x, y, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
+                UI_WriteString(x, y, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
                 
                 // Recalculate buffer
                 buffer = 0;
@@ -201,51 +238,57 @@ int UART_READ(int x, int y) {
             digits++;
             displayStr[digits] = '\0';
             // Display immediately
-            ST7735_WriteString(x, y, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
+            UI_WriteString(x, y, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
         }
     }
+    g_uart_mirror_enabled = 1;
     return buffer;
 }
 
-params inputIntegral(void){
-    params p = {0, 0, 0};
-    ST7735_WriteString(0, 5, "lim_inf = ", Font_7x10, currentTheme.title, currentTheme.bg);
-    p.lim_inferior = UART_READf(0, 15);
-    ST7735_WriteString(0, 25, "lim_sup = ", Font_7x10, currentTheme.title, currentTheme.bg);
-    p.lim_superior = UART_READf(0, 35);
-    ST7735_WriteString(0, 45, "num_subintervalos = ", Font_7x10, currentTheme.title, currentTheme.bg);
-    p.num_subinterval = UART_READ(0, 55);
-    return p;
+
+
+functArgs inputIntegral(void){
+    functArgs fArgs = {0, 0, 0};
+    UI_WriteString(0, 5, "Omega = ", Font_7x10, currentTheme.title, currentTheme.bg);
+    
+    fArgs.omega = UART_READf(0, 15);
+    UI_WriteString(0, 25, "Phase = ", Font_7x10, currentTheme.title, currentTheme.bg);
+    fArgs.phase = UART_READf(0, 35);
+    UI_WriteString(0, 45, "imax = ", Font_7x10, currentTheme.title, currentTheme.bg);
+    fArgs.iMax = UART_READf(0, 55);
+    UI_WriteString(0, 65, "num_subintervalos = ", Font_7x10, currentTheme.title, currentTheme.bg);
+    fArgs.num_subinterval = UART_READ(0, 75);
+    return fArgs;
 }
 
 
-RLC_INPUT inputRLC(void){
-    RLC_INPUT input = {0.0f, 10};
-    char displayStr[20];
+// RLC_INPUT inputRLC(void){
+//     RLC_INPUT input = {0.0f, 10};
+//     char displayStr[20];
     
-    ST7735_FillScreenFast(currentTheme.bg);
+//     ST7735_FillScreenFast(currentTheme.bg);
     
-    // Title
-    ST7735_WriteString(15, 5, "RLC Evaluation", Font_7x10, currentTheme.title, currentTheme.bg);
-    ST7735_DrawLine(0, 15, ST7735_WIDTH, 15, currentTheme.separator);
+//     // Title
+//     ST7735_WriteString(15, 5, "RLC Evaluation", Font_7x10, currentTheme.title, currentTheme.bg);
+//     ST7735_DrawLine(0, 15, ST7735_WIDTH, 15, currentTheme.separator);
     
-    // Info
-    ST7735_WriteString(0, 22, "L=2mH, C=100uF", Font_7x10, currentTheme.secondary_text, currentTheme.bg);
-    ST7735_WriteString(0, 32, "Zeta=0.57", Font_7x10, currentTheme.secondary_text, currentTheme.bg);
+//     // Info
+//     ST7735_WriteString(0, 22, "L=2mH, C=100uF", Font_7x10, currentTheme.secondary_text, currentTheme.bg);
+//     ST7735_WriteString(0, 32, "Zeta=0.57", Font_7x10, currentTheme.secondary_text, currentTheme.bg);
     
-    // Input polynomial grade
-    ST7735_WriteString(0, 48, "Poly Grade: ", Font_7x10, currentTheme.primary_text, currentTheme.bg);
-    input.polyGrade = (uint8_t)UART_READ(80, 48);
+//     // Input polynomial grade
+//     ST7735_WriteString(0, 48, "Poly Grade: ", Font_7x10, currentTheme.primary_text, currentTheme.bg);
+//     input.polyGrade = (uint8_t)UART_READ(80, 48);
     
       
-    // Input prompt
-    ST7735_WriteString(0, 60, "Eval time (s) [0-19]:", Font_7x10, currentTheme.primary_text, currentTheme.bg);
-    ST7735_WriteString(0, 72, "0.00", Font_7x10, currentTheme.primary_text, currentTheme.bg);
+//     // Input prompt
+//     ST7735_WriteString(0, 60, "Eval time (s) [0-19]:", Font_7x10, currentTheme.primary_text, currentTheme.bg);
+//     ST7735_WriteString(0, 72, "0.00", Font_7x10, currentTheme.primary_text, currentTheme.bg);
     
-    input.evalTime = UART_READf(28,72) * 1e-4f; // Convert microseconds to seconds
+//     input.evalTime = UART_READf(28,72) * 1e-4f; // Convert microseconds to seconds
     
-    return input;
-}
+//     return input;
+// }
 
 void printResult(NEWTONRESULT res, float x) {
     char displayStr[40];
@@ -253,7 +296,7 @@ void printResult(NEWTONRESULT res, float x) {
     uint16_t y_pixel = 10;
     for (i = 0; i < res.size; i++) {
         snprintf(displayStr, sizeof(displayStr), "a[%d] = %.3E", i, res.coefs[i]);
-        ST7735_WriteString(0, y_pixel, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
+        UI_WriteString(0, y_pixel, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
         y_pixel += 10;
         if (y_pixel > 150) {
             break;
@@ -264,148 +307,24 @@ void printResult(NEWTONRESULT res, float x) {
     
     // Show evaluation result on clean screen
     ST7735_FillScreenFast(currentTheme.bg);
-    ST7735_WriteString(0, 0, "Evaluation Result", Font_7x10, currentTheme.title, currentTheme.bg);
+    UI_WriteString(0, 0, "Evaluation Result", Font_7x10, currentTheme.title, currentTheme.bg);
     ST7735_DrawLine(0, 10, ST7735_WIDTH, 10, currentTheme.separator);
     
     snprintf(displayStr, sizeof(displayStr), "t = %.5f s", x);
-    ST7735_WriteString(5, 20, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
+    UI_WriteString(5, 20, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
     
     snprintf(displayStr, sizeof(displayStr), "P(t) = %.6f", res.pointEval);
-    ST7735_WriteString(5, 35, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
+    UI_WriteString(5, 35, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
     
     // Show polynomial degree
     snprintf(displayStr, sizeof(displayStr), "Degree: %d", res.size - 1);
-    ST7735_WriteString(5, 50, displayStr, Font_7x10, currentTheme.secondary_text, currentTheme.bg);
+    UI_WriteString(5, 50, displayStr, Font_7x10, currentTheme.secondary_text, currentTheme.bg);
     
     // Show number of points used
     snprintf(displayStr, sizeof(displayStr), "Points: %d", res.size);
-    ST7735_WriteString(5, 62, displayStr, Font_7x10, currentTheme.secondary_text, currentTheme.bg);
+    UI_WriteString(5, 62, displayStr, Font_7x10, currentTheme.secondary_text, currentTheme.bg);
     
-    ST7735_WriteString(0, 108, "Press Enter...", Font_7x10, currentTheme.secondary_text, currentTheme.bg);
+    UI_WriteString(0, 108, "Press Enter...", Font_7x10, currentTheme.secondary_text, currentTheme.bg);
     isEnterPressed();
 }
 
-
-float* plot(uint16_t n, float wn, float t_end_target){
-        ST7735_FillScreenFast(currentTheme.bg);
-
-        // Optimized layout for 160x128 screen
-        const uint16_t left = 35;           // Left margin for y-axis label
-        const uint16_t right = ST7735_WIDTH - 2;
-        const uint16_t top = 15;            // Space for title
-        const uint16_t bottom = ST7735_HEIGHT - 12;  // Space for x-axis label
-        
-        const float dt = (n > 1) ? (t_end_target / (float)(n - 1)) : 0.0f;
-        const uint16_t plot_w = right - left;
-        const uint16_t plot_h = bottom - top;
-
-        float step;
-        float evalinT;
-        float *y = (float*)malloc(n * sizeof(float));
-        if (!y) return NULL;
-
-        float min_y = 1e9f;
-        float max_y = -1e9f;
-
-        // Title
-        char title[20];
-        snprintf(title, sizeof(title), "H(t) Response");
-        ST7735_WriteString(40, 2, title, Font_7x10, currentTheme.title, currentTheme.bg);
-
-        // Plot background area
-        ST7735_FillRectangle(left, top, plot_w + 1, plot_h + 1, currentTheme.input_bg);
-
-        // Grid (4x4 for better visibility on small screen)
-        for (uint16_t gx = 0; gx <= 4; gx++) {
-            uint16_t xg = left + (gx * plot_w) / 4;
-            for (uint16_t yy = top; yy <= bottom; yy++) {
-                ST7735_DrawPixel(xg, yy, currentTheme.separator);
-            }
-        }
-        for (uint16_t gy = 0; gy <= 4; gy++) {
-            uint16_t yg = top + (gy * plot_h) / 4;
-            for (uint16_t xx = left; xx <= right; xx++) {
-                ST7735_DrawPixel(xx, yg, currentTheme.separator);
-            }
-        }
-
-        // Axes box
-        for (uint16_t xx = left; xx <= right; xx++) {
-            ST7735_DrawPixel(xx, top, currentTheme.title);
-            ST7735_DrawPixel(xx, bottom, currentTheme.title);
-        }
-        for (uint16_t yy = top; yy <= bottom; yy++) {
-            ST7735_DrawPixel(left, yy, currentTheme.title);
-            ST7735_DrawPixel(right, yy, currentTheme.title);
-        }
-
-        // First pass: determine range for vertical scaling
-        for (uint16_t i = 0; i < n; i++) {
-            step = dt * (float)i;
-            evalinT = H(step, wn, RLC_ZETA_DEFAULT);
-            if (evalinT < min_y) min_y = evalinT;
-            if (evalinT > max_y) max_y = evalinT;
-        }
-
-        if (min_y > max_y) {
-            min_y = 0.0f;
-            max_y = 1.0f;
-        }
-
-        float pad = 0.08f * (max_y - min_y);
-        if (pad < 1e-6f) {
-            pad = 1.0f;
-        }
-        max_y += pad;
-        min_y -= pad;
-
-        float range = max_y - min_y;
-        if (range < 1e-6f) {
-            range = 1.0f;
-        }
-
-        // Draw y-axis min/max labels (compact)
-        char label[12];
-        snprintf(label, sizeof(label), "%.0f", max_y);
-        ST7735_WriteString(2, top, label, Font_7x10, currentTheme.secondary_text, currentTheme.bg);
-        
-        snprintf(label, sizeof(label), "%.0f", min_y);
-        ST7735_WriteString(2, bottom - 8, label, Font_7x10, currentTheme.secondary_text, currentTheme.bg);
-
-        // Optional zero axis when visible
-        float zero_norm = (0.0f - min_y) / range;
-        uint16_t zero_ypix = bottom - (uint16_t)(zero_norm * (float)plot_h);
-        if (zero_ypix >= top && zero_ypix <= bottom) {
-            for (uint16_t xx = left; xx <= right; xx++) {
-                ST7735_DrawPixel(xx, zero_ypix, currentTheme.highlight);
-            }
-        }
-
-        // Second pass: draw curve and keep first 20 values
-        for (uint16_t i = 0; i < n; i++) {
-            step = dt * (float)i;
-            evalinT = H(step, wn, RLC_ZETA_DEFAULT);
-            float norm = (evalinT - min_y) / range;
-
-            uint16_t xpix = left + (uint16_t)(((uint32_t)i * plot_w) / (uint32_t)(n - 1));
-            uint16_t ypix = bottom - (uint16_t)(norm * (float)plot_h);
-            if (ypix < top) ypix = top;
-            if (ypix > bottom) ypix = bottom;
-            ST7735_DrawPixel(xpix, ypix, COLOR_BLACK);
-
-            if(i < 20){
-                y[i] = evalinT;
-            }
-        }
-
-        // X-axis label
-        
-        // Time range annotations
-        snprintf(label, sizeof(label), "0");
-        ST7735_WriteString(left, 108, label, Font_7x10, currentTheme.secondary_text, currentTheme.bg);
-        
-        snprintf(label, sizeof(label), "%.3f", t_end_target);
-        ST7735_WriteString(right - 28, 110, label, Font_7x10, currentTheme.secondary_text, currentTheme.bg);
-
-        return y;
-}

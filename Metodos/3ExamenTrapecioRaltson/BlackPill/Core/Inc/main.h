@@ -74,12 +74,15 @@ typedef struct {
 } RLCFunct;
 
 
+typedef struct {
+    //return iMax * sinf(omega* t + phase);
+    float omega;
+    float phase;
+    float iMax;
+    int num_subinterval; 
+} functArgs;
 
-typedef struct { 
-    uint8_t size;
-    float **matrix; 
-    float *vector;
-} GaussJordanResult;
+typedef float (*Integrand)(float t, void *ctx);
 
 typedef struct { 
     float lim_inferior; 
@@ -94,6 +97,21 @@ typedef struct {
     float h;
     int num_subinterval;
 } Result;
+
+// Raltson
+
+typedef struct { 
+    float initialX; 
+    float initialY;
+    float stepSize;
+    int numSteps; 
+} argsInput;
+
+typedef struct { 
+    float y;
+} ResultRaltson;
+
+
 
 /* USER CODE END ET */
 

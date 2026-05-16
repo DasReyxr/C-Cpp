@@ -35,7 +35,7 @@ params input(void);
 
 float get_a0(float x[], float y[], float a1);
 float get_a1(float x[], float y[]);
-Result Integral(params p, int option);
+Result Integral(params p, int option, float (*func)(float));
 
 float f(float x);
 
@@ -52,7 +52,7 @@ int main()
         return 1;
     }
     if (op == 1 || op == 2) 
-        Integral(p,op);
+        Integral(p,op,f);
     else {
         printf("Conste\n");
         return 0;
@@ -88,11 +88,11 @@ float f(float x){
     return x * x * x + 2*x*x - x + 1;
 }
 
-Result Integral(params p, int option){
+Result Integral(params p, int option, float (*func)(float)){
     float h = (p.lim_superior - p.lim_inferior) / p.num_subinterval;
-    float f_inf = f(p.lim_inferior); float f_sup = f(p.lim_superior);
-    float x[p.num_subinterval + 1];
-    float fx[p.num_subinterval + 1];
+    float f_inf = func(p.lim_inferior); float f_sup = func(p.lim_superior);
+    float *x = (float*)malloc((p.num_subinterval + 1) * sizeof(float));
+    float *fx = (float*)malloc((p.num_subinterval + 1) * sizeof(float));
     float Integral = 0.0f;
     
     if (option == TRAPEZOID){
@@ -100,8 +100,8 @@ Result Integral(params p, int option){
         for (int step = 1; step < p.num_subinterval; step++) {
             float xi = p.lim_inferior + step * h;
             x[step] = xi;
-            fx[step] = f(xi);
-            sum += f(xi);
+            fx[step] = func(xi);
+            sum += func(xi);
             printf("%.4f\t%.6f\n", x[step], fx[step]);
 
         }
@@ -112,11 +112,11 @@ Result Integral(params p, int option){
 
         for (int step = 1; step < p.num_subinterval; step++) {
             float xi = p.lim_inferior + step * h;
-            if (step % 2 == 0) sum_even += f(xi);
-            else sum_odd += f(xi);
+            if (step % 2 == 0) sum_even += func(xi);
+            else sum_odd += func(xi);
             
             x[step] = xi;
-            fx[step] = f(xi);
+            fx[step] = func(xi);
         }
         Integral = (h / 3) * (f_inf + 4 * sum_odd + 2 * sum_even + f_sup);
     }

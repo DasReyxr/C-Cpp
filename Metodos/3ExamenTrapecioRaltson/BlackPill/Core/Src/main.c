@@ -18,6 +18,8 @@ Condiciones Generales
 #include "fonts.h"
 #include "st7735.h"
 #include "math.h"
+#include "Raltson.h"
+#include "Integral.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -50,7 +52,12 @@ static void MX_GPIO_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
+float function(float t, void *ctx){
+  // Ejemplo: f(x) = x^3+2x^2-x+1
+  const functArgs *fArgs = (const functArgs *)ctx;
+  float i = fArgs->iMax * sinf(fArgs->omega * t + fArgs->phase);
+  return i * i;
+}
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -90,14 +97,11 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 	ST7735_Init();
-	initTheme();  // Initialize color theme
-	float L = RLC_L_DEFAULT;
-  float C = RLC_C_DEFAULT;
-  float x[100];
-  // Clear UART terminal screen
-	float evalPoint;
-  const float t_end_target = 0.010f;
-  
+//	initTheme();  // Initialize color theme
+
+  Result integralResult;
+  //functArgs fArgs = { .omega = 1.0f, .phase = 0.0f, .iMax = 1.0f };
+  const float pi = 3.14159265358979323846f;
 
 
 
@@ -113,7 +117,14 @@ int main(void)
 	HAL_UART_Transmit(&huart1, (uint8_t*)"\033[2J\033[H", 7, 100);  // ANSI clear screen
 	HAL_Delay(10);
 
-    params p = inputIntegral();
+    functArgs fArgs = inputIntegral();
+    float T = (2.0f * pi) / fArgs.omega;
+    float lim_inferior = 0.0f;
+    float lim_superior = T * 0.5f;
+    integralResult = Integral((params){lim_inferior, lim_superior,fArgs.num_subinterval}, TRAPEZOID, function, &fArgs);
+    float iRMS = (2.0f / T) * integralResult.Integral;
+
+
 /*	  evalPoint = rlcInput.evalTime;
 	  uint8_t polyGrade = rlcInput.polyGrade;
 	  float zeta = 0.57f;

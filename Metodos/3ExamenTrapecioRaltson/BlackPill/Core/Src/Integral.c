@@ -7,16 +7,16 @@
 */
 
 // ------- Main Library -------
-#include <Integral.h>
 #include "main.h"
+#include "Integral.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 // ---------- Class ----------
 
 // -------- Variables --------
-#define TRAPEZOID 1
-#define SIMPSON 2
+#define PRECISION_VAL 0.0001f
+#define MAX_ITER 10
 
 // Funcion usada
 
@@ -28,11 +28,11 @@ float f(float x){
     return x * x * x + 2*x*x - x + 1;
 }
 
-Result Integral(params p, int option){
+Result Integral(params p, int option, Integrand func, void *ctx){
     float h = (p.lim_superior - p.lim_inferior) / p.num_subinterval;
-    float f_inf = f(p.lim_inferior); float f_sup = f(p.lim_superior);
-    float x[p.num_subinterval + 1];
-    float fx[p.num_subinterval + 1];
+    float f_inf = func(p.lim_inferior, ctx); float f_sup = func(p.lim_superior, ctx);
+    float *x = (float*)malloc((p.num_subinterval + 1) * sizeof(float));
+    float *fx = (float*)malloc((p.num_subinterval + 1) * sizeof(float));
     float Integral = 0.0f;
     
     if (option == TRAPEZOID){
@@ -40,8 +40,8 @@ Result Integral(params p, int option){
         for (int step = 1; step < p.num_subinterval; step++) {
             float xi = p.lim_inferior + step * h;
             x[step] = xi;
-            fx[step] = f(xi);
-            sum += f(xi);
+            fx[step] = func(xi, ctx);
+            sum += func(xi, ctx);
 
         }
         Integral = (h / 2) * (f_inf + 2 * sum + f_sup);
@@ -51,11 +51,11 @@ Result Integral(params p, int option){
 
         for (int step = 1; step < p.num_subinterval; step++) {
             float xi = p.lim_inferior + step * h;
-            if (step % 2 == 0) sum_even += f(xi);
-            else sum_odd += f(xi);
+            if (step % 2 == 0) sum_even += func(xi, ctx);
+            else sum_odd += func(xi, ctx);
             
             x[step] = xi;
-            fx[step] = f(xi);
+            fx[step] = func(xi, ctx);
         }
         Integral = (h / 3) * (f_inf + 4 * sum_odd + 2 * sum_even + f_sup);
     }
