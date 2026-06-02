@@ -7,9 +7,9 @@
 #define RALSTON 3
 
 
-float fRaltson(float x, float y);
-argsInput input(void);
-ResultRaltson RungeKutta(argsInput p, int option);
+float fRaltson(float t, float q, const RLCArgs *args);
+ResultRaltson RungeKutta(RLCArgs p, int option);
+int RungeKuttaTrace(RLCArgs p, int option, float *tOut, float *qOut, int outCount, ResultRaltson *finalResult);
 
 
 #endif // RALTSON_H

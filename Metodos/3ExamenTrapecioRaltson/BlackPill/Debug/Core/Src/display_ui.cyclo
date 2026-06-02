@@ -4,10 +4,8 @@
 ../Core/Src/display_ui.c:72:6:UART_PRINT_STR	1
 ../Core/Src/display_ui.c:76:6:UART_PRINT_FLOAT	3
 ../Core/Src/display_ui.c:87:6:UART_PRINTF	1
-../Core/Src/display_ui.c:91:13:UI_WriteString	2
+../Core/Src/display_ui.c:91:6:UI_WriteString	2
 ../Core/Src/display_ui.c:98:6:readchar	2
 ../Core/Src/display_ui.c:104:7:UART_READf	18
 ../Core/Src/display_ui.c:190:6:isEnterPressed	3
 ../Core/Src/display_ui.c:196:5:UART_READ	10
-../Core/Src/display_ui.c:250:11:inputIntegral	1
-../Core/Src/display_ui.c:293:6:printResult	3

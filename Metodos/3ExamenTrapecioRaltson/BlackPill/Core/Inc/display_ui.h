@@ -2,6 +2,7 @@
 #define DISPLAY_UI_H
 #include <stdint.h>
 #include "main.h"
+#include "fonts.h"
 
 // Color Theme Structure
 typedef struct {
@@ -22,6 +23,12 @@ typedef struct {
     float evalTime;      // Evaluation time in seconds
     uint8_t polyGrade;   // Polynomial grade (degree)
 } RLC_INPUT;
+
+typedef struct {
+    float q0;
+    float dq0;
+    uint8_t method;
+} RLC_UI_INPUT;
 
 // ---- COLORS ----
 #define COLOR_BLACK   0x0000
@@ -48,6 +55,8 @@ void drawLevel0(void);
 void drawLevel1(uint8_t colMat, uint8_t rowMat);
 void drawLevel2(uint8_t success);
 
+void initTheme(void);
+
 // Función auxiliar para actualización parcial
 void updateBufferDisplay(const char* buffer);
 
@@ -59,15 +68,11 @@ void UART_PRINT_STR(const char* str);
 void UART_PRINT_FLOAT(float value, int precision);
 
 
-INIT inputOptions(void);
-void displayResult(RESULT res, int x, int y);
+void UI_WriteString(uint16_t x, uint16_t y, const char* str, FontDef font, uint16_t color, uint16_t bgcolor);
+
+
 void isEnterPressed(void);
 
 
-
-// --- Funciones específicas para cada ejercicio ---
-functArgs inputIntegral(void);
-
-void printResult(NEWTONRESULT res, float x);
 
 #endif // DISPLAY_UI_H

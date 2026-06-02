@@ -1,0 +1,5 @@
+../Core/Src/NewtonInterpolation.c:25:7:H	2
+../Core/Src/NewtonInterpolation.c:38:8:linspace	3
+../Core/Src/NewtonInterpolation.c:49:8:diferencias_divididas	5
+../Core/Src/NewtonInterpolation.c:67:7:evalPol	2
+../Core/Src/NewtonInterpolation.c:75:14:Newton	2

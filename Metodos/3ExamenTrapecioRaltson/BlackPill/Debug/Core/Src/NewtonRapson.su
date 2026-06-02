@@ -1,0 +1,3 @@
+../Core/Src/NewtonRapson.c:25:7:f1	56	static
+../Core/Src/NewtonRapson.c:35:7:df	64	static
+../Core/Src/NewtonRapson.c:49:8:NewtonRapson	112	static

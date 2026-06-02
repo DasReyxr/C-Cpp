@@ -40,13 +40,13 @@ typedef struct{
   int option;
   float num_presicion;
 } INIT;
+typedef struct {
+    float C;
+    float L;
+    float q;
+    float t;
+} RLCFunct;
 
-
-typedef struct { 
-    float *x; 
-    float *y;
-    int grado; 
-} poli;
 
 typedef struct {
     float val;
@@ -61,19 +61,30 @@ typedef struct {
     float tol;
 } LIMITS;
 
+
+typedef struct { 
+    int size;
+    float **matrix; 
+    float *vector;
+} GaussJordanResult;
+
+// Segundo examen
+typedef struct { 
+    float *x; 
+    float *y;
+    int grado; 
+} poli;
+
+
 typedef struct{
     float pointEval;
     float *coefs;
     uint8_t size;
 } NEWTONRESULT;
 
-typedef struct {
-    float C;
-    float L;
-    float x;
-} RLCFunct;
 
 
+// 3 Examen
 typedef struct {
     //return iMax * sinf(omega* t + phase);
     float omega;
@@ -98,17 +109,25 @@ typedef struct {
     int num_subinterval;
 } Result;
 
-// Raltson
+// Ralston / RLC
 
-typedef struct { 
-    float initialX; 
-    float initialY;
+typedef struct {
+    float L;
+    float C;
+    float E0;
+    float omega;
+    float t0;
+    float tEnd;
     float stepSize;
-    int numSteps; 
-} argsInput;
+    float q0;
+    float dq0;
+    int numSteps;
+} RLCArgs;
 
-typedef struct { 
-    float y;
+typedef struct {
+    float t;
+    float q;
+    float dq;
 } ResultRaltson;
 
 

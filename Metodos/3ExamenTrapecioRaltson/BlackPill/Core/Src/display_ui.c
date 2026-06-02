@@ -88,7 +88,7 @@ void UART_PRINTF(const char* format) {
     UART_PrintRaw(format);
 }
 
-static void UI_WriteString(uint16_t x, uint16_t y, const char* str, FontDef font, uint16_t color, uint16_t bgcolor) {
+void UI_WriteString(uint16_t x, uint16_t y, const char* str, FontDef font, uint16_t color, uint16_t bgcolor) {
     ST7735_WriteString(x, y, str, font, color, bgcolor);
     if (g_uart_mirror_enabled) {
         UART_PRINT_STR(str);
@@ -246,85 +246,4 @@ int UART_READ(int x, int y) {
 }
 
 
-
-functArgs inputIntegral(void){
-    functArgs fArgs = {0, 0, 0};
-    UI_WriteString(0, 5, "Omega = ", Font_7x10, currentTheme.title, currentTheme.bg);
-    
-    fArgs.omega = UART_READf(0, 15);
-    UI_WriteString(0, 25, "Phase = ", Font_7x10, currentTheme.title, currentTheme.bg);
-    fArgs.phase = UART_READf(0, 35);
-    UI_WriteString(0, 45, "imax = ", Font_7x10, currentTheme.title, currentTheme.bg);
-    fArgs.iMax = UART_READf(0, 55);
-    UI_WriteString(0, 65, "num_subintervalos = ", Font_7x10, currentTheme.title, currentTheme.bg);
-    fArgs.num_subinterval = UART_READ(0, 75);
-    return fArgs;
-}
-
-
-// RLC_INPUT inputRLC(void){
-//     RLC_INPUT input = {0.0f, 10};
-//     char displayStr[20];
-    
-//     ST7735_FillScreenFast(currentTheme.bg);
-    
-//     // Title
-//     ST7735_WriteString(15, 5, "RLC Evaluation", Font_7x10, currentTheme.title, currentTheme.bg);
-//     ST7735_DrawLine(0, 15, ST7735_WIDTH, 15, currentTheme.separator);
-    
-//     // Info
-//     ST7735_WriteString(0, 22, "L=2mH, C=100uF", Font_7x10, currentTheme.secondary_text, currentTheme.bg);
-//     ST7735_WriteString(0, 32, "Zeta=0.57", Font_7x10, currentTheme.secondary_text, currentTheme.bg);
-    
-//     // Input polynomial grade
-//     ST7735_WriteString(0, 48, "Poly Grade: ", Font_7x10, currentTheme.primary_text, currentTheme.bg);
-//     input.polyGrade = (uint8_t)UART_READ(80, 48);
-    
-      
-//     // Input prompt
-//     ST7735_WriteString(0, 60, "Eval time (s) [0-19]:", Font_7x10, currentTheme.primary_text, currentTheme.bg);
-//     ST7735_WriteString(0, 72, "0.00", Font_7x10, currentTheme.primary_text, currentTheme.bg);
-    
-//     input.evalTime = UART_READf(28,72) * 1e-4f; // Convert microseconds to seconds
-    
-//     return input;
-// }
-
-void printResult(NEWTONRESULT res, float x) {
-    char displayStr[40];
-    int i;
-    uint16_t y_pixel = 10;
-    for (i = 0; i < res.size; i++) {
-        snprintf(displayStr, sizeof(displayStr), "a[%d] = %.3E", i, res.coefs[i]);
-        UI_WriteString(0, y_pixel, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
-        y_pixel += 10;
-        if (y_pixel > 150) {
-            break;
-        }
-    }
-    
-    isEnterPressed();
-    
-    // Show evaluation result on clean screen
-    ST7735_FillScreenFast(currentTheme.bg);
-    UI_WriteString(0, 0, "Evaluation Result", Font_7x10, currentTheme.title, currentTheme.bg);
-    ST7735_DrawLine(0, 10, ST7735_WIDTH, 10, currentTheme.separator);
-    
-    snprintf(displayStr, sizeof(displayStr), "t = %.5f s", x);
-    UI_WriteString(5, 20, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
-    
-    snprintf(displayStr, sizeof(displayStr), "P(t) = %.6f", res.pointEval);
-    UI_WriteString(5, 35, displayStr, Font_7x10, currentTheme.primary_text, currentTheme.bg);
-    
-    // Show polynomial degree
-    snprintf(displayStr, sizeof(displayStr), "Degree: %d", res.size - 1);
-    UI_WriteString(5, 50, displayStr, Font_7x10, currentTheme.secondary_text, currentTheme.bg);
-    
-    // Show number of points used
-    snprintf(displayStr, sizeof(displayStr), "Points: %d", res.size);
-    UI_WriteString(5, 62, displayStr, Font_7x10, currentTheme.secondary_text, currentTheme.bg);
-    
-    UI_WriteString(0, 108, "Press Enter...", Font_7x10, currentTheme.secondary_text, currentTheme.bg);
-    isEnterPressed();
-}
 

@@ -129,8 +129,8 @@ int main(void)
   MX_GPIO_Init();
   MX_SPI1_Init();
   init();
-  //ST7735_WriteString(0, 0, "INGRESA EL TAMANO DEL SISTEMA NxN:", Font_7x10, ST7735_CYAN, ST7735_BLACK);
-  ST7735_DrawImage(0,0,128,160,TestImage);
+  ST7735_WriteString(0, 0, "INGRESA EL TAMANO DEL SISTEMA NxN:", Font_7x10, ST7735_CYAN, ST7735_BLACK);
+  //  ST7735_DrawImage(0,0,128,160,TestImage);
   while (1)
   {
     /* USER CODE END WHILE */

@@ -13,13 +13,18 @@ Condiciones Generales
 #include "main.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdio.h>
 #include <stdlib.h>
-#include "display_ui.h"
+#include <string.h>
 #include "fonts.h"
 #include "st7735.h"
 #include "math.h"
-#include "Raltson.h"
-#include "Integral.h"
+
+#include "display_ui.h"
+
+#include "UI_Methods.h"
+
+#include "examenes.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -29,7 +34,7 @@ Condiciones Generales
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define NEWTON 1
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -52,12 +57,7 @@ static void MX_GPIO_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
-float function(float t, void *ctx){
-  // Ejemplo: f(x) = x^3+2x^2-x+1
-  const functArgs *fArgs = (const functArgs *)ctx;
-  float i = fArgs->iMax * sinf(fArgs->omega * t + fArgs->phase);
-  return i * i;
-}
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -97,11 +97,8 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 	ST7735_Init();
-//	initTheme();  // Initialize color theme
-
-  Result integralResult;
-  //functArgs fArgs = { .omega = 1.0f, .phase = 0.0f, .iMax = 1.0f };
-  const float pi = 3.14159265358979323846f;
+	initTheme();  // Initialize color theme
+  ST7735_FillScreen(currentTheme.bg);
 
 
 
@@ -114,17 +111,23 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	HAL_UART_Transmit(&huart1, (uint8_t*)"\033[2J\033[H", 7, 100);  // ANSI clear screen
-	HAL_Delay(10);
-
-    functArgs fArgs = inputIntegral();
-    float T = (2.0f * pi) / fArgs.omega;
-    float lim_inferior = 0.0f;
-    float lim_superior = T * 0.5f;
-    integralResult = Integral((params){lim_inferior, lim_superior,fArgs.num_subinterval}, TRAPEZOID, function, &fArgs);
-    float iRMS = (2.0f / T) * integralResult.Integral;
-
-
+    HAL_UART_Transmit(&huart1, (uint8_t*)"\033[2J\033[H", 7, 100);  // ANSI clear screen
+    HAL_Delay(10);
+    method = inputMethod();
+    switch (method) {
+       case 1:
+          examen1();
+          break;
+        case 2:
+          examen2();
+          break;
+        case 3:
+          examen3();
+          break;
+        default:
+          break;
+    }
+    
 /*	  evalPoint = rlcInput.evalTime;
 	  uint8_t polyGrade = rlcInput.polyGrade;
 	  float zeta = 0.57f;
@@ -312,8 +315,6 @@ __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /* USER CODE END MX_GPIO_Init_2 */
 }
-
-/* USER CODE BEGIN 4 */
 
 
 /**
