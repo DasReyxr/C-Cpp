@@ -1,0 +1,6 @@
+PWD c:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/Docs
+INPUT c:/texlive/2025/texmf.cnf
+INPUT c:/texlive/2025/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT c:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/Docs/Examenes_ENG.tex
+OUTPUT Examenes_ENG.log

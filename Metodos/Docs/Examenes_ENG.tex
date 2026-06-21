@@ -1,0 +1,530 @@
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}% Math and Physical Sciences Numbered
+
+\input{generalconfig.tex} % Necessary line to avoid errors  with the next line of code (begin document)
+
+\begin{document}
+
+\title[Article Title]{Numerical Methods III Exams}
+
+\author{\fnm{Contreras Reyes} \sur{Orlando}}
+
+\affil{\orgdiv{Department of Electronic Systems}, 
+\orgname{Autonomous University of Aguascalientes}, 
+\orgaddress{\street{Av. Universidad 940}, \city{Aguascalientes}, \postcode{20131}, \state{Aguascalientes}, \country{México}}}
+
+\email{al348390@edu.uaa.mx}
+
+
+%%==================================%%
+%% Sample for unstructured abstract %%
+%%==================================%%
+\abstract{This document presents the application of various numerical methods covered in the course, organized by exam. Each section includes a problem statement, the procedure followed, and relevant mathematical expressions. The methods applied include Gauss-Jordan for linear systems, Newton-Raphson for nonlinear equations, Newton's interpolation for estimating values from a Laplace domain function, numerical integration using the trapezoidal rule for calculating RMS current, and Runge-Kutta for solving differential equations. The document also discusses the tools used for implementation and analysis.}
+
+\begin{comment}
+- An introduction to the problem and a brief theoretical explanation of each method.
+- The choice of the function $f(x)$ and the justification of the interval $[a, b]$.
+- Results obtained and comparative analysis between both methods (for example, number of iterations, convergence, etc.).
+- Conclusions and possible improvements or extensions.
+\end{comment}
+%%\pacs[JEL Classification]{D8, H51}
+
+%%\pacs[MSC Classification]{35A01, 65L10, 65L12, 65L20, 65L70}
+
+\maketitle
+
+\section{Objective}\label{sec1}
+The general objective of this document is to apply and document different numerical methods covered in the course, organized by exam, presenting the problem statement, the procedure followed, and the relevant mathematical expressions.
+
+\subsubsection{Exam I - Gauss-Jordan and Newton-Raphson}
+Solve a linear system associated with a circuit using Gauss-Jordan, and obtain the root of a nonlinear equation using Newton-Raphson (selecting an initial guess and a stopping criterion).
+
+\subsubsection{Exam II - Newton Interpolation}
+Obtain a time-domain signal from a Laplace expression and interpolate intermediate values using the Newton polynomial (divided differences), evaluating the approximation within the sampled interval.
+
+\subsubsection{Exam III - Integration and Differential Equations}
+Approximate definite integrals using numerical integration (trapezoidal rule) and apply the result to practical metrics such as the calculation of $I_{\mathrm{RMS}}$. In addition, solve differential equations using Runge-Kutta.
+
+
+\subsection{Methods used}
+\begin{itemize}
+    \item Gauss-Jordan for linear systems and Newton-Raphson for nonlinear equations.
+    \item Iterative methods (Jacobi and Gauss-Seidel) for linear systems.
+    \item Newton interpolation (divided differences).
+    \item Numerical integration using the trapezoidal rule.
+    \item Runge-Kutta (RK4) for differential equations.
+\end{itemize}
+\section{Development and results}
+\subsection{Exam I - Gauss-Jordan and Newton-Raphson}
+The first exam consisted of solutions for linear systems and nonlinear equations.
+
+
+For the first part, the Gauss-Jordan method was used, which is a direct method for solving linear systems. For the second part, the Newton-Raphson method was used, which is an iterative method for solving nonlinear equations. Both methods are useful for solving systems of equations, but they have different applications and characteristics. The circuit to be solved with the Gauss-Jordan method is shown in Figure \ref{fig:GJ}.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Mate JP//src/EXAMENGJ.png}
+    \caption{Circuit for the Gauss-Jordan method.}
+    \label{fig:GJ}
+\end{figure}
+
+The coefficient matrix for the Gauss-Jordan method is shown below:
+% [R1  0    R6  0  0  R5] [I12] =  [VCC]
+% [0    R2  R6  R3  R4  0] [I23] =  [0]
+% [1   -1   -1  0  0  0] [I25] = [0]
+% [0    1    0  -1  0  0] [I34] =  [0]
+% [0    0    0  1  -1  0] [I45] =  [0]
+% [0    0    1  0  1  -1] [I56] =  [0]
+
+\begin{equation}
+\begin{bmatrix}
+R1  & 0    & R6  & 0  & 0  & R5 \\
+0    & R2  & R6  & R3  & R4  & 0 \\
+1   & -1   & -1  & 0  & 0  & 0 \\
+0    & 1    & 0  & -1  & 0  & 0 \\
+0    & 0    & 0  & 1  & -1  & 0 \\
+0    & 0    & 1  & 0  & 1  & -1 \\
+\end{bmatrix}
+\begin{bmatrix}I12 \\
+I23 \\
+I25 \\
+I34 \\
+I45 \\     
+I56 \\
+\end{bmatrix}=
+\begin{bmatrix}VCC \\
+0 \\
+0 \\
+0 \\
+0 \\
+0 \\
+\end{bmatrix}    
+\end{equation}
+
+For the Newton-Raphson method, the following function was used:
+\begin{equation}
+f(R)= e^{-\left(\dfrac{Rt}{2L} \right)} \cos(\sqrt{\dfrac{1}{LC}-\dfrac{R^2}{4L^2}}t)-\dfrac{q}{q_0}   
+\end{equation}
+This is a function in terms of $R$ with parameters $L$, $C$, $t$, $q$, and $q_0$. To solve this equation, the Newton-Raphson method was used, which is an iterative method based on approximating the root of a function by a sequence of tangents. The process is repeated until convergence is reached, that is, until the solutions obtained in each iteration are sufficiently close to each other. The Newton-Raphson method is efficient for solving nonlinear equations, but it may not converge for certain functions or if the initial guess is not adequate.
+
+Therefore, it is important to obtain its derivative to use the Newton-Raphson method. The derivative of the function is shown below:
+\begin{equation}
+f'(R)=e^{-\frac{Rt}{2L}}
+\left[
+-\frac{t}{2L}\cos(\omega t)
++
+\frac{Rt}{4L^{2}\omega}\sin(\omega t)
+\right] \quad \text{where} \quad \omega = \sqrt{\dfrac{1}{LC}-\dfrac{R^2}{4L^2}}
+\end{equation}
+
+\subsection{Exam II - Newton Interpolation}
+For the second exam, Newton interpolation was used, which is a method for estimating function values at intermediate points from a set of known data. Newton interpolation is based on constructing an interpolation polynomial using divided differences. The process involves computing the divided differences from the known data and then building the interpolation polynomial using those differences. Newton interpolation is efficient for bounded data, but it may not be suitable for highly variable data or for extrapolation outside the range of the known data. In this case, the following function was used for interpolation:
+
+\subsubsection{Function in the Laplace domain}
+The function used corresponds to a second-order linear system (normalized form), commonly associated with an RLC circuit or a mass-spring-damper system. In the Laplace domain it is written as:
+\begin{equation}
+F(s)=\frac{\omega_n^{2}}{s^{2}+2z\,\omega_n s+\omega_n^{2}}
+\end{equation}
+where $\omega_n$ is the natural frequency and $z$ is the damping factor. For the series RLC case, a typical parameterization is:
+\begin{equation}
+\omega_n=\frac{1}{\sqrt{LC}},\qquad R=2z\,\omega_n L
+\end{equation}
+This function has unit DC gain ($F(0)=1$) and its dynamic behavior depends strongly on $z$: small values of $z$ imply more oscillation and overshoot; large values tend to slower responses without oscillation.
+
+\subsubsection{Time-domain function}
+The inverse Laplace of $F(s)$ (interpreted as the impulse response of the system) is:
+\begin{equation}
+f(t)=\mathcal{L}^{-1}\{F(s)\}=\frac{\omega_n^{2}}{\omega_d}\,e^{-z\omega_n t}\sin(\omega_d t)\,u(t),\qquad \omega_d=\omega_n\sqrt{1-z^{2}}
+\end{equation}
+as long as $0<z<1$ (underdamped case). Here $u(t)$ represents the unit step (causality). In this particular work, $z=0.57<1$, so the response is oscillatory with an exponential envelope $e^{-z\omega_n t}$. If the step response is desired, $F(s)/s$ should be used before applying the inverse Laplace.
+
+\subsection{Exam III - Integration and Differential Equations}
+In the third exam, numerical integration was applied to bounded signals. In particular, the trapezoidal rule was used to approximate definite integrals and calculate the root-mean-square (RMS) value of a sinusoidal current from $i(t)^2$ over a half-period interval.
+
+A dynamic model described by differential equations was also used. The differential equation to be solved is:
+\begin{equation}
+L\,\frac{di(t)}{dt}+R\,i(t)+\frac{q(t)}{C}-E(t)=0
+\end{equation}
+and it is complemented with:
+\begin{equation}
+i(t)=\frac{dq(t)}{dt}
+\end{equation}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Mate JP//src/RLC.png}
+    \caption{RLC circuit}
+    \label{fig:placeholder}
+\end{figure}
+
+
+
+
+
+\subsubsection{Solution for $q(t)$ (parameterized)}
+To write a closed-form solution for $q(t)$, we consider the undamped case ($R=0$) with a sinusoidal excitation:
+\begin{equation}
+E(t)=E_0\sin(\omega t)
+\end{equation}
+Substituting $i(t)=\frac{dq}{dt}$ into the original equation yields a second-order equation for the charge:
+\begin{equation}
+L\,\frac{d^2q(t)}{dt^2}+\frac{1}{C}q(t)=E_0\sin(\omega t)
+\end{equation}
+Defining the natural frequency of the system as:
+\begin{equation}
+p=\frac{1}{\sqrt{LC}}
+\end{equation}
+and using initial conditions $q(0)=0$ and $i(0)=\dot q(0)=0$, the solution for $\omega\neq p$ can be written as:
+$$
+q(t)=\frac{E_0}{L\,(p^2-\omega^2)}\sin(\omega t)-\frac{E_0}{L\,(p^2-\omega^2)}\,\frac{\omega}{p}\sin(pt)
+$$
+
+\begin{equation}
+q(t)=A\,\sin(\omega t)+B\,\sin(pt)
+\end{equation}
+where the constants are defined by:
+\begin{equation}
+A=\frac{E_0}{L\,(p^2-\omega^2)},\qquad
+B=-\frac{E_0}{L\,(p^2-\omega^2)}\,\frac{\omega}{p}
+\end{equation}
+
+
+\section{Methodology}
+\subsection{Exam I - Gauss-Jordan and Newton-Raphson}
+In this exam, methods were used to solve (i) linear systems and (ii) a nonlinear equation.
+
+\subsubsection{Gauss-Jordan (linear system)}
+The procedure followed for Gauss-Jordan was:
+\begin{itemize}
+    \item Express the system in matrix form $A\mathbf{x}=\mathbf{b}$ (or augmented matrix $[A\,|\,\mathbf{b}]$).
+    \item Apply elementary row operations to reduce $A$ to reduced row echelon form (RREF), ideally with partial pivoting if needed.
+    \item Read the solution $\mathbf{x}$ directly from the resulting matrix (ideally $[I\,|\,\mathbf{x}]$).
+\end{itemize}
+
+\subsubsection{Newton-Raphson (nonlinear equation)}
+To find the root of $f(R)=0$, the iteration used was:
+\begin{equation}
+R_{k+1}=R_k-\frac{f(R_k)}{f'(R_k)}
+\end{equation}
+where $R_0$ is an initial estimate and the stopping criterion can be, for example, $|R_{k+1}-R_k|<\varepsilon$ or $|f(R_k)|<\varepsilon$. This method converges quickly near the root, but it depends on a suitable choice of $R_0$ and on $f'(R_k)\neq 0$.
+
+\subsubsection{Jacobi and Gauss-Seidel (iterative comparison)}
+In addition, to compare iterative methods for linear systems, the Jacobi and Gauss-Seidel schemes were described. For Jacobi, one begins with an initial guess and updates all variables using the values from the previous iteration. In Gauss-Seidel, by contrast, the variables are updated as they are computed, which can accelerate convergence. Convergence depends on properties of $A$ (for example, diagonal dominance or symmetric positive definite).
+Both methods use the following formulas to update the variables. In this case we show a 3x3 matrix, but it can be generalized to matrices of any size, using the matrix shown below:
+
+$$
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} & | & x_1 \\
+a_{21} & a_{22} & a_{23} & | & x_2 \\
+a_{31} & a_{32} & a_{33} & | & x_3 \\
+\end{bmatrix}
+$$
+
+The update formulas for each variable are:
+$$\begin{aligned}
+x_1&= \dfrac{b_1-a_{12}x_2-a_{13}x_3}{a_{11}}\\
+x_2&= \dfrac{b_2-a_{21}x_1-a_{23}x_3}{a_{22}}\\
+x_3&= \dfrac{b_3-a_{31}x_1-a_{32}x_2}{a_{33}}\\
+\end{aligned}
+$$
+
+For the Gauss-Seidel method, the variables are updated as they are computed, which can accelerate convergence in some cases. However, the Gauss-Seidel method can be more difficult to implement and may not converge for certain types of systems. In general, both methods are useful for solving systems of linear equations, but the choice between them depends on the system characteristics and the convergence and efficiency requirements.
+
+
+
+
+
+\begin{figure}[!!h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+    \includegraphics[width=0.8\linewidth]{Mate JP//src/GaussSeidel.png}
+    \caption{Gauss-Seidel method.}
+
+        \label{fig:OR}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{Mate JP/src/Jacobi.png}
+        \caption{Jacobi method.}
+        \label{fig:AND}
+    \end{minipage}
+\end{figure}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.62\linewidth]{Mate JP//src/p3.png}
+    \caption{Graphical solution}
+    \label{fig:placeholder}
+\end{figure}
+\newpage
+\subsection{Exam II - Newton Interpolation}
+
+In this section, Newton interpolation was used to estimate intermediate values of the system response $f(t)$ (obtained from $F(s)$) without having to recompute the inverse Laplace for each time instant. The general methodology of the method is as follows:
+
+\subsubsection{Input data}
+We start from a set of sampled points $\{(t_i, y_i)\}_{i=0}^{n}$, where $t_i$ are instants within the interval of interest and $y_i=f(t_i)$ is the signal value at those instants.
+
+\subsubsection{Divided differences computation}
+The divided differences table is constructed. For the first level:
+\begin{equation}
+f[t_i]=y_i
+\end{equation}
+and for higher levels:
+\begin{equation}
+f[t_i,t_{i+1},\dots,t_{i+k}]=\frac{f[t_{i+1},\dots,t_{i+k}]-f[t_i,\dots,t_{i+k-1}]}{t_{i+k}-t_i}
+\end{equation}
+The coefficients of the Newton polynomial are precisely the elements of the first row: $f[t_0]$, $f[t_0,t_1]$, $f[t_0,t_1,t_2]$, etc.
+
+\subsubsection{Constructing the interpolating polynomial}
+With the divided differences, the polynomial is assembled in its Newton form:
+\begin{equation}
+P_n(t)=f[t_0]+
+f[t_0,t_1](t-t_0)+
+f[t_0,t_1,t_2](t-t_0)(t-t_1)+\cdots+
+f[t_0,\dots,t_n]\prod_{j=0}^{n-1}(t-t_j)
+\end{equation}
+This form is convenient because if a new point $(t_{n+1},y_{n+1})$ is added, it is not necessary to rebuild everything: it is enough to compute the new level of divided differences and add one more term.
+
+\subsubsection{Evaluation and practical use}
+Finally, for an intermediate instant $t^{\ast}$, $P_n(t^{\ast})$ is evaluated as an approximation of $f(t^{\ast})$. To maintain numerical stability and good accuracy, it is recommended to:
+\begin{itemize}
+    \item Interpolate within the range $[t_0,t_n]$ (avoid extrapolation).
+    \item Use a moderate number of points (high degree can introduce oscillations).
+    \item Choose nodes near $t^{\ast}$ if local interpolation is required.
+\end{itemize}
+The theoretical error of the interpolant is given by:
+\begin{equation}
+E_n(t)=f(t)-P_n(t)=\frac{f^{(n+1)}(\xi)}{(n+1)!}\prod_{i=0}^{n}(t-t_i),\qquad \xi\in[t_0,t_n]
+\end{equation}
+which shows that the error depends both on the smoothness of $f(t)$ and on the selection/spacing of the points $t_i$.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Mate JP//src/Interpol.png}
+    \caption{Function plot}
+    \label{fig:placeholder}
+\end{figure}
+
+\subsection{Exam III - Integration and Differential Equations}
+
+In this exam, numerical integration was applied to approximate the root-mean-square (RMS) value of a sinusoidal signal. In particular, the integral considered is:
+\begin{equation}
+I_{\mathrm{RMS}}^{2}=\frac{2}{T}\int_{0}^{T/2} i(t)^{2}\,dt,
+\qquad i(t)=i_{\max}\sin(\omega t+\phi)
+\end{equation}
+where $T$ is the period (for an ideal sinusoid $T=\frac{2\pi}{\omega}$). The reason for integrating over $[0,\,T/2]$ and multiplying by $\tfrac{2}{T}$ is to exploit the periodicity and symmetry of $i(t)^2$.
+
+\subsubsection{Trapezoidal rule}
+The function to be integrated is defined as:
+\begin{equation}
+g(t)=i(t)^{2}=i_{\max}^{2}\sin^{2}(\omega t+\phi)
+\end{equation}
+The interval $[0,\,T/2]$ is divided into $n$ uniform subintervals, with:
+\begin{equation}
+h=\frac{T}{2n},\qquad t_k=kh,\quad k=0,1,\dots,n
+\end{equation}
+The integral is approximated by:
+\begin{equation}
+\int_{0}^{T/2} g(t)\,dt\;\approx\;\frac{h}{2}\left[g(t_0)+2\sum_{k=1}^{n-1} g(t_k)+g(t_n)\right]
+\end{equation}
+Therefore, the RMS is estimated as:
+\begin{equation}
+I_{\mathrm{RMS}}\;\approx\;\sqrt{\frac{2}{T}\cdot\frac{h}{2}\left[g(t_0)+2\sum_{k=1}^{n-1} g(t_k)+g(t_n)\right]}
+\end{equation}
+For smooth functions, the trapezoidal rule converges with global error of order $\mathcal{O}(h^2)$, so increasing $n$ improves the approximation.
+
+As a reference, the mean value of $\sin^2(\cdot)$ over a half period is $\tfrac{1}{2}$, so:
+\begin{equation}
+I_{\mathrm{RMS}}^{2}=\frac{2}{T}\int_{0}^{T/2} i_{\max}^{2}\sin^{2}(\omega t+\phi)\,dt=\frac{i_{\max}^{2}}{2}
+\quad\Rightarrow\quad
+I_{\mathrm{RMS}}=\frac{i_{\max}}{\sqrt{2}}
+\end{equation}
+The result does not depend on $\phi$, which serves as a validation criterion for the numerical integration.
+
+
+\subsubsection{Differential equations}
+The following equation is considered:
+$$
+q(t)=\frac{E_0}{L\,(p^2-\omega^2)}\sin(\omega t)-\frac{E_0}{L\,(p^2-\omega^2)}\,\frac{\omega}{p}\sin(pt)
+$$
+
+With the following constants considered:
+$$
+\begin{aligned}
+L&=1\,\mathrm{H}\\
+C&=0.25\,\mathrm{F}\\
+E_0&=1\,\mathrm{V}\\
+\omega^2&=3.5\,\mathrm{s}^{-2}\\
+\end{aligned}
+$$
+Then $p=2\,\mathrm{s}^{-1}$, $\omega\approx 1.8708\,\mathrm{s}^{-1}$, and $K=2$, so:
+\begin{equation}
+q(t)=2\sin(1.8708\,t)-1.8708\sin(2t)
+\end{equation}
+The expected signal is as follows.
+% figure in two columns
+\begin{figure}[!h]
+    \centering
+    \begin{minipage}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Mate JP//src/Edo.png}
+        \caption{Plot of the obtained function}
+        \label{fig:edo_funcion}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{Mate JP//src/Obtenida.png}
+        \caption{Signal obtained on the microcontroller}
+        \label{fig:senal_micro}
+    \end{minipage}
+\end{figure}\newpage
+\section{Tools Used}
+This section details the tools that were used in addition to the circuit.
+\subsection{Circuit}
+For the circuit portion, an ARM STM32F411CEU6 commonly known as Black Pill was used, along with a 1.8-inch SPI TFT screen and an FTDI converter to convert USB to UART. The circuit is shown in Figure \ref{fig:Circuito}.
+This circuit was useful for all the exams since it is a simple interface for communicating with the microcontroller.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.5\linewidth,angle=90]{Mate JP//src/Tools.png}
+    \caption{Circuit used}
+    \label{fig:Circuito}
+\end{figure}
+
+\subsection{Software}
+In the Software section, \textbf{STM32CUBEIDE} was used to program the microcontroller, along with the TFT library to display the signal on the screen. For the calculations, \textbf{Jupyter Notebook} (Python) notebooks with the NumPy and Matplotlib libraries were used to compute and plot the results.
+
+\textbf{Visual Studio} was also used to edit the numerical methods code. It is important to mention this because of the simplicity of file handling. In addition, versioning through \textbf{GitHub} made it easier to manage versions and track changes in the code. The repository with the source code of the numerical methods implemented in C++ and Python, as well as the scripts for generating plots and results, is attached.
+\href{https://github.com/DasReyxr/C-Cpp/tree/main/Metodos/3ExamenTrapecioRaltson}{\faGithub\ Source code}
+
+
+
+For documentation, everything was done in \LaTeX, using the \texttt{sn-jnl} document class and a custom configuration for math and graphics. Packages such as \texttt{amsmath}, \texttt{graphicx}, and \texttt{hyperref} were used to improve the presentation and organization of the content.
+
+\newpage
+\section{EXTRA Topic - CORDIC}
+CORDIC (\textit{COordinate Rotation DIgital Computer}) is an iterative algorithm for computing trigonometric functions (and by extension other functions such as $\arctan$, $\sinh$, $\cosh$, etc.) using \textbf{only additions, subtractions, comparisons, and shifts} (\textit{shift} operations). This makes it especially useful in digital hardware (FPGA/ASIC) or embedded systems where a general multiplication/division is costly.
+
+The central idea is as follows: if a vector $(x,y)$ can be \textbf{rotated} by an angle $\theta$ efficiently, then by rotating an appropriate initial vector we can obtain $\cos(\theta)$ and $\sin(\theta)$ directly. Below we show how we arrive at the form that enables rotation without multipliers.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Mate JP//src/Doble Angle.png}
+    \caption{Double-angle identity}
+    \label{fig:placeholder}
+\end{figure}
+We start from the geometric interpretation of the vector $(x,y)$ in polar coordinates. If $r=\sqrt{x^{2}+y^{2}}$, then:
+$$\cos (\theta) = \dfrac{x}{r} \quad \cos (\theta+ \alpha ) = \dfrac{x'}{r} \quad \sin (\theta) = \dfrac{y}{r} \quad \sin (\theta+ \alpha ) = \dfrac{y'}{r}$$
+$$ x = r \cos (\theta) \quad x' = r \cos (\theta+ \alpha ) \quad y = r \sin (\theta) \quad y' = r \sin (\theta+ \alpha )$$
+Thus, we transform our equations for $x'$ and $y'$ using the double-angle identity, obtaining:
+$$
+\begin{aligned}
+x' &= r \cos (\theta+ \alpha ) = r [\cos (\theta) \cos (\alpha ) - \sin (\theta) \sin (\alpha )] = x \cos (\alpha ) - y \sin (\alpha )\\
+y' &= r \sin (\theta+ \alpha ) = r [\sin (\theta) \cos (\alpha ) + \cos (\theta) \sin (\alpha )] = y \cos (\alpha ) + x \sin (\alpha )\\    
+\end{aligned}
+$$
+These equations describe a \textbf{rotation} of the vector $(x,y)$ by an angle $\alpha$. In matrix form:
+$$
+\begin{bmatrix}
+x' \\
+y' \\
+\end{bmatrix}=
+\begin{bmatrix}
+\cos (\alpha ) & - \sin (\alpha ) \\
+\sin (\alpha ) & \cos (\alpha ) \\
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y \\
+\end{bmatrix}
+=
+\cos \alpha 
+\begin{bmatrix}
+1 & -\tan (\alpha ) \\
+\tan (\alpha ) & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y \\
+\end{bmatrix}
+$$
+
+The factorization above is key: if we can make $\tan(\alpha)$ a power of 2, then the product $\tan(\alpha)\,x$ or $\tan(\alpha)\,y$ can be implemented as a \textbf{shift}.
+
+For small values of $\alpha$, $\tan(\alpha)\approx \alpha$. In CORDIC, arbitrary angles are not used at each step; instead, a set of predefined \textbf{micro-rotations} is used with:
+$$
+\alpha_i = \arctan(2^{-i}) \quad \Rightarrow \quad \tan(\alpha_i)=2^{-i}
+$$
+Thus, in step $i$ the multiplication by $\tan(\alpha_i)$ is implemented as a right shift by $i$ bits (equivalent to multiplying by $2^{-i}$). This explains why the CORDIC method is efficient: it replaces products with shifts and additions.
+
+\begin{equation}
+tan_{val} = \tan (\alpha ) \approx \alpha \approx 2^{-i} \approx  tan_{val}>> i
+\label{eq:tan}
+\end{equation}
+
+$$
+\tan \alpha \approx 2^{-i} \Rightarrow \alpha \approx \arctan(2^{-i})
+$$
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Mate JP//src/tan.png}
+    \caption{Arctangent micro-rotations}
+    \label{fig:tan}
+\end{figure}
+
+On the other hand, for the term $\cos(\alpha)$ we note that the sign of the angle does not matter, since $\cos(\alpha)=\cos(-\alpha)$. Using $\tan(\alpha_i)=2^{-i}$:
+
+$$
+K = \cos (\alpha) \approx \cos (\arctan(2^{-i})) =\dfrac{1}{\sqrt{1+\tan^2 (\alpha )}} = \dfrac{1}{\sqrt{1+2^{-2i}}}
+$$
+
+As the iterations proceed, each micro-rotation introduces a scale factor $K_i=\cos(\alpha_i)=\dfrac{1}{\sqrt{1+2^{-2i}}}$. The accumulated product of these scales is a constant (for a fixed number of iterations) that can be precomputed and compensated.
+$$
+K_N= \prod_{i=0}^{N-1} \dfrac{1}{\sqrt{1+2^{-2i}}} \approx 0.607253\quad (N\ \text{large})
+$$
+Thus, our matrix system becomes:
+$$
+\begin{bmatrix}x' \\
+y' \\
+\end{bmatrix}=
+K
+\begin{bmatrix}1 & -tan_{val}>>i \\
+tan_{val}>>i & 1 \\
+\end{bmatrix}
+$$
+
+\subsection{Algorithm iterations (rotation mode)}
+In practice, CORDIC does not apply a single large rotation; instead it approximates $\theta$ as a sum/subtraction of the angles $\alpha_i$:
+$$\theta \approx \sum_{i=0}^{N-1} d_i\,\alpha_i, \qquad d_i\in\{-1,+1\}$$
+In this way, a residual angle $z_i$ is defined and the sign $d_i$ is chosen at each iteration to drive $z_i$ toward zero. The iterative equations (rotation mode) are:
+\begin{equation}
+\begin{aligned}
+x_{i+1} &= x_i - d_i\, y_i\,2^{-i}\\
+y_{i+1} &= y_i + d_i\, x_i\,2^{-i}\\
+z_{i+1} &= z_i - d_i\,\arctan(2^{-i})
+\end{aligned}
+\end{equation}
+where typically $z_0=\theta$ and $d_i=\operatorname{sign}(z_i)$. Note that $2^{-i}$ is implemented as a right shift.
+
+\subsection{Obtaining $\sin(\theta)$ and $\cos(\theta)$}
+After $N$ iterations, the resulting vector is proportional to the desired rotation:
+$$
+\begin{bmatrix}x_N\\y_N\end{bmatrix}
+=K_N
+\begin{bmatrix}\cos(\theta)\\\sin(\theta)\end{bmatrix}
+$$
+Therefore, if we start with $(x_0,y_0)=(1,0)$, at the end we get $(x_N,y_N)=(K_N\cos\theta,\,K_N\sin\theta)$. To compensate the gain and obtain $(\cos\theta,\sin\theta)$ directly, there are two common options:
+\begin{itemize}
+    \item \textbf{Pre-scale the initial vector}: use $(x_0,y_0)=(K_N,0)$, for example $(0.607253,0)$ for large $N$.
+    \item \textbf{Post-scale at the end}: divide by $K_N$ (or multiply by $1/K_N$) once the iterations are finished.
+\end{itemize}
+
+Finally, to compute sine and cosine, CORDIC can rotate an initial vector (for example $(0.607253, 0)$) by a desired angle $\theta$, thus obtaining the coordinates $(\cos(\theta), \sin(\theta))$ with simple operations. This leads us to our IP.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Mate JP//src/IP Pinout.png}
+    \caption{CORDIC IP}
+    \label{fig:placeholder}
+\end{figure}
+\end{document}
+
