@@ -1,0 +1,18 @@
+{
+    "type": "cortex-debug",
+    "request": "launch",
+    "name": "Cortex-Debug: OpenOCD (Blackpill)",
+    "servertype": "openocd",
+    "cwd": "${workspaceFolder}",
+    // Apunta al .elf generado por tu CMake/Ninja
+    "executable": "build/Debug/12TouchScreen.elf", 
+    "interface": "swd",
+    "device": "STM32F411CE",
+    "configFiles": [
+        "interface/stlink.cfg",
+        "target/stm32f4x.cfg"
+    ],
+    // Aquí está el truco de magia para la Blackpill:
+    "connectUnderReset": true,
+    "runToEntryPoint": "main"
+}
