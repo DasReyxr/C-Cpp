@@ -17,8 +17,8 @@
 #define ILI9341_TOUCH_SPI_PORT hspi1
 extern SPI_HandleTypeDef ILI9341_TOUCH_SPI_PORT;
 
-#define ILI9341_TOUCH_IRQ_Pin       GPIO_PIN_4 // Arduino D5
-#define ILI9341_TOUCH_IRQ_GPIO_Port GPIOB
+#define ILI9341_TOUCH_IRQ_Pin       GPIO_PIN_9 // Arduino D5
+#define ILI9341_TOUCH_IRQ_GPIO_Port GPIOA
 #define ILI9341_TOUCH_CS_Pin        GPIO_PIN_10 // Arduino D2
 #define ILI9341_TOUCH_CS_GPIO_Port  GPIOA
 
@@ -27,11 +27,23 @@ extern SPI_HandleTypeDef ILI9341_TOUCH_SPI_PORT;
 #define ILI9341_TOUCH_SCALE_Y 320
 
 // to calibrate uncomment UART_Printf line in ili9341_touch.c
+// 240 32 4455 30110 
+//0 34 4663 3276
+// 11 296 28862 4587
+// 240 308 29925 30110
+/**/
+
+#define ILI9341_TOUCH_MIN_RAW_X 4500
+#define ILI9341_TOUCH_MAX_RAW_X 30500
+#define ILI9341_TOUCH_MIN_RAW_Y 2680
+#define ILI9341_TOUCH_MAX_RAW_Y 30110
+
+/*
 #define ILI9341_TOUCH_MIN_RAW_X 1500
 #define ILI9341_TOUCH_MAX_RAW_X 31000
 #define ILI9341_TOUCH_MIN_RAW_Y 3276
 #define ILI9341_TOUCH_MAX_RAW_Y 30110
-
+*/
 // call before initializing any SPI devices
 void ILI9341_TouchUnselect();
 

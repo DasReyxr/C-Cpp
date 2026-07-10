@@ -78,5 +78,7 @@ void ILI9341_FillRectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint1
 void ILI9341_FillScreen(uint16_t color);
 void ILI9341_DrawImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, const uint16_t* data);
 void ILI9341_InvertColors(bool invert);
+void ILI9341_FillCircle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t color);
+void ILI9341_DrawCircle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t color);
 
 #endif /* ILI9341_H_ */

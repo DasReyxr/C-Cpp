@@ -54,7 +54,7 @@ bool ILI9341_TouchGetCoordinates(uint16_t* x, uint16_t* y) {
 
     ILI9341_TouchUnselect();
 
-    if(nsamples < 16)
+    if(nsamples == 0)
         return false;
 
     uint32_t raw_x = (avg_x / 16);
@@ -62,14 +62,14 @@ bool ILI9341_TouchGetCoordinates(uint16_t* x, uint16_t* y) {
     if(raw_x > ILI9341_TOUCH_MAX_RAW_X) raw_x = ILI9341_TOUCH_MAX_RAW_X;
 
     uint32_t raw_y = (avg_y / 16);
-    if(raw_y < ILI9341_TOUCH_MIN_RAW_X) raw_y = ILI9341_TOUCH_MIN_RAW_Y;
+    if(raw_y < ILI9341_TOUCH_MIN_RAW_Y) raw_y = ILI9341_TOUCH_MIN_RAW_Y;
     if(raw_y > ILI9341_TOUCH_MAX_RAW_Y) raw_y = ILI9341_TOUCH_MAX_RAW_Y;
 
-    // Uncomment this line to calibrate touchscreen:
-    // UART_Printf("raw_x = %d, raw_y = %d\r\n", x, y);
+  
+    *x = ((raw_y - ILI9341_TOUCH_MIN_RAW_Y) * 240) /
+        (ILI9341_TOUCH_MAX_RAW_Y - ILI9341_TOUCH_MIN_RAW_Y);
 
-    *x = (raw_x - ILI9341_TOUCH_MIN_RAW_X) * ILI9341_TOUCH_SCALE_X / (ILI9341_TOUCH_MAX_RAW_X - ILI9341_TOUCH_MIN_RAW_X);
-    *y = (raw_y - ILI9341_TOUCH_MIN_RAW_Y) * ILI9341_TOUCH_SCALE_Y / (ILI9341_TOUCH_MAX_RAW_Y - ILI9341_TOUCH_MIN_RAW_Y);
-
+    *y = ((raw_x - ILI9341_TOUCH_MIN_RAW_X) * 320) /
+        (ILI9341_TOUCH_MAX_RAW_X - ILI9341_TOUCH_MIN_RAW_X);
     return true;
 }

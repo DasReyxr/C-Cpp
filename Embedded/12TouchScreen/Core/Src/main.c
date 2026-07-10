@@ -26,7 +26,6 @@
 #include "ili9341.h"
 #include "ili9341_touch.h"
 #include "fonts.h"
-#include "testimg.h"
 
 /* USER CODE END Includes */
 
@@ -101,6 +100,16 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
   init();
+  ILI9341_FillScreen(ILI9341_BLACK);
+  
+
+
+  uint16_t touchX;
+  uint16_t touchY;
+
+    uint16_t lastX = 0;
+    uint16_t lastY = 0;
+  ILI9341_WriteString(0, 3*10, "El juanpedrorodriguez", Font_11x18, ILI9341_GREEN, ILI9341_BLACK);
 
   /* USER CODE END 2 */
 
@@ -112,77 +121,22 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-   // Check border
-  ILI9341_FillScreen(ILI9341_BLACK);
-  ILI9341_FillRectangle(0, 0, ILI9341_WIDTH, ILI9341_HEIGHT, ILI9341_RED);
-  
-  for(int x = 0; x < ILI9341_WIDTH; x++) {
-      ILI9341_DrawPixel(x, 0, ILI9341_RED);
-      ILI9341_DrawPixel(x, ILI9341_HEIGHT-1, ILI9341_RED);
-  }
 
-  for(int y = 0; y < ILI9341_HEIGHT; y++) {
-      ILI9341_DrawPixel(0, y, ILI9341_RED);
-      ILI9341_DrawPixel(ILI9341_WIDTH-1, y, ILI9341_RED);
-  }
+    if (ILI9341_TouchPressed())
+    {
+        if (ILI9341_TouchGetCoordinates(&touchX, &touchY))
+        {
+        // Borra el punto anterior (opcional)
+        ILI9341_FillCircle(lastX, lastY, 4, ILI9341_BLACK);
 
-  HAL_Delay(1000);
-  ILI9341_WriteString(0, 3*10, " WELCOM TO MY CHANNEL", Font_11x18, ILI9341_GREEN, ILI9341_BLACK);
-    ILI9341_WriteString(0, 6*10, " THE EMBEDDED THINGS", Font_11x18, ILI9341_GREEN, ILI9341_BLACK);
-    ILI9341_WriteString(0, 9*10, "       PLEASE", Font_11x18, ILI9341_GREEN, ILI9341_BLACK);
-    ILI9341_WriteString(0, 12*10, "   LIKE && SUBSCRIBE", Font_11x18, ILI9341_GREEN, ILI9341_BLACK);
-    ILI9341_WriteString(0, 15*10,"  Thank you ", Font_16x26, ILI9341_RED, ILI9341_BLACK);
-    ILI9341_WriteString(0, 18*10,"   (*^_-*) ", Font_16x26, ILI9341_RED, ILI9341_BLACK);
-    HAL_Delay(3000);
+        // Dibuja el nuevo
+        ILI9341_FillCircle(touchX, touchY, 4, ILI9341_RED);
 
-  // Check fonts
-  ILI9341_FillScreen(ILI9341_BLACK);
-  ILI9341_WriteString(0, 0, "Font_7x10, HELLO", Font_7x10, ILI9341_RED, ILI9341_BLACK);
-  ILI9341_WriteString(0, 3*10, "Font_11x18, HELLO", Font_11x18, ILI9341_GREEN, ILI9341_BLACK);
-  ILI9341_WriteString(0, 3*10+3*18, "Font_16x26,HELLO", Font_16x26, ILI9341_BLUE, ILI9341_BLACK);
-
-  HAL_Delay(1000);
-  ILI9341_InvertColors(true);
-  HAL_Delay(1000);
-  ILI9341_InvertColors(false);
-
-  HAL_Delay(5000);
-
-  // Check colors
-  ILI9341_FillScreen(ILI9341_WHITE);
-  ILI9341_WriteString(0, 0, "WHITE", Font_11x18, ILI9341_BLACK, ILI9341_WHITE);
-  HAL_Delay(500);
-
-  ILI9341_FillScreen(ILI9341_BLUE);
-  ILI9341_WriteString(0, 0, "BLUE", Font_11x18, ILI9341_BLACK, ILI9341_BLUE);
-  HAL_Delay(500);
-
-  ILI9341_FillScreen(ILI9341_RED);
-  ILI9341_WriteString(0, 0, "RED", Font_11x18, ILI9341_BLACK, ILI9341_RED);
-  HAL_Delay(500);
-
-  ILI9341_FillScreen(ILI9341_GREEN);
-  ILI9341_WriteString(0, 0, "GREEN", Font_11x18, ILI9341_BLACK, ILI9341_GREEN);
-  HAL_Delay(500);
-
-  ILI9341_FillScreen(ILI9341_CYAN);
-  ILI9341_WriteString(0, 0, "CYAN", Font_11x18, ILI9341_BLACK, ILI9341_CYAN);
-  HAL_Delay(500);
-
-  ILI9341_FillScreen(ILI9341_MAGENTA);
-  ILI9341_WriteString(0, 0, "MAGENTA", Font_11x18, ILI9341_BLACK, ILI9341_MAGENTA);
-  HAL_Delay(500);
-
-  ILI9341_FillScreen(ILI9341_YELLOW);
-  ILI9341_WriteString(0, 0, "YELLOW", Font_11x18, ILI9341_BLACK, ILI9341_YELLOW);
-  HAL_Delay(500);
-
-  ILI9341_FillScreen(ILI9341_BLACK);
-  ILI9341_WriteString(0, 0, "BLACK", Font_11x18, ILI9341_WHITE, ILI9341_BLACK);
-  HAL_Delay(500);
-
-  ILI9341_DrawImage((ILI9341_WIDTH - 240) / 2, (ILI9341_HEIGHT - 240) / 2, 240, 240, (const uint16_t*)test_img_240x240);
-  HAL_Delay(3000);
+        lastX = touchX;
+        lastY = touchY;
+    }
+}
+    
   }
   /* USER CODE END 3 */
 }
@@ -251,7 +205,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -295,7 +249,22 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
+  /* Touch CS */
+  GPIO_InitStruct.Pin = ILI9341_TOUCH_CS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(ILI9341_TOUCH_CS_GPIO_Port, &GPIO_InitStruct);
 
+  HAL_GPIO_WritePin(ILI9341_TOUCH_CS_GPIO_Port,
+                    ILI9341_TOUCH_CS_Pin,
+                    GPIO_PIN_SET);
+
+  /* Touch IRQ */
+  GPIO_InitStruct.Pin = ILI9341_TOUCH_IRQ_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;      // prueba primero con PULLUP
+  HAL_GPIO_Init(ILI9341_TOUCH_IRQ_GPIO_Port, &GPIO_InitStruct);
   /* USER CODE END MX_GPIO_Init_2 */
 }
 
