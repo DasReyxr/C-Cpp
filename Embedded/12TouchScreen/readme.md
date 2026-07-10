@@ -54,3 +54,6 @@ https://cdn-shop.adafruit.com/datasheets/ST7735.pdf
 https://tams.informatik.uni-hamburg.de/lectures/2023ss/vorlesung/es/doc/ST7735R_v1-4.pdf
 
 https://files.chinaaet.com/files/blog/2019/20171113/1000019445-6364619057348172968045385.pdf
+https://www.hackster.io/theembeddedthings/embedded-graphics-display-stm32-and-ili9341-tft-integration-0551bb
+https://naylampmechatronics.com/blog/26_tutorial-pantalla-tft-tactil-con-arduino.html
+https://newhavendisplay.com/content/app_notes/ILI9341.pdf
