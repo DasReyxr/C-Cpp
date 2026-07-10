@@ -1,5 +1,4 @@
-# 12 TouchScreen
-# ILI9341 + XPT2046 Touch Pinout
+# 12 TouchScreen ILI9341 + XPT2046 Touch Pinout
 ## STM32F411 BlackPill
 
 Configuración:
@@ -49,3 +48,9 @@ Configuración:
 ---
 
 ## SPI Configuration (CubeMX)
+
+# Resources
+https://cdn-shop.adafruit.com/datasheets/ST7735.pdf
+https://tams.informatik.uni-hamburg.de/lectures/2023ss/vorlesung/es/doc/ST7735R_v1-4.pdf
+
+https://files.chinaaet.com/files/blog/2019/20171113/1000019445-6364619057348172968045385.pdf
