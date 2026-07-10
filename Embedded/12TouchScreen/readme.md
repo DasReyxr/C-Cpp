@@ -1,7 +1,51 @@
 # 12 TouchScreen
-| Use Case                  | SPI Clock                                              |
-| ------------------------- | ------------------------------------------------------ |
-| Safe, always works        | **8–10 MHz**                                           |
-| Typical STM32 projects    | **18–24 MHz**                                          |
-| Fast and usually reliable | **30–42 MHz**                                          |
-| Aggressive/optimized      | **48–65 MHz** (depends on module, wiring, PCB quality) |
+# ILI9341 + XPT2046 Touch Pinout
+## STM32F411 BlackPill
+
+Configuración:
+- LCD ILI9341 por SPI
+- Touch resistivo XPT2046 por el mismo bus SPI
+- STM32 configurado como SPI Master Full Duplex
+- CS independientes para LCD y Touch
+
+---
+
+## SPI Bus (Compartido)
+
+| STM32F411 | SPI | ILI9341 LCD | XPT2046 Touch | Función |
+|---|---|---|---|---|
+| PA5 | SPI1_SCK | SCK | T_CLK | Reloj SPI |
+| PA6 | SPI1_MISO | SDO | T_DO | Datos recibidos |
+| PA7 | SPI1_MOSI | SDI | T_DIN | Datos enviados |
+
+---
+
+## LCD ILI9341
+
+| Pin LCD | STM32F411 | Función |
+|---|---|---|
+| VCC | 3.3V | Alimentación |
+| GND | GND | Tierra |
+| CS | PA4 (ejemplo) | Chip Select LCD |
+| RESET | PA2 (ejemplo) | Reset LCD |
+| DC | PA3 (ejemplo) | Data/Command |
+| SCK | PA5 | SPI Clock |
+| SDI (MOSI) | PA7 | SPI MOSI |
+| SDO (MISO) | PA6 | SPI MISO |
+| LED | 3.3V | Backlight |
+
+---
+
+## Touch XPT2046
+
+| Pin Touch | STM32F411 | Función |
+|---|---|---|
+| T_CS | PA10 | Chip Select Touch |
+| T_CLK | PA5 | SPI Clock |
+| T_DIN | PA7 | SPI MOSI |
+| T_DO | PA6 | SPI MISO |
+| T_IRQ | PA9 | Touch interrupt |
+
+---
+
+## SPI Configuration (CubeMX)
