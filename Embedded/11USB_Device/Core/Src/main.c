@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "usbd_hid.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -32,7 +32,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define POT_Mode 
+#define ENC_Mode
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -44,6 +45,23 @@
 ADC_HandleTypeDef hadc1;
 
 /* USER CODE BEGIN PV */
+extern USBD_HandleTypeDef hUsbDeviceFS; 
+// Estructura del reporte (2 byte)
+// Bit 0: Volumen Up, Bit 1: Volumen Down, Bits 2-7: Relleno
+uint8_t buffer_media[2] = {0,0}; 
+
+#ifdef POT_Mode
+uint16_t currentRead = 0;
+uint16_t previousRead = 0;
+const uint16_t noiseTreshold = 70; // Ajusta según el ruido de tu ADC de 12 bits
+#endif
+
+#ifdef ENC_Mode
+uint8_t currentB;
+uint8_t previousB;
+#endif
+
+
 
 /* USER CODE END PV */
 
@@ -92,7 +110,11 @@ int main(void)
   MX_ADC1_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-
+    // 1. Iniciar conversión ADC
+    HAL_ADC_Start(&hadc1);
+    #ifdef ENC_Mode
+    currentB = HAL_GPIO_ReadPin(ENC_B_GPIO_Port, ENC_B_Pin);
+    #endif
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -102,7 +124,72 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    // Asignamos siempre el Report ID 1 en la posición 0 del buffer
+    buffer_media[0] = 0x01; 
+
+    #ifdef POT_Mode
+    if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK)
+    {
+        currentRead = HAL_ADC_GetValue(&hadc1);
+    }
+
+    if (abs((int)currentRead - (int)previousRead) > noiseTreshold)
+    {
+
+    if (currentRead > previousRead)
+    {
+      // Giró a la derecha: Bit 0 en alto (Volume Up) en la posición 1 del buffer
+      buffer_media[1] = 0x01; 
+      USBD_HID_SendReport(&hUsbDeviceFS, buffer_media, 2); // <-- Tamaño 2
+      HAL_Delay(15);
+
+      // Liberar la tecla (Reporte vacío con ID 1)
+      buffer_media[1] = 0x00;
+      USBD_HID_SendReport(&hUsbDeviceFS, buffer_media, 2); // <-- Tamaño 2
+    }
+    else if (currentRead < previousRead)
+    {
+      // Giró a la izquierda: Bit 1 en alto (Volume Down) en la posición 1 del buffer
+      buffer_media[1] = 0x02; 
+      USBD_HID_SendReport(&hUsbDeviceFS, buffer_media, 2); // <-- Tamaño 2
+      HAL_Delay(15);
+
+      // Liberar la tecla
+      buffer_media[1] = 0x00;
+      USBD_HID_SendReport(&hUsbDeviceFS, buffer_media, 2); // <-- Tamaño 2
+    }
+
+    previousRead = currentRead;
   }
+  HAL_Delay(30);
+    #endif
+
+    #ifdef ENC_Mode
+    currentB = HAL_GPIO_ReadPin(ENC_B_GPIO_Port, ENC_B_Pin);
+
+  if (currentB != previousB)
+  {
+    if (HAL_GPIO_ReadPin(ENC_A_GPIO_Port, ENC_A_Pin) != currentB)
+    {
+      buffer_media[1] = 0x01; // Volume Up
+      USBD_HID_SendReport(&hUsbDeviceFS, buffer_media, 2);
+      HAL_Delay(10);
+      buffer_media[1] = 0x00; // Release
+      USBD_HID_SendReport(&hUsbDeviceFS, buffer_media, 2);
+    }
+    else
+    {
+      buffer_media[1] = 0x02; // Volume Down
+      USBD_HID_SendReport(&hUsbDeviceFS, buffer_media, 2);
+      HAL_Delay(10);
+      buffer_media[1] = 0x00; // Release
+      USBD_HID_SendReport(&hUsbDeviceFS, buffer_media, 2);
+    }
+    previousB = currentB;
+  }
+  HAL_Delay(2); // Muestreo más rápido para el encoder
+    #endif
+}
   /* USER CODE END 3 */
 }
 
@@ -175,14 +262,14 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
   hadc1.Init.ScanConvMode = DISABLE;
-  hadc1.Init.ContinuousConvMode = DISABLE;
+  hadc1.Init.ContinuousConvMode = ENABLE;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.NbrOfConversion = 1;
   hadc1.Init.DMAContinuousRequests = DISABLE;
-  hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+  hadc1.Init.EOCSelection = ADC_EOC_SEQ_CONV;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
   {
     Error_Handler();
@@ -210,6 +297,7 @@ static void MX_ADC1_Init(void)
   */
 static void MX_GPIO_Init(void)
 {
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
   /* USER CODE BEGIN MX_GPIO_Init_1 */
 
   /* USER CODE END MX_GPIO_Init_1 */
@@ -217,6 +305,13 @@ static void MX_GPIO_Init(void)
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pins : ENC_A_Pin ENC_B_Pin */
+  GPIO_InitStruct.Pin = ENC_A_Pin|ENC_B_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 

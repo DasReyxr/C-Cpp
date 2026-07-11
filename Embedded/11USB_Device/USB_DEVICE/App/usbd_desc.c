@@ -64,11 +64,11 @@
 
 #define USBD_VID     1155
 #define USBD_LANGID_STRING     1033
-#define USBD_MANUFACTURER_STRING     "STMicroelectronics"
-#define USBD_PID_FS     22315
-#define USBD_PRODUCT_STRING_FS     "STM32 Human interface"
-#define USBD_CONFIGURATION_STRING_FS     "HID Config"
-#define USBD_INTERFACE_STRING_FS     "HID Interface"
+#define USBD_MANUFACTURER_STRING     "DasReyxr"
+#define USBD_PID_FS     0x5740
+#define USBD_PRODUCT_STRING_FS     "Volume Master Knob"
+#define USBD_CONFIGURATION_STRING_FS     "Custom Multimedia IO"
+#define USBD_INTERFACE_STRING_FS     "Eliminalo we"
 
 #define USB_SIZ_BOS_DESC            0x0C
 

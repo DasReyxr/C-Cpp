@@ -216,9 +216,10 @@ __ALIGN_BEGIN static uint8_t USBD_HID_DeviceQualifierDesc[USB_LEN_DEV_QUALIFIER_
   0x00,
 };
 #endif /* USE_USBD_COMPOSITE  */
-__ALIGN_BEGIN uint8_t HID_MOUSE_ReportDesc[USB_HID_MOUSE_REPORT_DESC_SIZE] __ALIGN_END =
+
+__ALIGN_BEGIN static uint8_t HID_MOUSE_ReportDesc[HID_MOUSE_REPORT_DESC_SIZE] __ALIGN_END =
 {
-  0x05, 0x0C,          // USAGE_PAGE (Consumer Devices)
+ 0x05, 0x0C,          // USAGE_PAGE (Consumer Devices)
   0x09, 0x01,          // USAGE (Consumer Control)
   0xA1, 0x01,          // COLLECTION (Application)
   0x85, 0x01,          //   REPORT_ID (1)
