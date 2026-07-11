@@ -66,10 +66,10 @@ bool ILI9341_TouchGetCoordinates(uint16_t* x, uint16_t* y) {
     if(raw_y > ILI9341_TOUCH_MAX_RAW_Y) raw_y = ILI9341_TOUCH_MAX_RAW_Y;
 
   
-    *x = ((raw_y - ILI9341_TOUCH_MIN_RAW_Y) * 240) /
-        (ILI9341_TOUCH_MAX_RAW_Y - ILI9341_TOUCH_MIN_RAW_Y);
-
-    *y = ((raw_x - ILI9341_TOUCH_MIN_RAW_X) * 320) /
+    *x = 320 - ((raw_x - ILI9341_TOUCH_MIN_RAW_X) * 320) /
         (ILI9341_TOUCH_MAX_RAW_X - ILI9341_TOUCH_MIN_RAW_X);
+
+    *y = ((raw_y - ILI9341_TOUCH_MIN_RAW_Y) * 240) /
+        (ILI9341_TOUCH_MAX_RAW_Y - ILI9341_TOUCH_MIN_RAW_Y);
     return true;
 }

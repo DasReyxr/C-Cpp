@@ -61,6 +61,9 @@ void init() {
     ILI9341_TouchUnselect();
     ILI9341_Init();
 }
+
+void test_code();
+void paint_code();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -102,15 +105,6 @@ int main(void)
   init();
   ILI9341_FillScreen(ILI9341_BLACK);
   
-
-
-  uint16_t touchX;
-  uint16_t touchY;
-
-    uint16_t lastX = 0;
-    uint16_t lastY = 0;
-  ILI9341_WriteString(0, 3*10, "El juanpedrorodriguez", Font_11x18, ILI9341_GREEN, ILI9341_BLACK);
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -120,22 +114,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
-
-    if (ILI9341_TouchPressed())
-    {
-        if (ILI9341_TouchGetCoordinates(&touchX, &touchY))
-        {
-        // Borra el punto anterior (opcional)
-        ILI9341_FillCircle(lastX, lastY, 4, ILI9341_BLACK);
-
-        // Dibuja el nuevo
-        ILI9341_FillCircle(touchX, touchY, 4, ILI9341_RED);
-
-        lastX = touchX;
-        lastY = touchY;
-    }
-}
+//    test_code();
+    paint_code();
     
   }
   /* USER CODE END 3 */
@@ -269,7 +249,124 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void test_code(){
+  uint16_t touchX, touchY;
+  uint16_t lastX = 0, lastY = 0; 
 
+  while(1){
+    if (ILI9341_TouchPressed())
+    {
+        if (ILI9341_TouchGetCoordinates(&touchX, &touchY))
+        {
+        // Borra el punto anterior (opcional)
+        ILI9341_FillCircle(lastX, lastY, 4, ILI9341_BLACK);
+
+        // Dibuja el nuevo
+        ILI9341_FillCircle(touchX, touchY, 4, ILI9341_RED);
+
+        lastX = touchX;
+        lastY = touchY;
+    }}
+}
+}
+void paint_code() {
+  
+  uint16_t touchX;
+  uint16_t touchY;
+  uint16_t lastX = 0;
+  uint16_t lastY = 0;
+
+  uint16_t width = 29; uint16_t height = 28;
+  uint16_t RED_X = 234; uint16_t RED_Y = 21;
+  uint16_t BLUE_X = 234; uint16_t BLUE_Y = 66;
+  uint16_t GREEN_X = 275; uint16_t GREEN_Y = 21;
+  uint16_t CYAN_X = 276; uint16_t CYAN_Y = 66;
+  uint16_t MAGENTA_X = 234; uint16_t MAGENTA_Y = 111;
+  uint16_t YELLOW_X = 275; uint16_t YELLOW_Y = 111;
+  uint16_t INC_X = 232; uint16_t INC_Y = 192; 
+  uint16_t DEC_X = 277; uint16_t DEC_Y = 192;
+  uint16_t FRAME_X = 4; uint16_t FRAME_Y = 4; uint16_t FRAME_width = 222;
+  uint16_t size = 4;
+  uint16_t color;
+
+
+ ILI9341_FillRectangle(RED_X, RED_Y, width, height, ILI9341_RED);
+  ILI9341_FillRectangle(BLUE_X, BLUE_Y, width, height, ILI9341_BLUE);
+  ILI9341_FillRectangle(GREEN_X, GREEN_Y, width, height, ILI9341_GREEN);
+  ILI9341_FillRectangle(CYAN_X, CYAN_Y, width, height, ILI9341_CYAN);
+  ILI9341_FillRectangle(MAGENTA_X, MAGENTA_Y, width, height, ILI9341_MAGENTA);
+  ILI9341_FillRectangle(YELLOW_X, YELLOW_Y, width, height, ILI9341_YELLOW);
+  ILI9341_FillRectangle(231, 158, 79, 28, ILI9341_RED);
+  ILI9341_FillRectangle(282, 158, 29, 28, ILI9341_BLUE);
+  ILI9341_WriteString(230, 168, "Gorrador", Font_11x18, ILI9341_WHITE, ILI9341_BLACK);
+  
+  ILI9341_FillRectangle(INC_X, INC_Y, width, height, 0xFC00);
+  ILI9341_FillRectangle(DEC_X, DEC_Y, width, height, 0xFC00);
+
+  ILI9341_FillRectangle(INC_X, INC_Y+width/2, width, 1, 0xFFFF);
+  ILI9341_FillRectangle((INC_X+height/2), INC_Y, 1, height, 0xFFFF);
+  ILI9341_FillRectangle(DEC_X, DEC_Y+width/2, width, 1, 0xFFFF);
+  
+
+  while(1){
+
+
+    if (ILI9341_TouchPressed())
+    {
+        if (ILI9341_TouchGetCoordinates(&touchX, &touchY))
+        {
+          if(touchX >= RED_X && touchX <= RED_X + width &&
+             touchY >= RED_Y && touchY <= RED_Y + height) {
+              color =(ILI9341_RED);
+          } else if(touchX >= BLUE_X && touchX <= BLUE_X + width &&
+                    touchY >= BLUE_Y && touchY <= BLUE_Y + height) {
+              color =(ILI9341_BLUE);
+          } else if(touchX >= GREEN_X && touchX <= GREEN_X + width &&
+                    touchY >= GREEN_Y && touchY <= GREEN_Y + height) {
+              color =(ILI9341_GREEN);
+          } else if(touchX >= CYAN_X && touchX <= CYAN_X + width &&
+                    touchY >= CYAN_Y && touchY <= CYAN_Y + height) {
+              color =(ILI9341_CYAN);
+          } else if(touchX >= MAGENTA_X && touchX <= MAGENTA_X + width &&
+                    touchY >= MAGENTA_Y && touchY <= MAGENTA_Y + height) {
+              color =(ILI9341_MAGENTA);
+          } else if(touchX >= YELLOW_X && touchX <= YELLOW_X + width &&
+                    touchY >= YELLOW_Y && touchY <= YELLOW_Y + height) {
+              color =(ILI9341_YELLOW);
+          } else if(touchX >= 231 && touchX <= 231 + 79 &&
+                    touchY >= 158 && touchY <= 158 + 28) {
+              color =(ILI9341_BLACK);
+          } 
+          else if(touchX >= INC_X && touchX <= INC_X + width &&
+                    touchY >= INC_Y && touchY <= INC_Y + height) {
+              if(size < 40)
+                    size++;
+              else
+                    size = 40;
+          } 
+          else if(touchX >= DEC_X && touchX <= DEC_X + width &&
+                    touchY >= DEC_Y && touchY <= DEC_Y + height) {
+              if(size > 1)
+                    size--;
+              else
+                    size = 1;
+          }
+
+          if(touchX >= FRAME_X && touchX <= FRAME_X + FRAME_width &&
+             touchY >= FRAME_Y && touchY <= FRAME_Y + FRAME_width) {
+              ILI9341_FillCircle(touchX, touchY, size, color);
+          }
+
+        lastX = touchX;
+        lastY = touchY;
+    }
+}
+
+
+  }
+
+   
+}
 /* USER CODE END 4 */
 
 /**

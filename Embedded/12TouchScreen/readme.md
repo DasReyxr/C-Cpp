@@ -47,8 +47,8 @@ Configuración:
 
 ---
 
-## SPI Configuration (CubeMX)
-
+## Demo
+![Demo](src/readme/image.png)
 # Resources
 https://cdn-shop.adafruit.com/datasheets/ST7735.pdf
 https://tams.informatik.uni-hamburg.de/lectures/2023ss/vorlesung/es/doc/ST7735R_v1-4.pdf
