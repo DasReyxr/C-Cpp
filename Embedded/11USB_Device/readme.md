@@ -55,6 +55,6 @@ The project is configured using STM32CubeIDE. The IOC file is included in the pr
 ![IOC](src/readme/image-1.png)
 ## DEMO
 
+<img width="685" height="331" alt="Demo funcional" src="https://github.com/user-attachments/assets/b3d70528-283c-43c8-a1c4-22bcecdcb95f" />
 
-![Demo](https://github.com/user-attachments/assets/b3d70528-283c-43c8-a1c4-22bcecdcb95f)
 
