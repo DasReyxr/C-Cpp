@@ -46,9 +46,15 @@ __ALIGN_BEGIN uint8_t HID_MOUSE_ReportDesc[27] __ALIGN_END = {
 ```
 # Device recognized on linux
 Device recognized on linux as a USB HID device. The device is a custom USB HID device that sends volume up and volume down commands to the host computer.
+
 ![Device Recongized](src/readme/image-2.png)
 
 ## IOC Configuration
 The project is configured using STM32CubeIDE. The IOC file is included in the project and can be opened with STM32CubeIDE to view the configuration.
+
 ![IOC](src/readme/image-1.png)
 ## DEMO
+
+
+![Demo](https://github.com/user-attachments/assets/b3d70528-283c-43c8-a1c4-22bcecdcb95f)
+
