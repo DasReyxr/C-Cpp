@@ -25,9 +25,9 @@ Configuración:
 |---|---|---|
 | VCC | 3.3V | Alimentación |
 | GND | GND | Tierra |
-| CS | PA4 (ejemplo) | Chip Select LCD |
-| RESET | PA2 (ejemplo) | Reset LCD |
-| DC | PA3 (ejemplo) | Data/Command |
+| CS | PA2 | Chip Select LCD |
+| RESET | PA3 | Reset LCD |
+| DC | PA4  | Data/Command |
 | SCK | PA5 | SPI Clock |
 | SDI (MOSI) | PA7 | SPI MOSI |
 | SDO (MISO) | PA6 | SPI MISO |
