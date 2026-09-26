@@ -1,0 +1,5 @@
+../Core/Src/GaussJordan.c:24:19:input	64	static
+../Core/Src/GaussJordan.c:56:6:printMatrix	32	static
+../Core/Src/GaussJordan.c:70:6:Resistivo	56	static
+../Core/Src/GaussJordan.c:106:6:displayGaussJordanSolution	80	static
+../Core/Src/GaussJordan.c:133:8:GaussJordan	48	static

@@ -1,0 +1,5 @@
+../Core/Src/Lineal.c:24:14:eval_poly	2
+../Core/Src/Lineal.c:34:7:get_a0	2
+../Core/Src/Lineal.c:47:7:get_a1	3
+../Core/Src/Lineal.c:66:6:Lineal	6
+../Core/Src/Lineal.c:103:6:Polinomial	24

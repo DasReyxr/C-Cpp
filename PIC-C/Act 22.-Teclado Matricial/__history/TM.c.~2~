@@ -1,0 +1,28 @@
+//----------- MAIN LIBRARY ----------
+      #include <18F4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=4MHz)
+
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+//--Ports-
+#byte Tris_B = 0x0F93 
+//--Var--
+//--Inicio--
+
+void main(){
+         port_B
+         
+         lcd_init();
+         printf(lcd_putc,"Nombres");
+         
+         while(true){
+        
+         }//end while
+         
+}//end main
+  
+   

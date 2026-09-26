@@ -1,0 +1,4 @@
+../Core/Src/examenes.c:27:6:examen1	56	static
+../Core/Src/examenes.c:44:6:examen2	72	static
+../Core/Src/examenes.c:70:7:function	32	static
+../Core/Src/examenes.c:76:6:examen3	232	static

@@ -1,0 +1,36 @@
+//----------- MAIN LIBRARY ----------
+      #INCLUDE <18f4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOMCLR,NOLVP,NOCPD
+#use delay(clock=4000000)
+
+//---------- EXT LIBRARIES -----------
+#include<lcd.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+#byte Port_D = 0X0F83 // Port_D es equivalente a la dirección de RAM 0F83
+#byte Tris_D = 0x0F95 // Tris_D es equivalente a la dirección de RAM 0F95
+//--Var--
+int8 cont= 0x00;
+int8 uni,dec,cen,mil;
+
+//--Inicio--
+void main(){
+   Tris_D = 0x00;//  Set TRISD as OUTPUT
+   Port_D = 0X00; // Leds OFF   
+   lcd_init();
+   printf(lcd_putc,"Hola Orlando");
+   
+   while(true){
+   while(miles<10){
+   lcd_gotoxy(1,2) //Lcd go to position 1,2
+   printf(lcd_putc, "Contador=%1u",miles);
+   delay_ms(100);
+   miles++;
+   }//end miles while
+   miles=0;  
+   }//end while true
+}//end main
+
+
+

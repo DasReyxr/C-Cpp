@@ -1,0 +1,35 @@
+//----------- MAIN LIBRARY ----------
+      #include <18F452.h> 
+//------- FUSES CONFIGURATION -------
+//#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=12MHz)
+
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+
+void main(){
+      lcd_init();
+      int8 Unidades;
+      
+         while(true)
+         {
+         lcd_gotoxy(1,0);
+         printf(lcd_putc,"Netaputomenso");
+         /*
+            while(Unidades<10)
+               
+               {
+               
+                  lcd_gotoxy (1,2);
+                  printf(lcd_putc, "Unidades=%1u",Unidades);
+                  delay_ms(200);
+                  Unidades++;
+                  
+               }   
+    
+            Unidades=0;*/
+    
+         }
+   }
+  
+   

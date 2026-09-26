@@ -1,0 +1,532 @@
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}% Math and Physical Sciences Numbered
+
+\input{generalconfig.tex} % Necessary line to avoid errors  with the next line of code (begin document)
+
+\begin{document}
+
+\title[Article Title]{Examen Métodos Numericos III}
+
+\author{\fnm{Contreras Reyes} \sur{Orlando}}
+
+\affil{\orgdiv{Departamento de Sistemas Electrónicos}, 
+\orgname{Universidad Autónoma de Aguascalientes}, 
+\orgaddress{\street{Av. Universidad 940}, \city{Aguascalientes}, \postcode{20131}, \state{Aguascalientes}, \country{México}}}
+
+\email{al348390@edu.uaa.mx}
+
+
+%%==================================%%
+%% Sample for unstructured abstract %%
+%%==================================%%
+\abstract{This document presents the application of various numerical methods covered in the course, organized by exam. Each section includes a problem statement, the procedure followed, and relevant mathematical expressions. The methods applied include Gauss-Jordan for linear systems, Newton-Raphson for nonlinear equations, Newton's interpolation for estimating values from a Laplace domain function, numerical integration using the trapezoidal rule for calculating RMS current, and Runge-Kutta for solving differential equations. The document also discusses the tools used for implementation and analysis.}
+
+\begin{comment}
+▪ Una introducción al problema y una breve explicación teórica de cada 
+método.  
+▪ La elección de la función ��(��) y la justificación del intervalo [��, ��].  
+▪ Resultados obtenidos y análisis comparativo entre ambos métodos (por  
+ejemplo, número de iteraciones, convergencia, etc.). ▪ 
+Conclusiones y posibles mejoras o extensiones. 
+\end{comment}
+%%\pacs[JEL Classification]{D8, H51}
+
+%%\pacs[MSC Classification]{35A01, 65L10, 65L12, 65L20, 65L70}
+
+\maketitle
+
+\section{Objetivo}\label{sec1}
+El objetivo general de este documento es aplicar y documentar distintos métodos numéricos vistos en el curso, organizados por examen, presentando el planteamiento del problema, el procedimiento seguido y las expresiones matemáticas relevantes.
+
+\subsubsection{Examen I - Gauss Jordan y Newton Raphson}
+Resolver un sistema de ecuaciones lineales asociado a un circuito mediante Gauss-Jordan, y obtener la raíz de una ecuación no lineal mediante Newton-Raphson (seleccionando una suposición inicial y un criterio de paro).
+
+\subsubsection{Examen II - Interpolación de Newton}
+Obtener una señal en el dominio del tiempo a partir de una expresión en Laplace e interpolar valores intermedios mediante el polinomio de Newton (diferencias divididas), evaluando la aproximación dentro del intervalo muestreado.
+
+\subsubsection{Examen III - Integración y Ecuaciones Diferenciales}
+Aproximar integrales definidas mediante integración numérica (regla del trapecio) y aplicar el resultado a métricas prácticas como el cálculo de $I_{\mathrm{RMS}}$. Además, resolver ecuaciones diferenciales mediante Runge-Kutta.
+
+
+\subsection{Métodos utilizados}
+\begin{itemize}
+    \item Gauss-Jordan para sistemas de ecuaciones lineales y  Newton-Raphson para ecuaciones no lineales..
+    \item Métodos iterativos (Jacobi y Gauss-Seidel) para sistemas de ecuaciones lineales.
+    \item Interpolación de Newton (diferencias divididas).
+    \item Integración numérica por regla del trapecio.
+    \item Runge-Kutta (RK4) para ecuaciones diferenciales.
+\end{itemize}
+\section{Desarrollo y resultados}
+\subsection{Examen I - Gauss Jordan y Newton Raphson}
+El primer examen consto de soluciones de sistemas de ecuaciones lineales y soluciones de ecuaciones no lineales. 
+
+
+Para el primer punto se uso el método de Gauss Jordan, el cual es un método directo para resolver sistemas de ecuaciones lineales. Para el segundo punto se uso el método de Newton Raphson, el cual es un método iterativo para resolver ecuaciones no lineales. Ambos métodos son útiles para resolver sistemas de ecuaciones, pero tienen diferentes aplicaciones y características. El circuito a resolver con el método de Gauss Jordan se muestra en la figura \ref{fig:GJ}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Mate JP//src/EXAMENGJ.png}
+    \caption{Circuito para el método de Gauss Jordan.}
+    \label{fig:GJ}
+\end{figure}
+
+La matriz de coeficientes para el método de Gauss Jordan se muestra a continuación:
+% [R1  0    R6  0  0  R5] [I12] =  [VCC]
+% [0    R2  R6  R3  R4  0] [I23] =  [0]
+% [1   -1   -1  0  0  0] [I25] = [0]
+% [0    1    0  -1  0  0] [I34] =  [0]
+% [0    0    0  1  -1  0] [I45] =  [0]
+% [0    0    1  0  1  -1] [I56] =  [0]
+
+\begin{equation}
+\begin{bmatrix}
+R1  & 0    & R6  & 0  & 0  & R5 \\
+0    & R2  & R6  & R3  & R4  & 0 \\
+1   & -1   & -1  & 0  & 0  & 0 \\
+0    & 1    & 0  & -1  & 0  & 0 \\
+0    & 0    & 0  & 1  & -1  & 0 \\
+0    & 0    & 1  & 0  & 1  & -1 \\
+\end{bmatrix}
+\begin{bmatrix}I12 \\
+I23 \\
+I25 \\
+I34 \\
+I45 \\     
+I56 \\
+\end{bmatrix}=
+\begin{bmatrix}VCC \\
+0 \\
+0 \\
+0 \\
+0 \\
+0 \\
+\end{bmatrix}    
+\end{equation}
+
+Para el método de Newton Raphson se uso la siguiente función:
+\begin{equation}
+f(R)= e^{-\left(\dfrac{Rt}{2L} \right)} \cos(\sqrt{\dfrac{1}{LC}-\dfrac{R^2}{4L^2}}t)-\dfrac{q}{q_0}   
+\end{equation}
+Siendo una funcion en terminos de R y con parametros L, C, t, q y q0. Para resolver esta ecuacion se uso el método de Newton Raphson, el cual es un método iterativo que se basa en la idea de aproximar la raíz de una función mediante una serie de tangentes. El proceso se repite hasta que se alcanza una convergencia, es decir, hasta que las soluciones obtenidas en cada iteración sean lo suficientemente cercanas entre sí. El método de Newton Raphson es eficiente para resolver ecuaciones no lineales, pero puede no converger para ciertas funciones o si la suposición inicial no es adecuada.
+
+Para ello es importante obtener su derivada para poder usar el método de Newton Raphson, la derivada de la función se muestra a continuación:
+\begin{equation}
+f'(R)=e^{-\frac{Rt}{2L}}
+\left[
+-\frac{t}{2L}\cos(\omega t)
++
+\frac{Rt}{4L^{2}\omega}\sin(\omega t)
+\right] \quad \text{siendo} \quad \omega = \sqrt{\dfrac{1}{LC}-\dfrac{R^2}{4L^2}}
+\end{equation}
+
+\subsection{Examen II - Interpolación de Newton}
+Para el segundo examen se uso la interpolación de Newton, la cual es un método para estimar valores de una función en puntos intermedios a partir de un conjunto de datos conocidos. La interpolación de Newton se basa en la construcción de un polinomio de interpolación utilizando diferencias divididas. El proceso implica calcular las diferencias divididas a partir de los datos conocidos y luego construir el polinomio de interpolación utilizando estas diferencias. La interpolación de Newton es eficiente para interpolar datos acotados, pero puede no ser adecuada para datos con alta variabilidad o para extrapolación fuera del rango de los datos conocidos. En este caso se uso la siguiente función para interpolar:
+
+\subsubsection{Función en el dominio de Laplace}
+La función utilizada corresponde a un sistema lineal de segundo orden (forma normalizada), comúnmente asociado a un circuito RLC o a un sistema masa-resorte-amortiguador. En el dominio de Laplace se escribe como:
+\begin{equation}
+F(s)=\frac{\omega_n^{2}}{s^{2}+2z\,\omega_n s+\omega_n^{2}}
+\end{equation}
+donde $\omega_n$ es la frecuencia natural y $z$ es el factor de amortiguamiento. Para el caso RLC serie, una parametrización típica es:
+\begin{equation}
+\omega_n=\frac{1}{\sqrt{LC}},\qquad R=2z\,\omega_n L
+\end{equation}
+Esta función tiene ganancia en DC unitaria ($F(0)=1$) y su comportamiento dinámico depende fuertemente de $z$: valores pequeños de $z$ implican mayor oscilación y sobreimpulso; valores grandes tienden a respuestas más lentas y sin oscilación.
+
+\subsubsection{Función en el dominio del tiempo}
+La inversa de Laplace de $F(s)$ (interpretada como respuesta al impulso del sistema) es:
+\begin{equation}
+f(t)=\mathcal{L}^{-1}\{F(s)\}=\frac{\omega_n^{2}}{\omega_d}\,e^{-z\omega_n t}\sin(\omega_d t)\,u(t),\qquad \omega_d=\omega_n\sqrt{1-z^{2}}
+\end{equation}
+siempre que $0<z<1$ (caso subamortiguado). Aquí $u(t)$ representa el escalón unitario (causalidad). En el caso particular de este trabajo, $z=0.57<1$, por lo que la respuesta es oscilatoria con una envolvente exponencial $e^{-z\omega_n t}$. Si se desea la respuesta al escalón, se debe usar $F(s)/s$ antes de aplicar la inversa de Laplace.
+
+\subsection{Examen III - Integración y Ecuaciones Diferenciales}
+En el tercer examen se abordó la integración numérica aplicada a señales acotadas. En particular, se utilizó la regla del trapecio para aproximar integrales definidas y calcular el valor cuadrático medio (RMS) de una corriente sinusoidal a partir de $i(t)^2$ en un intervalo de medio periodo.
+
+También se trabajó con un modelo dinámico descrito por ecuaciones diferenciales. La ecuación diferencial que se resolverá es:
+\begin{equation}
+L\,\frac{di(t)}{dt}+R\,i(t)+\frac{q(t)}{C}-E(t)=0
+\end{equation}
+y se complementa con:
+\begin{equation}
+i(t)=\frac{dq(t)}{dt}
+\end{equation}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Mate JP//src/RLC.png}
+    \caption{Circuito RLC}
+    \label{fig:placeholder}
+\end{figure}
+
+
+
+
+
+\subsubsection{Solución de $q(t)$ (parametrizada)}
+Para escribir una solución cerrada para $q(t)$, se considera el caso sin amortiguamiento ($R=0$) con una excitación sinusoidal:
+\begin{equation}
+E(t)=E_0\sin(\omega t)
+\end{equation}
+Sustituyendo $i(t)=\frac{dq}{dt}$ en la ecuación original se obtiene una ecuación de segundo orden para la carga:
+\begin{equation}
+L\,\frac{d^2q(t)}{dt^2}+\frac{1}{C}q(t)=E_0\sin(\omega t)
+\end{equation}
+Definiendo la frecuencia natural del sistema como:
+\begin{equation}
+p=\frac{1}{\sqrt{LC}}
+\end{equation}
+y usando condiciones iniciales $q(0)=0$ e $i(0)=\dot q(0)=0$, la solución para $\omega\neq p$ puede escribirse como:
+$$
+q(t)=\frac{E_0}{L\,(p^2-\omega^2)}\sin(\omega t)-\frac{E_0}{L\,(p^2-\omega^2)}\,\frac{\omega}{p}\sin(pt)
+$$
+
+\begin{equation}
+q(t)=A\,\sin(\omega t)+B\,\sin(pt)
+\end{equation}
+donde las constantes quedan definidas por:
+\begin{equation}
+A=\frac{E_0}{L\,(p^2-\omega^2)},\qquad
+B=-\frac{E_0}{L\,(p^2-\omega^2)}\,\frac{\omega}{p}
+\end{equation}
+
+
+\section{Metodología}
+\subsection{Examen I - Gauss Jordan y Newton Raphson}
+En este examen se emplearon métodos para resolver (i) sistemas lineales y (ii) una ecuación no lineal.
+
+\subsubsection{Gauss-Jordan (sistema lineal)}
+El procedimiento seguido para Gauss-Jordan fue:
+\begin{itemize}
+    \item Plantear el sistema en forma matricial $A\mathbf{x}=\mathbf{b}$ (o matriz aumentada $[A\,|\,\mathbf{b}]$).
+    \item Aplicar operaciones elementales por renglón para llevar $A$ a forma escalonada reducida (RREF), idealmente con pivoteo parcial si es necesario.
+    \item Leer directamente la solución $\mathbf{x}$ de la matriz resultante (idealmente $[I\,|\,\mathbf{x}]$).
+\end{itemize}
+
+\subsubsection{Newton-Raphson (ecuación no lineal)}
+Para encontrar la raíz de $f(R)=0$ se utilizó la iteración:
+\begin{equation}
+R_{k+1}=R_k-\frac{f(R_k)}{f'(R_k)}
+\end{equation}
+donde $R_0$ es una estimación inicial y el criterio de paro puede ser, por ejemplo, $|R_{k+1}-R_k|<\varepsilon$ o $|f(R_k)|<\varepsilon$. Este método converge rápidamente cerca de la raíz, pero depende de una elección adecuada de $R_0$ y de que $f'(R_k)\neq 0$.
+
+\subsubsection{Jacobi y Gauss-Seidel (comparación iterativa)}
+Además, para comparar métodos iterativos en sistemas lineales, se describieron los esquemas de Jacobi y Gauss-Seidel. Para Jacobi se comienza con una suposición inicial y se actualizan todas las variables con los valores de la iteración anterior. En Gauss-Seidel, en cambio, se actualizan las variables a medida que se van calculando, lo cual puede acelerar la convergencia. La convergencia depende de propiedades de $A$ (por ejemplo, diagonal dominante o simetría definida positiva).
+Ambos metodos usan las siguientes formulas para actualizar las variables, en este caso mostraremos el caso para una matriz de 3x3, pero se puede generalizar a matrices de cualquier tamaño, teniendo la matriz que se muestra a continuación:
+
+$$
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} & | & x_1 \\
+a_{21} & a_{22} & a_{23} & | & x_2 \\
+a_{31} & a_{32} & a_{33} & | & x_3 \\
+\end{bmatrix}
+$$
+
+Las fórmulas de actualización para cada variable serían:
+$$\begin{aligned}
+x_1&= \dfrac{b_1-a_{12}x_2-a_{13}x_3}{a_{11}}\\
+x_2&= \dfrac{b_2-a_{21}x_1-a_{23}x_3}{a_{22}}\\
+x_3&= \dfrac{b_3-a_{31}x_1-a_{32}x_2}{a_{33}}\\
+\end{aligned}
+$$
+
+Para el método de Gauss-Seidel, se actualizan las variables a medida que se van calculando, lo que puede acelerar la convergencia en algunos casos. Sin embargo, el método de Gauss-Seidel puede ser más difícil de implementar y puede no converger para ciertos tipos de sistemas. En general, ambos métodos son útiles para resolver sistemas de ecuaciones lineales, pero la elección entre ellos dependerá de las características del sistema y de los requisitos de convergencia y eficiencia.
+
+
+
+
+
+\begin{figure}[!!h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+    \includegraphics[width=0.8\linewidth]{Mate JP//src/GaussSeidel.png}
+    \caption{Método Gauss-Seidel.}
+
+        \label{fig:OR}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{Mate JP/src/Jacobi.png}
+        \caption{Método Jacobi.}
+        \label{fig:AND}
+    \end{minipage}
+\end{figure}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.62\linewidth]{Mate JP//src/p3.png}
+    \caption{Solución Gráfica}
+    \label{fig:placeholder}
+\end{figure}
+\newpage
+\subsection{Examen II - Interpolación de Newton}
+
+En este apartado se empleó la interpolación de Newton para estimar valores intermedios de la respuesta $f(t)$ del sistema (obtenida a partir de $F(s)$) sin necesidad de recalcular la inversa de Laplace para cada instante. La metodología general del método es la siguiente:
+
+\subsubsection{Datos de entrada}
+Se parte de un conjunto de puntos muestreados $\{(t_i, y_i)\}_{i=0}^{n}$, donde $t_i$ son instantes dentro del intervalo de interés y $y_i=f(t_i)$ es el valor de la señal en esos instantes.
+
+\subsubsection{Cálculo de diferencias divididas}
+Se construye la tabla de diferencias divididas. Para el primer nivel:
+\begin{equation}
+f[t_i]=y_i
+\end{equation}
+y para niveles superiores:
+\begin{equation}
+f[t_i,t_{i+1},\dots,t_{i+k}]=\frac{f[t_{i+1},\dots,t_{i+k}]-f[t_i,\dots,t_{i+k-1}]}{t_{i+k}-t_i}
+\end{equation}
+Los coeficientes del polinomio de Newton son precisamente los elementos de la primera fila: $f[t_0]$, $f[t_0,t_1]$, $f[t_0,t_1,t_2]$, etc.
+
+\subsubsection{Construcción del polinomio interpolante}
+Con las diferencias divididas se arma el polinomio en su forma de Newton:
+\begin{equation}
+P_n(t)=f[t_0]+
+f[t_0,t_1](t-t_0)+
+f[t_0,t_1,t_2](t-t_0)(t-t_1)+\cdots+
+f[t_0,\dots,t_n]\prod_{j=0}^{n-1}(t-t_j)
+\end{equation}
+Esta forma es conveniente porque si se agrega un nuevo punto $(t_{n+1},y_{n+1})$ no es necesario reconstruir todo: basta con calcular el nuevo nivel de diferencias divididas y añadir un término adicional.
+
+\subsubsection{Evaluación y uso práctico}
+Finalmente, para un instante intermedio $t^{\ast}$ se evalúa $P_n(t^{\ast})$ como aproximación de $f(t^{\ast})$. Para mantener estabilidad numérica y buena precisión se recomienda:
+\begin{itemize}
+    \item Interpolar dentro del rango $[t_0,t_n]$ (evitar extrapolación).
+    \item Usar un número moderado de puntos (grado alto puede introducir oscilaciones).
+    \item Elegir nodos cercanos a $t^{\ast}$ si se requiere interpolación local.
+\end{itemize}
+El error teórico del interpolante está dado por:
+\begin{equation}
+E_n(t)=f(t)-P_n(t)=\frac{f^{(n+1)}(\xi)}{(n+1)!}\prod_{i=0}^{n}(t-t_i),\qquad \xi\in[t_0,t_n]
+\end{equation}
+lo cual muestra que el error depende tanto de la suavidad de $f(t)$ como de la selección/espaciado de los puntos $t_i$.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Mate JP//src/Interpol.png}
+    \caption{Gráfica de la funcion}
+    \label{fig:placeholder}
+\end{figure}
+
+\subsection{Examen III - Integración y Ecuaciones Diferenciales}
+
+En este examen se aplicó integración numérica para aproximar el valor cuadrático medio (RMS) de una señal sinusoidal. En particular, se considera la integral:
+\begin{equation}
+I_{\mathrm{RMS}}^{2}=\frac{2}{T}\int_{0}^{T/2} i(t)^{2}\,dt,
+\qquad i(t)=i_{\max}\sin(\omega t+\phi)
+\end{equation}
+donde $T$ es el periodo (para una sinusoidal ideal $T=\frac{2\pi}{\omega}$). La razón de integrar en $[0,\,T/2]$ y multiplicar por $\tfrac{2}{T}$ es aprovechar la periodicidad y simetría de $i(t)^2$.
+
+\subsubsection{Regla del trapecio}
+Se define la función a integrar como:
+\begin{equation}
+g(t)=i(t)^{2}=i_{\max}^{2}\sin^{2}(\omega t+\phi)
+\end{equation}
+Se divide el intervalo $[0,\,T/2]$ en $n$ subintervalos uniformes, con:
+\begin{equation}
+h=\frac{T}{2n},\qquad t_k=kh,\quad k=0,1,\dots,n
+\end{equation}
+La integral se aproxima mediante:
+\begin{equation}
+\int_{0}^{T/2} g(t)\,dt\;\approx\;\frac{h}{2}\left[g(t_0)+2\sum_{k=1}^{n-1} g(t_k)+g(t_n)\right]
+\end{equation}
+Por lo tanto, el RMS se estima como:
+\begin{equation}
+I_{\mathrm{RMS}}\;\approx\;\sqrt{\frac{2}{T}\cdot\frac{h}{2}\left[g(t_0)+2\sum_{k=1}^{n-1} g(t_k)+g(t_n)\right]}
+\end{equation}
+Para funciones suaves, la regla del trapecio converge con error global de orden $\mathcal{O}(h^2)$, por lo que aumentar $n$ mejora la aproximación.
+
+Como referencia, el valor medio de $\sin^2(\cdot)$ sobre medio periodo es $\tfrac{1}{2}$, así que:
+\begin{equation}
+I_{\mathrm{RMS}}^{2}=\frac{2}{T}\int_{0}^{T/2} i_{\max}^{2}\sin^{2}(\omega t+\phi)\,dt=\frac{i_{\max}^{2}}{2}
+\quad\Rightarrow\quad
+I_{\mathrm{RMS}}=\frac{i_{\max}}{\sqrt{2}}
+\end{equation}
+El resultado no depende de $\phi$, lo cual sirve como criterio de validación para la integración numérica.
+
+
+\subsubsection{Ecuaciones diferenciales}
+Se considera la siguiente ecuacion
+$$
+q(t)=\frac{E_0}{L\,(p^2-\omega^2)}\sin(\omega t)-\frac{E_0}{L\,(p^2-\omega^2)}\,\frac{\omega}{p}\sin(pt)
+$$
+
+Con las siguientes constantes considerandose como 
+$$
+\begin{aligned}
+L&=1\,\mathrm{H}\\
+C&=0.25\,\mathrm{F}\\
+E_0&=1\,\mathrm{V}\\
+\omega^2&=3.5\,\mathrm{s}^{-2}\\
+\end{aligned}
+$$
+Entonces $p=2\,\mathrm{s}^{-1}$, $\omega\approx 1.8708\,\mathrm{s}^{-1}$ y $K=2$, por lo que:
+\begin{equation}
+q(t)=2\sin(1.8708\,t)-1.8708\sin(2t)
+\end{equation}
+Esperandose una señal de la siguiente forma
+% figura en dos columnas
+\begin{figure}[!h]
+    \centering
+    \begin{minipage}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Mate JP//src/Edo.png}
+        \caption{Gráfica de la función obtenida}
+        \label{fig:edo_funcion}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{Mate JP//src/Obtenida.png}
+        \caption{Señal obtenida en el microcontrolador}
+        \label{fig:senal_micro}
+    \end{minipage}
+\end{figure}\newpage
+\section{Herramientas Utilizadas}
+En esta sección se detallarán las herramientas que se utilizaron además del circuito
+\subsection{Circuito}
+Para la parte del circuito se utilizo un ARM STM32F411CEU6 conocido comúnménte como Black Pill, además de una pantalla TFT SPI de 1.8 pulgadas además de un convertidor FTDI para convertir de USB a UART, el circuito se muestra en la figura \ref{fig:Circuito}
+Este circuito fue util para todos los examenes dado que es una interfaz sencilla para la comunicación con el microcontrolador.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.5\linewidth,angle=90]{Mate JP//src/Tools.png}
+    \caption{Circuito utilizado}
+    \label{fig:Circuito}
+\end{figure}
+
+\subsection{Software}
+En la sección de Software se utilizó el \textbf{STM32CUBEIDE} para programar el microcontroldor, además de la librería de TFT para mostrar la señal obtenida en la pantalla, para la parte de cálculos se utilizó libretas de \textbf{jupiter notebook} (Python) con las librerías de NumPy y Matplotlib para realizar los cálculos y graficar los resultados obtenidos.
+
+También se utilizó \textbf{Visual Studio} para editar el código de los métodos numéricos, es importante mencionarlo debido a la simplicidad para manejar archivos, asímismo el versionado por parte de \textbf{GitHub} facilitó el manejo de versiones y el seguimiento de cambios en el código. Se anexa el repositorio con el código fuente de los métodos numéricos implementados en C++ y Python, así como los scripts para la generación de gráficos y resultados.
+\href{https://github.com/DasReyxr/C-Cpp/tree/main/Metodos/3ExamenTrapecioRaltson}{\faGithub\ Código fuente}
+
+
+
+Además para documentación todo se trabajo en \LaTeX, usando la clase de documento \texttt{sn-jnl} y una configuración personalizada para matemáticas y gráficos. Se emplearon paquetes como \texttt{amsmath}, \texttt{graphicx} y \texttt{hyperref} para mejorar la presentación y organización del contenido.
+
+\newpage
+\section{Tema EXTRA - CORDIC}
+CORDIC (\textit{COordinate Rotation DIgital Computer}) es un algoritmo iterativo para calcular funciones trigonométricas (y por extensión otras funciones como $\arctan$, $\sinh$, $\cosh$, etc.) usando \textbf{únicamente sumas, restas, comparaciones y corrimientos} (operaciones tipo \textit{shift}). Esto lo hace especialmente útil en hardware digital (FPGA/ASIC) o sistemas embebidos donde una multiplicación/división general es costosa.
+
+La idea central es la siguiente: si se puede \textbf{rotar} un vector $(x,y)$ por un ángulo $\theta$ de manera eficiente, entonces al rotar un vector inicial apropiado se obtienen directamente $\cos(\theta)$ y $\sin(\theta)$. A continuación se muestra cómo se llega a la forma que permite implementar la rotación sin multiplicadores.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Mate JP//src/Doble Angle.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
+Partimos de la interpretación geométrica del vector $(x,y)$ en coordenadas polares. Si $r=\sqrt{x^{2}+y^{2}}$, entonces:
+$$\cos (\theta) = \dfrac{x}{r} \quad \cos (\theta+ \alpha ) = \dfrac{x'}{r} \quad \sin (\theta) = \dfrac{y}{r} \quad \sin (\theta+ \alpha ) = \dfrac{y'}{r}$$
+$$ x = r \cos (\theta) \quad x' = r \cos (\theta+ \alpha ) \quad y = r \sin (\theta) \quad y' = r \sin (\theta+ \alpha )$$
+Por lo que llevamos nuestras ecuaciones de $x'$ y $y'$ a la identidad de ángulo doble, obteniendo lo siguiente:
+$$
+\begin{aligned}
+x' &= r \cos (\theta+ \alpha ) = r [\cos (\theta) \cos (\alpha ) - \sin (\theta) \sin (\alpha )] = x \cos (\alpha ) - y \sin (\alpha )\\
+y' &= r \sin (\theta+ \alpha ) = r [\sin (\theta) \cos (\alpha ) + \cos (\theta) \sin (\alpha )] = y \cos (\alpha ) + x \sin (\alpha )\\    
+\end{aligned}
+$$
+Estas ecuaciones describen una \textbf{rotación} del vector $(x,y)$ por un ángulo $\alpha$. En forma matricial:
+$$
+\begin{bmatrix}
+x' \\
+y' \\
+\end{bmatrix}=
+\begin{bmatrix}
+\cos (\alpha ) & - \sin (\alpha ) \\
+\sin (\alpha ) & \cos (\alpha ) \\
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y \\
+\end{bmatrix}
+=
+\cos \alpha 
+\begin{bmatrix}
+1 & -\tan (\alpha ) \\
+\tan (\alpha ) & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y \\
+\end{bmatrix}
+$$
+
+La factorización anterior es clave: si logramos que $\tan(\alpha)$ sea una potencia de 2, entonces el producto $\tan(\alpha)\,x$ o $\tan(\alpha)\,y$ se implementa como \textbf{corrimiento}.
+
+Para valores pequeños de $\alpha$ se cumple $\tan(\alpha)\approx \alpha$. En CORDIC no se usan ángulos arbitrarios en cada paso, sino un conjunto de \textbf{micro-rotaciones} predefinidas con:
+$$
+\alpha_i = \arctan(2^{-i}) \quad \Rightarrow \quad \tan(\alpha_i)=2^{-i}
+$$
+De este modo, en el paso $i$ la multiplicación por $\tan(\alpha_i)$ se implementa como un corrimiento a la derecha de $i$ bits (equivalente a multiplicar por $2^{-i}$). Esto explica por qué el método CORDIC es eficiente: reemplaza productos por desplazamientos y sumas.
+
+\begin{equation}
+tan_{val} = \tan (\alpha ) \approx \alpha \approx 2^{-i} \approx  tan_{val}>> i
+\label{eq:tan}
+\end{equation}
+
+$$
+\tan \alpha \approx 2^{-i} \Rightarrow \alpha \approx \arctan(2^{-i})
+$$
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Mate JP//src/tan.png}
+    \caption{Enter Caption}
+    \label{fig:tan}
+\end{figure}
+
+Por otro lado, para el término $\cos(\alpha)$ notamos que no importa el signo del ángulo, ya que $\cos(\alpha)=\cos(-\alpha)$. Usando $\tan(\alpha_i)=2^{-i}$:
+
+$$
+K = \cos (\alpha) \approx \cos (\arctan(2^{-i})) =\dfrac{1}{\sqrt{1+\tan^2 (\alpha )}} = \dfrac{1}{\sqrt{1+2^{-2i}}}
+$$
+
+Conforme se itera, cada micro-rotación introduce un factor de escala $K_i=\cos(\alpha_i)=\dfrac{1}{\sqrt{1+2^{-2i}}}$. El producto acumulado de estas escalas es una constante (para un número fijo de iteraciones) que puede pre-calcularse y compensarse.
+$$
+K_N= \prod_{i=0}^{N-1} \dfrac{1}{\sqrt{1+2^{-2i}}} \approx 0.607253\quad (N\ \text{grande})
+$$
+Quedando entonces nuestro sistema matricial de la siguiente forma
+$$
+\begin{bmatrix}x' \\
+y' \\
+\end{bmatrix}=
+K
+\begin{bmatrix}1 & -tan_{val}>>i \\
+tan_{val}>>i & 1 \\
+\end{bmatrix}
+$$
+
+\subsection{Iteraciones del algoritmo (modo rotación)}
+En la práctica, CORDIC no aplica una sola rotación grande, sino que aproxima $\theta$ como suma/resta de los ángulos $\alpha_i$:
+$$\theta \approx \sum_{i=0}^{N-1} d_i\,\alpha_i, \qquad d_i\in\{-1,+1\}$$
+De esta forma, se define un ángulo residual $z_i$ y se decide el signo $d_i$ en cada iteración para acercar $z_i$ a cero. Las ecuaciones iterativas (modo rotación) quedan:
+\begin{equation}
+\begin{aligned}
+x_{i+1} &= x_i - d_i\, y_i\,2^{-i}\\
+y_{i+1} &= y_i + d_i\, x_i\,2^{-i}\\
+z_{i+1} &= z_i - d_i\,\arctan(2^{-i})
+\end{aligned}
+\end{equation}
+donde típicamente $z_0=\theta$ y $d_i=\operatorname{sign}(z_i)$. Nótese que $2^{-i}$ se implementa como corrimiento a la derecha.
+
+\subsection{Obtención de $\sin(\theta)$ y $\cos(\theta)$}
+Después de $N$ iteraciones, el vector resultante es proporcional a la rotación deseada:
+$$
+\begin{bmatrix}x_N\\y_N\end{bmatrix}
+=K_N
+\begin{bmatrix}\cos(\theta)\\\sin(\theta)\end{bmatrix}
+$$
+Por lo tanto, si se inicia con $(x_0,y_0)=(1,0)$, al final se obtiene $(x_N,y_N)=(K_N\cos\theta,\,K_N\sin\theta)$. Para compensar la ganancia y obtener directamente $(\cos\theta,\sin\theta)$ existen dos opciones comunes:
+\begin{itemize}
+    \item \textbf{Pre-escalar el vector inicial}: usar $(x_0,y_0)=(K_N,0)$, por ejemplo $(0.607253,0)$ para $N$ grande.
+    \item \textbf{Post-escalar al final}: dividir entre $K_N$ (o multiplicar por $1/K_N$) una vez terminadas las iteraciones.
+\end{itemize}
+
+Finalmente para calcular seno y coseno, se puede usar CORDIC para rotar un vector inicial (por ejemplo $(0.607253, 0)$) por un ángulo deseado $\theta$, obteniendo así las coordenadas $(\cos(\theta), \sin(\theta))$ con operaciones simples. Lo que nos lleva a nuestra IP.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Mate JP//src/IP Pinout.png}
+    \caption{IP CORDIC}
+    \label{fig:placeholder}
+\end{figure}
+\end{document}
+

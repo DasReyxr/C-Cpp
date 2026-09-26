@@ -1,0 +1,101 @@
+//----------- MAIN LIBRARY ----------
+      #include <18F452.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=4MHz)
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+#byte Port_B = 0X0F81 
+#byte Tris_B = 0x0F93
+//--Var--
+//--Inicio--
+void main(){
+         //Set Outputs
+         Tris_B = 0xF0;//  Set TRISB as OUTPUT
+         Port_B = 0X00; // Leds OFF 
+         lcd_init();//initialize the lcd 
+         port_b_pullups(true);
+         lcd_gotoxy(1,1);
+         printf(lcd_putc,"Tecla");
+        
+         while(true){
+         while(~Port_B & 0x0F == 0x0F){
+         Port_B=0xFE; //XXXX 0001 -> 1111 1110 turn up the Row1         
+         switch(Port_B){
+            case 0xEE: //0001 0001 -> 1110 1110
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"1");
+               break;   
+            case 0xDE: //0010 0001 -> 1101 1110   
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"2");
+               break;             
+            case 0xBE: //0100 0001 -> 1011 1110       
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"3");
+               break;  
+            case 0x7E: //1000 0001  -> 0111 1110
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"A");
+               break;   
+         Port_B=0xFD; //XXXX 0010->1111 1101 
+            case 0xED: //0001 0010 -> 1110 1101  
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"4");
+               break;
+            case 0xDD: //0010 0010 -> 1101 1101 
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"5");
+               break;
+            case 0xBD: //0100 0010 -> 1011 1101 
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"6");
+               break;
+            case 0x7D: //1000 0010  -> 0111 1101  
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"B");
+               break;
+          Port_B=0xFB; //XXXX 0100->1111 1011         
+         switch(Port_B){
+            case 0xEB: //0001 0100 -> 1110 1011 
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"7");
+               break;
+            case 0xDB: //0010 0100 -> 1101 1011 
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"8");
+               break;
+            case 0xBB: //0100 0100 -> 1011 1011 
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"9");
+               break;
+            case 0x7B: //1000 0100  -> 0111 1011
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"C");
+               break;
+         Port_B=0xF7; //XXXX 1000->1111 0111         
+            case 0xE7: //0001 1000 -> 1110 0111
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"*");
+               break;
+            case 0xD7: //0010 1000 -> 1101 0111
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"0");
+               break;
+            case 0xB7: //0100 1000 -> 1011 0111
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"#");
+               break;
+            case 0x77: //1000 1000  -> 0111 0111
+               lcd_gotoxy(8,1);
+               printf(lcd_putc,"D");
+               break;
+         }
+         }
+         }//end while
+         
+}//end main
+  
+   

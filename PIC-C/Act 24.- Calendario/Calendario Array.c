@@ -1,0 +1,44 @@
+//----------- MAIN LIBRARY ----------
+#include <18F452.h> 
+//-------- ADC CONFIGURATION --------
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=4MHz)
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+#include <DS1307.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+//--Var--
+int8 dow=0,dia=0,mes=0,yr=0,hr=0,min=0,seg=0,p=0;
+int8 date[7]= {dow,dia,mes,yr,hr,min,seg};
+int8 setd[7]= {2,19,05,04,23,59,59};
+char fecha[5];
+
+//--Inicio--
+void main(){
+         //Set Outputs
+         lcd_init();//initialize the lcd and rtc
+     
+         for(p=0;p++;p<7){
+           
+            ds1307_set_date_time(setd[p],);
+         }
+         
+         //Infinite Loop
+         while(true){
+         ds1307_get_date(dia,mes,yr,dow);
+         ds1307_get_time(hr,min,seg);
+         ds1307_get_day_of_week(fecha);
+         
+         lcd_gotoxy(1,1);//row 1
+         printf(lcd_putc,"%s %02u/%02u/20%02u",fecha,dia,mes,yr);
+         lcd_gotoxy(1,2);//row 2
+         printf(lcd_putc,"%02u:%02u:%02u",hr,min,seg);
+         delay_ms(100);
+         
+         }//end while
+         
+}//end main
+  
+   

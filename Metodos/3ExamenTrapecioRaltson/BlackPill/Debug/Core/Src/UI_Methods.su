@@ -1,0 +1,15 @@
+../Core/Src/UI_Methods.c:12:9:inputMethod	32	static
+../Core/Src/UI_Methods.c:27:6:inputOptions	40	static
+../Core/Src/UI_Methods.c:44:9:inputOptions3	32	static
+../Core/Src/UI_Methods.c:55:10:inputRLC	80	static
+../Core/Src/UI_Methods.c:73:7:getIntervalMiddle	32	static
+../Core/Src/UI_Methods.c:85:8:inputRVal	24	static
+../Core/Src/UI_Methods.c:110:6:displayResult	104	static
+../Core/Src/UI_Methods.c:135:6:inputPOLI	72	static
+../Core/Src/UI_Methods.c:151:11:inputRLC1	64	static
+../Core/Src/UI_Methods.c:179:6:printResult	96	static
+../Core/Src/UI_Methods.c:218:8:plot	168	static
+../Core/Src/UI_Methods.c:346:11:inputIntegral	56	static
+../Core/Src/UI_Methods.c:361:6:outputIntegral	120	static
+../Core/Src/UI_Methods.c:378:14:inputRLC3	56	static
+../Core/Src/UI_Methods.c:408:6:outputRLCGraph	216	static

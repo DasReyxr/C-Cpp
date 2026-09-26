@@ -1,0 +1,78 @@
+[
+ {
+  "InstFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/testfft_top.v",
+  "InstLine" : 2,
+  "InstName" : "testfft_top",
+  "ModuleFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/testfft_top.v",
+  "ModuleLine" : 2,
+  "ModuleName" : "testfft_top",
+  "SubInsts" : [
+   {
+    "InstFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/testfft_top.v",
+    "InstLine" : 109,
+    "InstName" : "myfft",
+    "ModuleFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/FFT_Top/fft.v",
+    "ModuleLine" : 9,
+    "ModuleName" : "MOD_FFT"
+   },
+   {
+    "InstFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/testfft_top.v",
+    "InstLine" : 41,
+    "InstName" : "pll_fft",
+    "ModuleFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/gowin_rpll.v",
+    "ModuleLine" : 2,
+    "ModuleName" : "Gowin_rPLL"
+   },
+   {
+    "InstFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/testfft_top.v",
+    "InstLine" : 49,
+    "InstName" : "cntInst2",
+    "ModuleFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/counter.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "counter"
+   },
+   {
+    "InstFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/testfft_top.v",
+    "InstLine" : 56,
+    "InstName" : "deUstb_inst",
+    "ModuleFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/deUstb.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "deUstb"
+   },
+   {
+    "InstFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/testfft_top.v",
+    "InstLine" : 61,
+    "InstName" : "deUstb_rst",
+    "ModuleFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/deUstb.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "deUstb"
+   },
+   {
+    "InstFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/testfft_top.v",
+    "InstLine" : 102,
+    "InstName" : "u_testfft",
+    "ModuleFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/testfft.v",
+    "ModuleLine" : 2,
+    "ModuleName" : "testfft",
+    "SubInsts" : [
+     {
+      "InstFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/testfft.v",
+      "InstLine" : 26,
+      "InstName" : "U_GW_ROM",
+      "ModuleFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/testfft.v",
+      "ModuleLine" : 30,
+      "ModuleName" : "GW_ROM"
+     }
+    ]
+   },
+   {
+    "InstFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/testfft_top.v",
+    "InstLine" : 144,
+    "InstName" : "outCrt",
+    "ModuleFile" : "C:/Users/dasre/Documents/Knowledge-db/ghFiles/c-cpp/Metodos/3ExamenTrapecio/fpgaproject/FFT/src/downCnt.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "downCnt"
+   }
+  ]
+ }
+]

@@ -1,0 +1,29 @@
+//----------- MAIN LIBRARY ----------
+      #include <18F4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOLVP,NOCPD
+#use delay(clock=4MHz)
+
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+#include <lib kbd.c>
+//----------- SET OUTPUTS -----------
+//--Ports-
+//--Var--
+char o
+//--Inicio--
+
+void main(){
+         lcd_init();
+         kbd_init();
+         port_b_pullups(true);
+         
+         printf(lcd_putc,"Nombres");
+         
+         while(true){
+        
+         }//end while
+         
+}//end main
+  
+   

@@ -1,0 +1,33 @@
+//----------- MAIN LIBRARY ----------
+      #INCLUDE <18f4550.h> 
+//------- FUSES CONFIGURATION -------
+#fuses NOWDT,HS,PUT,NOPROTECT,NOBROWNOUT,NOMCLR,NOLVP,NOCPD
+#use delay(clock=4000000)
+
+//---------- EXT LIBRARIES -----------
+#include <lcd.c>
+
+//----------- SET OUTPUTS -----------
+//--Ports-
+#byte Port_D = 0X0F83 // Port_D es equivalente a la dirección de RAM 0F83
+#byte Tris_D = 0x0F95 // Tris_D es equivalente a la dirección de RAM 0F95
+//--Var--
+int cont;
+
+//--Inicio--
+void main(){
+   Tris_D = 0x00;//  Set TRISD as OUTPUT
+   Port_D = 0X00; // Leds OFF   
+   cont = 0x00;
+   
+   while(true){
+   for (cont = 0;cont<=9;cont++){ //If we put <= the variable can take the value 
+         Port_D=cont;
+         delay_ms(200);
+      }
+      
+
+}
+
+
+
