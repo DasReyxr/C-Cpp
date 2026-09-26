@@ -1,0 +1,163 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.42.0.0
+Copyright (C) 2025 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: kevin wolpesreveldes@outlook.com, uaa, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.42.0.0
+Toolchain Path:  C:\Users\wolpe\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.23
+Assembler:       Armasm.exe V6.23
+Linker/Locator:  ArmLink.exe V6.23
+Library Manager: ArmAr.exe V6.23
+Hex Converter:   FromElf.exe V6.23
+CPU DLL:         SARMCM3.DLL V5.42.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.3.0.0
+Dialog DLL:      TCM.DLL V1.56.6.0
+ 
+<h2>Project:</h2>
+C:\KEILCPROYECTS\FREERTOS\PRACTICASEPAFORES\PRACSEMAPHORE.uvprojx
+Project File Date:  09/25/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.23', folder: 'C:\Users\wolpe\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target_1'
+MAIN.c(89): warning: unused parameter 'pvParameters' [-Wunused-parameter]
+   89 | void vTaskLEDR(void *pvParameters){
+      |                      ^
+MAIN.c(107): warning: unused parameter 'pvParameters' [-Wunused-parameter]
+  107 | void vTaskLEDG(void *pvParameters){
+      |                      ^
+MAIN.c(125): warning: unused parameter 'pvParameters' [-Wunused-parameter]
+  125 | void vTaskLEDY(void *pvParameters){ 
+      |                      ^
+MAIN.c(149): warning: unused variable 'recievedQueue' [-Wunused-variable]
+  149 | uint8_t recievedQueue;  
+      |         ^~~~~~~~~~~~~
+MAIN.c(147): warning: unused parameter 'pvParameters' [-Wunused-parameter]
+  147 | void vTaskBlink(void *pvParameters){   
+      |                       ^
+MAIN.c(174): warning: unused parameter 'pvPARAMETERS' [-Wunused-parameter]
+  174 | void vTaskButton(void *pvPARAMETERS){
+      |                        ^
+6 warnings generated.
+compiling MAIN.c...
+compiling freertos_evr.c...
+compiling os_systick.c...
+assembling startup_stm32f446xx.s...
+compiling system_stm32f4xx.c...
+compiling clib_os.c...
+compiling cmsis_os2.c...
+compiling croutine.c...
+compiling list.c...
+compiling event_groups.c...
+compiling port.c...
+compiling heap_4.c...
+compiling queue.c...
+compiling timers.c...
+compiling tasks.c...
+linking...
+Program Size: Code=15396 RO-data=556 RW-data=8 ZI-data=13032  
+".\Objects\PRACSEMAPHORE.axf" - 0 Error(s), 6 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.2.0.pack
+                ARM::CMSIS@6.2.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.1.1
+   * Component: SysTick Version: 1.0.5
+   * Component: OS Tick Version: 1.0.1
+   * Component: RTOS2 Version: 2.3.0
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS-FreeRTOS.11.2.0.pack
+                ARM::CMSIS-FreeRTOS@11.2.0
+                Bundle of FreeRTOS for Cortex-M and Cortex-A
+   * Component: FreeRTOS Variant: Cortex-M Version: 11.2.0
+   * Component: Config Variant: CMSIS RTOS2 Version: 11.2.0
+   * Component: Core Variant: Cortex-M Version: 11.2.0
+   * Component: Coroutines Version: 11.2.0
+   * Component: Event Groups Version: 11.2.0
+   * Component: Heap Variant: Heap_4 Version: 11.2.0
+   * Component: Timers Version: 11.2.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F4xx_DFP.2.17.1.pack
+                Keil::STM32F4xx_DFP@2.17.1
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 2.6.3
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/RTOS
+  ./RTE/_Target_1
+  C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/CMSIS/RTOS2/FreeRTOS/Include
+  C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/include
+  C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/11.2.0/Source/portable/GCC/ARM_CM4F
+  C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include
+  C:/Users/wolpe/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include
+  C:/Users/wolpe/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@6.1.1
+
+   * Component: ARM::CMSIS:OS Tick:SysTick@1.0.5
+      Source file:   CMSIS/RTOS2/Source/os_systick.c
+
+   * Component: ARM::CMSIS:RTOS2:FreeRTOS&Cortex-M@11.2.0
+      Include file:  CMSIS/RTOS2/FreeRTOS/Include/freertos_mpool.h
+      Source file:   CMSIS/RTOS2/FreeRTOS/Source/clib_os.c
+      Source file:   CMSIS/RTOS2/FreeRTOS/Source/cmsis_os2.c
+
+   * Component: ARM::RTOS&FreeRTOS:Config&CMSIS RTOS2@11.2.0
+      Include file:  CMSIS/RTOS2/FreeRTOS/Config/FreeRTOSConfig.h
+
+   * Component: ARM::RTOS&FreeRTOS:Core&Cortex-M@11.2.0
+      Include file:  Source/include/FreeRTOS.h
+      Include file:  Source/include/queue.h
+      Include file:  Source/include/semphr.h
+      Include file:  Source/include/task.h
+      Source file:   Source/list.c
+      Source file:   Source/tasks.c
+      Source file:   Source/portable/GCC/ARM_CM4F/port.c
+      Source file:   Source/queue.c
+      Source file:   CMSIS/RTOS2/FreeRTOS/Source/freertos_evr.c
+
+   * Component: ARM::RTOS&FreeRTOS:Coroutines@11.2.0
+      Include file:  Source/include/croutine.h
+      Source file:   Source/croutine.c
+
+   * Component: ARM::RTOS&FreeRTOS:Event Groups@11.2.0
+      Source file:   Source/event_groups.c
+      Include file:  Source/include/event_groups.h
+
+   * Component: ARM::RTOS&FreeRTOS:Heap&Heap_4@11.2.0
+      Source file:   Source/portable/MemMang/heap_4.c
+
+   * Component: ARM::RTOS&FreeRTOS:Timers@11.2.0
+      Source file:   Source/timers.c
+      Include file:  Source/include/timers.h
+
+   * Component: CMSIS:OS Tick(API)@1.0.1
+      Include file:  CMSIS/RTOS2/Include/os_tick.h
+
+   * Component: CMSIS:RTOS2(API)@2.3.0
+      Include file:  CMSIS/RTOS2/Include/cmsis_os2.h
+
+   * Component: Keil::Device:Startup@2.6.3
+      Source file:   MDK/Device/Source/ARM/STM32F446xx_OPT.s
+      Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f446xx.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>

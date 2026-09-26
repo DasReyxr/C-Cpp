@@ -1,0 +1,4 @@
+../Core/Src/conf.c:3:6:confRCC	1
+../Core/Src/conf.c:8:6:confGPIO	1
+../Core/Src/conf.c:18:6:confSPI	1
+../Core/Src/conf.c:28:6:config	1

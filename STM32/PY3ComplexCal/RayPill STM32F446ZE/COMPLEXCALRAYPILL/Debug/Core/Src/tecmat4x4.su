@@ -1,0 +1,3 @@
+../Core/Src/tecmat4x4.c:22:7:gotKey	16	static
+../Core/Src/tecmat4x4.c:47:13:confRCC	4	static
+../Core/Src/tecmat4x4.c:50:13:confGPIO	4	static
