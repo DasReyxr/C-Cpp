@@ -1,0 +1,115 @@
+#include "TFT_Screen.h"
+#include "TOUCH_Screen.h"
+
+/*
+
+ A3 CS OUT
+ A4 DC OUT
+ A5 SCK AFR
+ A6 RES OUT
+ A7 MOSI AFR
+ 
+*/
+
+/*----------- Static Functions -----------*/
+static inline void      gpioWrite(const GpioPin *gpio, uint8_t state);
+static inline uint8_t   gpioRead(const GpioPin *gpio);
+static inline void      csSet(uint8_t high);
+static inline void      rstSet(uint8_t high);
+/*----------- Public Functions -----------*/
+uint8_t   Screen_TouchPressed(void){
+    return gpioRead(&ScreenTouchIRQ) == 0;
+}
+
+uint8_t Screen_TouchGetCoordinates(uint16_t* x, uint16_t* y){
+    if(!Screen_TouchPressed())
+        return 0;
+
+    uint8_t zeroes_tx[] = { 0x00, 0x00 };
+
+    csSet(0); // Select the touch controller
+
+    uint32_t avg_x = 0;
+    uint32_t avg_y = 0;
+    uint8_t nsamples = 0;
+    for(uint8_t i = 0; i < 16; i++) {
+        if(!Screen_TouchPressed())
+            break;
+
+        nsamples++;
+
+        spiWrite_8b(TOUCH_READ_Y);
+        uint8_t y_raw[2];
+        spiRead_8b_Vector(y_raw, sizeof(y_raw));
+
+        spiWrite_8b(TOUCH_READ_X);
+        uint8_t x_raw[2];
+        spiRead_8b_Vector(x_raw, sizeof(x_raw));
+
+        avg_x += (((uint16_t)x_raw[0]) << 8) | ((uint16_t)x_raw[1]);
+        avg_y += (((uint16_t)y_raw[0]) << 8) | ((uint16_t)y_raw[1]);
+    }
+
+    csSet(1); // Deselect the touch controller
+
+    if(nsamples == 0)
+        return 0;
+
+    uint32_t raw_x = (avg_x / nsamples);
+    if(raw_x < SCREEN_TOUCH_MIN_RAW_X) raw_x = SCREEN_TOUCH_MIN_RAW_X;
+    if(raw_x > SCREEN_TOUCH_MAX_RAW_X) raw_x = SCREEN_TOUCH_MAX_RAW_X;
+
+    uint32_t raw_y = (avg_y / nsamples);
+    if(raw_y < SCREEN_TOUCH_MIN_RAW_Y) raw_y = SCREEN_TOUCH_MIN_RAW_Y;
+    if(raw_y > SCREEN_TOUCH_MAX_RAW_Y) raw_y = SCREEN_TOUCH_MAX_RAW_Y;
+
+  
+    *x =  ((raw_x - SCREEN_TOUCH_MIN_RAW_X) * SCREEN_TOUCH_SCALE_X) /
+          (SCREEN_TOUCH_MAX_RAW_X - SCREEN_TOUCH_MIN_RAW_X);
+    
+    *y =  240 - ((raw_y - SCREEN_TOUCH_MIN_RAW_Y) * SCREEN_TOUCH_SCALE_Y) /
+          (SCREEN_TOUCH_MAX_RAW_Y - SCREEN_TOUCH_MIN_RAW_Y);
+    return 1;
+    }
+
+
+
+/*----------- Private Functions -----------*/
+static inline void gpioWrite(const GpioPin *gpio, uint8_t state)
+{
+    if(state)
+        gpio->port->BSRR = gpio->pin;
+    else
+        gpio->port->BSRR = (uint32_t)gpio->pin << 16;
+}
+
+static inline uint8_t gpioRead(const GpioPin *gpio)
+{
+    return (gpio->port->IDR & gpio->pin) ? 1 : 0;
+}
+
+
+static inline void csSet(uint8_t high)
+{
+    /* CS LOW to select, CS HIGH to deselect */
+    gpioWrite(&ScreenTouchCS, high);
+}
+
+static inline void rstSet(uint8_t high)
+{
+    // RST LOW to reset, RST HIGH for normal operation
+    gpioWrite(&ScreenTouchRST, high);
+}
+
+
+
+void spiRead_8b_Vector(uint8_t* DATA, uint16_t size){
+    for(uint16_t i = 0; i < size; i++){
+        while(!(SPI1->SR & SPI_SR_TXE));
+        SPI1->DR = 0x00; // Send dummy byte to generate clock
+        while(!(SPI1->SR & SPI_SR_RXNE));
+        DATA[i] = SPI1->DR;
+    }
+}
+
+
