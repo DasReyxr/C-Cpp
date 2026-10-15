@@ -31,7 +31,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define FRAME_LEN  6
+#define FRAME_HDR  0xA5
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -44,7 +45,10 @@
 SPI_HandleTypeDef hspi1;
 
 /* USER CODE BEGIN PV */
-
+static uint8_t  tx_frame[FRAME_LEN];
+static uint8_t  rx_frame[FRAME_LEN];
+static uint8_t  seq;
+static uint8_t  err_count;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -54,7 +58,8 @@ static void MX_GPIO_Init(void);
 static void MX_ICACHE_Init(void);
 static void MX_SPI1_Init(void);
 /* USER CODE BEGIN PFP */
-
+static void build_frame(void);
+static void arm_spi(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -98,6 +103,8 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
   HAL_SPI_Enable(&hspi1);
+  arm_spi();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -107,7 +114,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    HAL_SPI_Transmit(&hspi1, (uint8_t *)"DAS", 4, HAL_MAX_DELAY);
     
   }
   /* USER CODE END 3 */
@@ -274,6 +280,50 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+
+static void build_frame(void)
+{
+    // Sustituye "value" por tu dato real (ADC, sensor, contador...)
+    uint16_t value = (uint16_t)(HAL_GetTick() & 0xFFFF);
+
+    tx_frame[0] = FRAME_HDR;
+    tx_frame[1] = seq++;
+    tx_frame[2] = (uint8_t)(value >> 8);
+    tx_frame[3] = (uint8_t)(value & 0xFF);
+    tx_frame[4] = err_count;
+
+    uint8_t cs = 0;
+    for (int i = 0; i < FRAME_LEN - 1; i++)
+        cs ^= tx_frame[i];
+    tx_frame[FRAME_LEN - 1] = cs;
+}
+
+
+static void arm_spi(void)
+{
+    build_frame();
+    HAL_SPI_TransmitReceive_IT(&hspi1, tx_frame, rx_frame, FRAME_LEN);
+}
+
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+    if (hspi->Instance == SPI1)
+    {
+        HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);   // actividad
+        arm_spi();                                 // dejar listo el siguiente frame
+    }
+}
+
+void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi)
+{
+    if (hspi->Instance == SPI1)
+    {
+        err_count++;
+        __HAL_SPI_CLEAR_OVRFLAG(hspi);
+        HAL_SPI_Abort(hspi);
+        arm_spi();
+    }
+}
 /* USER CODE END 4 */
 
  /* MPU Configuration */
